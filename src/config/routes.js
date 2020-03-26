@@ -1,5 +1,5 @@
 
-import Dashboard from "../components/Modules/Dashboard"
+import Dashboard from "../components/Modules/dashboard"
 
 
 
