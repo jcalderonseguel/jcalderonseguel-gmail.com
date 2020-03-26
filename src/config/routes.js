@@ -1,16 +1,10 @@
-
-import Dashboard from "../components/Modules/Dashboard"
-
-
+import Dashboard from "../components/Modules/Dashboard";
 
 export const paths = {
   any: "*",
-  root: "/",
-
+  root: "/"
 };
 
-const routes = [
-  { path: paths.root, component: Dashboard },
-];
+const routes = [{ path: paths.root, component: Dashboard }];
 
 export default routes;
