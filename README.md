@@ -1,2 +1,2 @@
-# jcalderonseguel-gmail.com
-web-app
+# rps-web-app
+web-app rps
