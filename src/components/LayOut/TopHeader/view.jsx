@@ -5,14 +5,12 @@ import { connect } from 'react-redux'
 
 class TopHeader extends Component {
 
- 
-
     render() {
         return (
             <div className="row border-bottom">
                 <nav className="navbar navbar-static-top" role="navigation" style={{ marginBottom: 0 }}>
                     <div className="navbar-header">
-                        <span className="navbar-minimalize minimalize-styl-2 btn btn-primary" onClick={(e) => this.toggleNavigation(e)}><i className="fa fa-bars"></i> </span>
+                        <span className="navbar-minimalize minimalize-styl-2 btn btn-primary" /*onClick={(e) => this.toggleNavigation(e)}*/><i className="fa fa-bars"></i> </span>
                         <form role="search" className="navbar-form-custom" method="post" action="#">
                             <div className="form-group">
                                 <input type="text" placeholder="Busqueda" className="form-control" name="top-search" id="top-search" />
