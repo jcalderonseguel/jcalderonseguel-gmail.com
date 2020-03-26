@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 
 import MenuItem from './menuItem'
-import MenuTree from './menuTree'
+
 import imagePath from  '../../../assets/img/profile_small.jpg'
 
 
@@ -46,10 +46,9 @@ class Navigation extends Component {
                         </li>
                         {/* menu */}
                         <MenuItem path="/home" icon="home" label="Home" />
-                        <MenuTree icon="building-o" label="General">
-                            <MenuItem path="/page1" label="Page Example 1" tree={true} />
-                            <MenuItem path="/page2" label="Page Example 2" tree={true} />
-                        </MenuTree>
+
+                      
+                       
                     </ul>
                 </div>
             </nav>

@@ -9,6 +9,7 @@ export default class Footer extends Component {
                 </div>
                 <div>
                     <strong>Copyright</strong> Example Company &copy; 2015-2017
+                     
                 </div>
             </div>
         )

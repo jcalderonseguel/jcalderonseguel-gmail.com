@@ -21,9 +21,10 @@ class Dashboard extends Component {
                                 <h1>
                                     Página dashboard
                                 </h1>
-                                Ok
+                              
                                 <small>
-                                    hi
+                                   Hello world
+
                                 </small>
                             </div>
                         </div>
