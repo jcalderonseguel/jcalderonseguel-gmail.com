@@ -1,4 +1,4 @@
-import Dashboard from "../components/Modules/dashboard";
+import Dashboard from "../components/Modules/Dashboard";
 
 export const paths = {
   any: "*",
