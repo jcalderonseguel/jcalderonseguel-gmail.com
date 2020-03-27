@@ -4,12 +4,21 @@ export default class Footer extends Component {
     render() {
         return (
             <div className="footer">
-                <div className="pull-right">
-                    10GB of <strong>250GB</strong> Free.
+                <div className="text-center m-t-lg">
+                        {// eslint-disable-next-line
+                        <a href="http://cargobill-001-site3.ctempurl.com/src/"   target="_blank">
+                            <i className={`fa fa-laptop`}></i> 
+                            <span className="nav-label">Demo</span>
+                            <span className="fa fa-arrow"></span>
+                          
+                        </a>
+                         }
+                  
                 </div>
                 <div>
-                    <strong>Copyright</strong> Example Company &copy; 2015-2017
+                    <strong>Copyright</strong> Example Company &copy; 2015-2020
                      
+                 
                 </div>
             </div>
         )
