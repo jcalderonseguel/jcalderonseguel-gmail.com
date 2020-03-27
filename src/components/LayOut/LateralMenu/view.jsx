@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
-
 import MenuItem from './menuItem'
 
 import imagePath from  '../../../assets/img/profile_small.jpg'
@@ -46,9 +44,7 @@ class Navigation extends Component {
                         </li>
                         {/* menu */}
                         <MenuItem path="/home" icon="home" label="Home" />
-
-                      
-                       
+                        <MenuItem path="/new-person" icon="person" label="Create a Person" />
                     </ul>
                 </div>
             </nav>
