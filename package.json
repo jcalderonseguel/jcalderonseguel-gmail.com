@@ -10,6 +10,7 @@
     "connected-react-router": "6.6.1",
     "font-awesome": "4.7.0",
     "history": "4.10.1",
+    "immer": "6.0.2",
     "jquery": "3.4.1",
     "jsonwebtoken": "8.5.1",
     "metismenu": "^3.0.4",
