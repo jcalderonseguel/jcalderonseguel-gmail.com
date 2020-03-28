@@ -5,12 +5,14 @@ import {
 
 } from "../../Global/actions"
 
+import { getDocument } from '../../Modules/Maintainers/DocumentType/actions';
 
 class TopHeader extends Component {
 
- 
     toggleNavigation =() => {
+       
        this.props.dispatch(setCloseOpenMenu(!this.props.isOpenLateral))
+       this.props.dispatch(getDocument("CHL"));
     }
    
     hideShowMenu = () => {
