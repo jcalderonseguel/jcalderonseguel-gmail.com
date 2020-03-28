@@ -10,12 +10,15 @@ class TopHeader extends Component {
 
  
     toggleNavigation =() => {
-             
-        this.props.dispatch(setCloseOpenMenu(!this.props.isOpenLateral))
-        
+       this.props.dispatch(setCloseOpenMenu(!this.props.isOpenLateral))
     }
-
+   
+    hideShowMenu = () => {
+                 
+        this.props.isOpenLateral===true ? document.body.classList.add("mini-navbar") :document.body.classList.remove("mini-navbar")
+    }
     render() {
+        this.hideShowMenu();
         return (
             <div className="row border-bottom">
                 <nav className="navbar navbar-static-top" role="navigation" style={{ marginBottom: 0 }}>
