@@ -1,12 +1,12 @@
 import { createActions } from 'reduxsauce';
 
 import {
-  getDocumentTypeApi
+  getCountrysApi
 } from '../../../../services/app';
 
 const { Types, Creators } = createActions(
     {
-      getDocumentTypes: ['countryId'],      
+      setDataCountries: ['countriesList'],      
     },
     {
       prefix: 'GETDOCUMENT/'
@@ -14,21 +14,22 @@ const { Types, Creators } = createActions(
   );
 
   const {
-    getDocumentTypes
+    setDataCountries
   } = Creators;
 
   const {
-    GET_DOCUMENT_TYPE,
+    SET_DATA_COUNTRIES,
     
   } = Types;
 
 
-  const getDocument = (countryId) => async dispatch => {
-    const request = await getDocumentTypeApi(countryId);
+  const getCountries = () => async dispatch => {
+    const request = await getCountrysApi();
   
     if (request.status === 200) {
 
-       console.log("data:>",request.data);
+           dispatch(setDataCountries(request.data.slice(0,10)))
+      
       
     }
   };
@@ -37,9 +38,9 @@ const { Types, Creators } = createActions(
 
   export {
     Types,
-    getDocumentTypes,
-    GET_DOCUMENT_TYPE,
-    getDocument
+    setDataCountries,
+    SET_DATA_COUNTRIES,
+    getCountries
   };
 
   export default Creators;

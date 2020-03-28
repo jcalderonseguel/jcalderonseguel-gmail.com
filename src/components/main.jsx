@@ -9,12 +9,16 @@ import Footer from "./footer";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
 import 'animate.css/animate.min.css'
+import "../assets/css/custom.css"
+import "../assets/css/rpsTheme.css"
+
+
 import 'jquery/dist/jquery.min'
-import 'bootstrap/dist/js/bootstrap.min'
+import 'bootstrap/dist/js/bootstrap.min.js'
 import 'metismenu/dist/metisMenu.min'
 
-import "../assets/css/rpsTheme.css"
-import "../assets/css/custom.css"
+
+
 import TopHeader from "../components/LayOut/TopHeader/view"
 
 class Main extends React.Component {
