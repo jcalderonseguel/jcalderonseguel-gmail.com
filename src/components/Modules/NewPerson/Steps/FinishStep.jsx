@@ -15,7 +15,15 @@ class FinishStep extends React.Component {
     this.state = {};
   }
   render() {
-    return <div>Step 3</div>;
+    const {firstName, lastName, city, streetName } = this.props;
+
+    return <div>
+      <h2>Resumen</h2>
+      First Name: <b>{firstName}</b><br/>
+      Last Name: <b>{lastName}</b><br/>
+      City: <b>{city}</b><br/>
+      Street Name: <b>{streetName}</b><br/>
+    </div>;
   }
 }
 

@@ -15,7 +15,7 @@ class WarningStep extends React.Component {
     this.state = {};
   }
   render() {
-    return <div>Step 3</div>;
+    return <div>Warnings</div>;
   }
 }
 
