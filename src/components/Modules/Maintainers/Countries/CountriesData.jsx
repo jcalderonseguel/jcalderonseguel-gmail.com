@@ -1,24 +1,20 @@
 import React, { Component} from 'react'
 
-
-
-
-
 class CountriesData extends Component {
 
     box(item, index) {
         const key = `${item.name}${new Date().getTime()}`;
 
         return (
-               <div className="col-lg-4"  key={key}>
+               <div key={key} className="col-lg-4" >
                  <div className="contact-box">
                     <div className="col-sm-4">
                         <div className="text-center">
-                           <img alt="" className="img-circle m-t-xs img-responsive" src={item.flag }></img>
-                              <div className="m-t-xs font-bold"> {item.name}}</div>
+                           {/* <img alt="" className="img-circle m-t-xs img-responsive" src={item.flag }></img> */}
+                              <div className="m-t-xs font-bold"> {item.name}</div>
                            </div>
                         </div>
-                    <div className="col-sm-7">
+                    <div className="col-sm-8">
                          <h3><strong>{item.region}</strong></h3>
                          <p><i className="fa fa-map-marker"></i> {item.subregio }</p>
                     </div>
@@ -37,27 +33,13 @@ class CountriesData extends Component {
         
         return (
            
-            <React.Fragment>
+            <div className="row wrapper wrapper-content animated fadeInRight">
                  {
 
-                     data.map((item, index) => this.box( item, index))
+                     data.map((item, index) => this.box(item, index))
                  }
-            </React.Fragment>
-            //   <div className="col-lg-4">
-            //      <div className="contact-box">
-            //         <div className="col-sm-4">
-            //             <div className="text-center">
-            //                <img alt="" className="img-circle m-t-xs img-responsive" src= {imagePath }></img>
-            //                <div className="m-t-xs font-bold"> Graphics designer</div>
-            //                </div>
-            //             </div>
-            //         <div className="col-sm-7">
-            //             <h3><strong>John Smith</strong></h3>
-            //              <p><i className="fa fa-map-marker"></i> Riviera State 32/106</p>
-            //         </div>
-            //         <div className="clearfix"></div>
-            //      </div>
-            //     </div>
+            </div>
+           
            
         )
     }

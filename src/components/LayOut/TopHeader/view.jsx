@@ -5,14 +5,14 @@ import {
 
 } from "../../Global/actions"
 
- import { getCountries } from '../../Modules/Maintainers/Countries/actions';
+ 
 
 class TopHeader extends Component {
 
     toggleNavigation =() => {
        
        this.props.dispatch(setCloseOpenMenu(!this.props.isOpenLateral))
-       this.props.dispatch(getCountries());
+       
     }
    
     hideShowMenu = () => {

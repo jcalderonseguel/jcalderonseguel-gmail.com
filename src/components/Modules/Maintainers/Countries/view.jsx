@@ -18,7 +18,7 @@ class ApiCountries extends Component {
                   <div className="row wrapper border-bottom white-bg page-heading">
                         <div className="col-lg-9">
                             <h2>Countries Api</h2>
-                            {/* <ol className="breadcrumb">
+                             <ol className="breadcrumb">
                                 <li>
                                     <a href="index.html">Home</a>
                                 </li>
@@ -28,14 +28,14 @@ class ApiCountries extends Component {
                                 <li className="active">
                                     <strong>Contacts</strong>
                                 </li>
-                            </ol> */}
+                            </ol> 
                         </div>
                     </div>
                        {this.props.countriesData && this.props.countriesData.length > 0 &&
                           <React.Fragment>
-                              <div className="row wrapper wrapper-content animated fadeInRight">
+                             
                                     <DataCountries data={this.props.countriesData}/>
-                            </div>
+                            
                          </React.Fragment>
                         }
             </div>
