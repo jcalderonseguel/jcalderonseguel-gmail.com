@@ -4,6 +4,10 @@ import DataCountries from "./CountriesData"
 
 import { getCountries } from './actions';
 
+import 'jquery';
+import 'metismenu';
+import 'bootstrap';
+
 class ApiCountries extends Component {
 
     //Lamar a api, cuando ingresa
@@ -19,13 +23,13 @@ class ApiCountries extends Component {
                         <div className="col-lg-9">
                             <h2>Countries Api</h2>
                              <ol className="breadcrumb">
-                                <li>
+                                <li className="breadcrumb-item">
                                     <a href="index.html">Home</a>
                                 </li>
-                                <li>
+                                <li class="breadcrumb-item">
                                     App Views
                                 </li>
-                                <li className="active">
+                                <li className="breadcrumb-item active">
                                     <strong>Contacts</strong>
                                 </li>
                             </ol> 
