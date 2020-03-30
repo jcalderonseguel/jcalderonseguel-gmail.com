@@ -4,6 +4,8 @@ import PersonInfoStep from "../components/Modules/NewPerson/Steps/PersonInfoStep
 import AddressInfoStep from "../components/Modules/NewPerson/Steps/AddressInfoStep";
 import WarningStep from "../components/Modules/NewPerson/Steps/WarningStep";
 import FinishStep from "../components/Modules/NewPerson/Steps/FinishStep";
+import FormNewPerson from "../components/Modules/NewPerson/view";
+import ApiCountries from "../components/Modules/Maintainers/Countries/view";
 
 export const paths = {
   any: "*",
@@ -13,7 +15,9 @@ export const paths = {
   personInfo: "/person",
   address: "/address",
   // warning: "/warning",
-  finish: "/finish"
+  finish: "/finish",
+  apiCountries:"/ApiCountriesSample",
+  person: "/new-person"
 };
 
 const routes = [
@@ -26,6 +30,8 @@ const routes = [
   { path: paths.finish, component: FinishStep },
 
 
+  { path: paths.apiCountries, component: ApiCountries},
+  { path: paths.person, component: FormNewPerson }
 ];
 
 export default routes;

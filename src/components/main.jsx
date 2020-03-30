@@ -6,15 +6,6 @@ import routes from "../config/routes";
 import Navigation from "./LayOut/LateralMenu/view";
 import Footer from "./footer";
 
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'font-awesome/css/font-awesome.min.css'
-import 'animate.css/animate.min.css'
-import 'jquery/dist/jquery.min'
-import 'bootstrap/dist/js/bootstrap.min'
-import 'metismenu/dist/metisMenu.min'
-
-import "../assets/css/rpsTheme.css"
-import "../assets/css/custom.css"
 import TopHeader from "../components/LayOut/TopHeader/view"
 
 class Main extends React.Component {
