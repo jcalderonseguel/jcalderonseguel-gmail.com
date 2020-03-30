@@ -208,16 +208,33 @@ class Admin extends Component {
         
         return (
             <div>
-                <h1>Personas</h1>
-                
-                <div className="col-lg-8">
-                    <div className="table-responsive"></div>
-                    <GridTable 
-                        data={this.data} 
-                        columns={this.columns} 
-                        // ButtonComponent={ButtonDetail} 
-                    />
+                <div className="row wrapper border-bottom white-bg page-heading">
+                    <div className="col-lg-9">
+                        <h2>Personas</h2>
+                            <ol className="breadcrumb">
+                            <li className="breadcrumb-item">
+                                <a href="index.html">Home</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                App Views
+                            </li>
+                            <li className="breadcrumb-item active">
+                                <strong>Personas</strong>
+                            </li>
+                        </ol> 
+                    </div>
                 </div>
+                <div className="clearfix"></div>
+                <React.Fragment>
+                    <div className="row"><div className="col-lg-8">
+                        <div className="table-responsive"></div>
+                        <GridTable 
+                            data={this.data} 
+                            columns={this.columns} 
+                            // ButtonComponent={ButtonDetail} 
+                        />
+                    </div></div>
+                </React.Fragment>
             </div>
         )
     }
