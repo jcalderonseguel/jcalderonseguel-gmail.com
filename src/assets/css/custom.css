@@ -1,8 +1,8 @@
-h1, h2, h3, h4, h5, h6 {
+/* h1, h2, h3, h4, h5, h6 {
     color: currentColor;
 }
 
-/* menu */
+
 .ant-menu-dark.ant-menu-inline {
     background-color: #2f4050 !important
 }
@@ -16,4 +16,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .ant-menu-dark, .ant-menu-dark .ant-menu-sub {
     background: #2f4050 !important;
-}
+} */
+.img-circle-countries {
+    border-radius: 50%;
+    height:90px;
+    width:90px;
+  }
