@@ -1,7 +1,6 @@
 const hostname = window && window.location && window.location.hostname;
 let apiUri = "https://localhost:2000/";
-let callback = "https://localhost:2000/";
-
+let apiPerson ="";
 
 switch (true) {
   case hostname.includes("dev-"): {
@@ -10,13 +9,12 @@ switch (true) {
   }
 
   case hostname.includes("qa-"): {
-   
     break;
   }
   case hostname.includes("localhost"): {
-    apiUri = "https://localhost:2000/";    
-    callback = "https://localhost:2000/";
 
+    apiUri = "https://api.dev.gruposuperdigital.com";   
+    apiPerson = `${apiUri}/pa-person/v1`; 
     break;
   }
   default: {
@@ -26,7 +24,7 @@ switch (true) {
 
 const config = {
   apiUri,
-  callback,
+  apiPerson,
  
 };
 

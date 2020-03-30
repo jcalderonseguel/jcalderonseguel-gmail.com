@@ -11,6 +11,7 @@ class FormNewPerson extends React.Component {
     this.state = {
       activeStep: 1
     };
+    console.log("FormNewPerson");
   }
 
   render() {

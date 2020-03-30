@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import MenuAction from "../MenuActions/MenuAction";
 
 class AccountStep extends React.Component {
   constructor(props) {
