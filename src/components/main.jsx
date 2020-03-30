@@ -37,7 +37,11 @@ class Main extends React.Component {
 
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+
+  isLogged :  state.global.isLogged
+
+});
   
   const mapDispatchToProps = (dispatch) => ({
     dispatch: (action) => { dispatch(action); },

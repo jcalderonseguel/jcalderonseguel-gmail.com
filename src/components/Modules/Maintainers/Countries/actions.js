@@ -7,18 +7,20 @@ import {
 const { Types, Creators } = createActions(
     {
       setDataCountries: ['countriesList'],      
+      resetSate: null
     },
     {
-      prefix: 'GETDOCUMENT/'
+      prefix: 'Countries/'
     }
   );
 
   const {
-    setDataCountries
+    setDataCountries,
+   
   } = Creators;
 
   const {
-    SET_DATA_COUNTRIES,
+    SET_DATA_COUNTRIES,   
     
   } = Types;
 
@@ -28,7 +30,7 @@ const { Types, Creators } = createActions(
   
     if (request.status === 200) {
 
-           dispatch(setDataCountries(request.data.slice(0,10)))
+           dispatch(setDataCountries(request.data))
       
       
     }
