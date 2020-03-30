@@ -41,6 +41,7 @@ class CreateUser extends Component {
                                 <strong>{CREATE_USER_MSG}</strong>
                             </li>
                         </ol>
+                        
                     </div> 
                 </div>
                 <div className="middle-box text-center loginscreen animated fadeInDown">
