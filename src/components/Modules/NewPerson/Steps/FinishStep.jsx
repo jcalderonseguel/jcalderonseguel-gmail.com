@@ -17,13 +17,17 @@ class FinishStep extends React.Component {
   render() {
     const {firstName, lastName, city, streetName } = this.props;
 
-    return <div>
-      <h2>Resumen</h2>
-      First Name: <b>{firstName}</b><br/>
-      Last Name: <b>{lastName}</b><br/>
-      City: <b>{city}</b><br/>
-      Street Name: <b>{streetName}</b><br/>
-    </div>;
+    return (
+      <div>
+        <div className="container">
+            <h2>Resumen</h2>
+            First Name: <b>{firstName}</b><br/>
+            Last Name: <b>{lastName}</b><br/>
+            City: <b>{city}</b><br/>
+            Street Name: <b>{streetName}</b><br/>
+        </div>;
+      </div>
+    )
   }
 }
 

@@ -1,22 +1,24 @@
 const createPersonStyle = {
     button: {
         height: 35, 
-        width: 330,
+        width: 390,
         color:"white",
         textAlign: "left",
-        backgroundColor: "#1ab394"
+        backgroundColor: "#1ab394",
+        paddingTop: 8,
+        paddingLeft: 8,
 
     },
     buttonDisabled: {
         color: "gray",
         height: 35, 
-        width: 330,
+        width: 390,
     },
-    buttonDown: {
+    buttonDown: {   
         height: 35, 
         width: 90,
         color:"white",
-        textAlign: "left",
+        textAlign: "left",  
         backgroundColor: "#1ab394"
     },
     btnDownDisabled: {
@@ -30,7 +32,7 @@ const createPersonStyle = {
     },
     invalidInput: {
         height: 35, 
-        width: 330,
+        width: 390,
         color:"white",
         backgroundColor: "red"
 

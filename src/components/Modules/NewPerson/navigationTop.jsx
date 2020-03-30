@@ -25,42 +25,46 @@ class NavigationTop extends Component {
             addressInputsValid
         } = this.props;
 
-        console.log("firstName=>>",firstName, step,streetName)
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-4 text-left">
-                    <Button
-                        variant="contained"
-                        size="large"
-                        style={!personInputsValid ? CreatePerson.createPersonStyle.invalidInput: CreatePerson.createPersonStyle.button}
+                    <div className="col-4">
+                    <ListItem style={{paddingLeft: 0, paddingRight: 0}}>
+                        <NavLink
+                        to={"#"}
+                        style={!personInputsValid ? 
+                            CreatePerson.createPersonStyle.invalidInput
+                            : CreatePerson.createPersonStyle.button}
                         onClick={() => goPerson()}>
                             1. Person
-                    </Button>
+                        </NavLink>
+                    </ListItem>
                     </div>
                     <div className="col-4">
-                         <Button
-                            variant="contained"
-                            size="large"
-                            style={ (enableAddress && addressInputsValid) ? 
-                                CreatePerson.createPersonStyle.button 
-                                : !addressInputsValid ? CreatePerson.createPersonStyle.invalidInput
-                                : CreatePerson.createPersonStyle.buttonDisabled}
-                            disabled={ !enableAddress ? true: false}
-                            onClick={() => goAddress()}>
+                        <ListItem style={{paddingLeft: 0, paddingRight: 0}}>
+                            <NavLink
+                                to={"#"}
+                                style={ (enableAddress && addressInputsValid) ? 
+                                    CreatePerson.createPersonStyle.button 
+                                    : !addressInputsValid ? CreatePerson.createPersonStyle.invalidInput
+                                    : CreatePerson.createPersonStyle.buttonDisabled}
+                                disabled={ !enableAddress ? true: false}
+                                onClick={() => goAddress()}>
                             2. Address
-                        </Button>
+                            </NavLink>
+                        </ListItem>
                     </div>
                     <div className="col-4">
-                    { <Button
-                        variant="contained"
-                        style={enableSummary ? 
-                            CreatePerson.createPersonStyle.button: CreatePerson.createPersonStyle.buttonDisabled}
-                        size="large"
-                        disabled={ !enableSummary ? true: false}
-                        onClick={() => goSummary()}>
-                        3. Summary
-                    </Button>}
+                        <ListItem style={{paddingLeft: 0, paddingRight: 0}}>
+                            <NavLink
+                                to={"#"}
+                                style={enableSummary ? 
+                                    CreatePerson.createPersonStyle.button: CreatePerson.createPersonStyle.buttonDisabled}
+                                disabled={ !enableSummary ? true: false}
+                                onClick={() => goSummary()}>
+                                3. Summary
+                            </NavLink>
+                        </ListItem>
                     </div>
                 </div>
             </div>
