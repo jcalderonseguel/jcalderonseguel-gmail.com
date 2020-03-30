@@ -1,9 +1,11 @@
 import { createActions } from 'reduxsauce';
 
+
 //creo acciones y la data que recibe "argumentos"
 const { Types, Creators } = createActions(
     {
-      setLoginSuccess: null,
+      setLoginSuccess: ['isLogged'],
+      setCloseOpenMenu: ["isOpenLateral"]
     
     },
     {
@@ -13,18 +15,26 @@ const { Types, Creators } = createActions(
 
 // Obtengo las acciones para utilizarlas
 const {
-    setLoginSuccess
+    setLoginSuccess,
+    setCloseOpenMenu
+
   } = Creators;
 
 // es como action.type === "RESET_STATE"
 const {
      SET_LOGIN_SUCCESS,
+     SET_CLOSE_OPEN_MENU
   } = Types;
+
+
 
   export {
     Types,   
     setLoginSuccess,
+    setCloseOpenMenu,
     SET_LOGIN_SUCCESS,
+    SET_CLOSE_OPEN_MENU
+    
   };
   
   export default Creators;

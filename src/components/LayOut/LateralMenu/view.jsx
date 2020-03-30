@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
-
+import { paths } from "../../../config/routes";
 import MenuItem from './menuItem'
 
 import imagePath from  '../../../assets/img/profile_small.jpg'
@@ -9,13 +8,7 @@ import imagePath from  '../../../assets/img/profile_small.jpg'
 
 class Navigation extends Component {
 
-    componentWillUpdate(nextProps, nextState) {
-      
-    }
-
-    componentDidMount() {
    
-    }
 
     render() {
         return (
@@ -45,9 +38,9 @@ class Navigation extends Component {
                             </div>
                         </li>
                         {/* menu */}
-                        <MenuItem path="/home" icon="home" label="Home" />
-                        <MenuItem path="/admin" icon="home" label="Personas" />
-
+                        <MenuItem path= {paths.root} icon="home" label="Home" />
+                        <MenuItem path= {paths.apiCountries} icon="files-o" label="Sample" />
+                        <MenuItem path="/admin" icon="home" label="Personas" />       
                       
                        
                     </ul>

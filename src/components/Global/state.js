@@ -2,6 +2,7 @@
 
 const INITIAL_STATE = {
     isLogged: false,
+    isOpenLateral: false,
     userData: {}
   
 };
