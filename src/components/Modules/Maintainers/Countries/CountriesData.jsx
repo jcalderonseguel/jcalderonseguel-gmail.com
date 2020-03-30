@@ -12,7 +12,7 @@ class CountriesData extends Component {
                      <Row>
                             <Col sm={4} >
                                 <div className="text-center">
-                                <img alt="" height="90" width="90" className="img-circle m-t-xs img-responsive" src={item.flag }></img> 
+                                <img  alt=""  className="img-circle-countries m-t-xs img-responsive" src={item.flag}></img> 
                                             <div className="m-t-xs font-bold"> {item.name}</div>
                                         </div>                   
                             </Col>
