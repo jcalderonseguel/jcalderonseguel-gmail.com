@@ -38,13 +38,9 @@ class Navigation extends Component {
                             </div>
                         </li>
                         {/* menu */}
-                        <MenuItem path="/home" icon="home" label="Home" />
-                        <MenuItem path= {paths.person} icon="person" label="Create a Person" />
                         <MenuItem path= {paths.root} icon="home" label="Home" />
+                        <MenuItem path= {paths.person} icon="person" label="Create a Person" />
                         <MenuItem path= {paths.apiCountries} icon="files-o" label="Sample" />
-
-                      
-                       
                     </ul>
                 </div>
             </nav>

@@ -10,7 +10,7 @@ import {
 class TopHeader extends Component {
 
     render() {
-        this.hideShowMenu();
+        // this.hideShowMenu();
         return (
             <div className="row border-bottom">
                 <nav className="navbar navbar-static-top" role="navigation" style={{ marginBottom: 0 }}>
