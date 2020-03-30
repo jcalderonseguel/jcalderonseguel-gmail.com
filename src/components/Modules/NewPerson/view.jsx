@@ -3,6 +3,7 @@ import AccountStep from "./Steps/AccountStep";
 import ProfileStep from "./Steps/ProfileStep";
 import WarningStep from "./Steps/WarningStep";
 import FinishStep from "./Steps/FinishStep";
+import MenuAction from "./MenuActions/MenuAction";
 
 class FormNewPerson extends React.Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class FormNewPerson extends React.Component {
           {this.state.activeStep === 3 && <WarningStep />}
           {this.state.activeStep === 4 && <FinishStep />}
         </form>
+        <MenuAction></MenuAction>
       </div>
     );
   }

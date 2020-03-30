@@ -15,7 +15,23 @@ class FinishStep extends React.Component {
     this.state = {};
   }
   render() {
-    return <div>Step 3</div>;
+    return (
+      <div className="container">
+        <div className="col-lg-12">
+          <h2>Terms and Conditions</h2>
+          <input
+            id="acceptTerms"
+            name="acceptTerms"
+            type="checkbox"
+            className="required"
+            aria-required="true"
+          />
+          <label htmlFor="acceptTerms">
+            I agree with the Terms and Conditions.
+          </label>
+        </div>
+      </div>
+    );
   }
 }
 
