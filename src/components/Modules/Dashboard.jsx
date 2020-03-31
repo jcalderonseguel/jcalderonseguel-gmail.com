@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Personalinfo from './Personalinfo'
+
+import Drawer from './DrawerPerson/Drawer'
 
 
 
@@ -24,7 +25,8 @@ class Dashboard extends Component {
                               
                                 <small>
                                    Hello world
-                                <Personalinfo/>
+                                
+                                <Drawer/>
                                 </small>
                             </div>
                         </div>

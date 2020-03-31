@@ -8,6 +8,7 @@
     "animate.css": "^3.7.2",
     "bootstrap": "4.4.1",
     "connected-react-router": "6.6.1",
+    "drawer": "0.0.2",
     "font-awesome": "4.7.0",
     "history": "4.10.1",
     "jquery": "3.4.1",

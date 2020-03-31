@@ -89,10 +89,6 @@ const Personalinfo = () => {
         </tr>
       </React.Fragment>
       </CardContent>
-
-      <CardActions>
-        <Button size="small">Ver Detalle</Button>
-      </CardActions>
     </Card>
   );
 }
