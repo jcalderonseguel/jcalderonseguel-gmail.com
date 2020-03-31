@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { push } from 'connected-react-router'
 
 
 class Dashboard extends Component {
+
+
+    goCreateUser = () => {
+
+    }
 
 
     render() {

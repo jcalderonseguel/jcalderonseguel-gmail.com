@@ -1,8 +1,6 @@
 import Dashboard from "../components/Modules/Dashboard";
 import ApiCountries from "../components/Modules/Maintainers/Countries/view";
-import CreateUser from "../components/Modules/CreateUser/view";
-
-
+import CreateUser from "../components/Access/CreateUser/view";
 export const paths = {
   any: "*",
   root: "/",
