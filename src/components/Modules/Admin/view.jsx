@@ -100,7 +100,7 @@ class Admin extends Component {
 
                 <div className="clearfix"></div>
                 <React.Fragment>
-                    <div className="row"><div className="col-lg-8">
+                    <div className="row"><div className="col-lg-10">
                         <div className="table-responsive"></div>
                        
                         <Grid
