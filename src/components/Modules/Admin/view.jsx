@@ -4,8 +4,8 @@ import GridTable from '../../../components/Table/view';
 //import ButtonDetail from './ButtonDetail'
 import { Button, FormControl, Container, Row, Col, Form } from 'react-bootstrap';
 import { Label } from 'react-bootstrap';
-import data from "./Mock";
 import { getPerson} from './actions';
+import columns from './columns';
 
 class Admin extends Component {
 
@@ -15,43 +15,9 @@ class Admin extends Component {
         console.log(this.props);
     }
 
-    columns = [
-
-        {
-            width: 200,
-            label: 'Name',
-            dataKey: 'name',
-        },
-        {
-            width: 200,
-            label: 'Last Name',
-            dataKey: 'lastName',
-            //numeric: true,
-        },
-        {
-            width: 200,
-            label: 'Date of Birth',
-            dataKey: 'dateOfBirth',
-            //numeric: true,
-        },
-        {
-            width: 200,
-            label: 'Marital Status',
-            dataKey: 'maritalStatus',
-            //numeric: true,
-        },
-        {
-            width: 120,
-            label: 'Natiionality',
-            dataKey: 'nationality',
-            //numeric: true,
-        },
-    ]
-
-    
-
     render() {
         
+        const {personData} = this.props;
         
         return (
             <div>
@@ -122,8 +88,8 @@ class Admin extends Component {
                     <div className="row"><div className="col-lg-8">
                         <div className="table-responsive"></div>
                         <GridTable 
-                            data={this.props.personData} 
-                            columns={this.columns} 
+                            data={personData} 
+                            columns={columns} 
                             // ButtonComponent={ButtonDetail} 
                         />
                     </div></div>
