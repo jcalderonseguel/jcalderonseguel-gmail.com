@@ -4,172 +4,16 @@ import GridTable from '../../../components/Table/view';
 //import ButtonDetail from './ButtonDetail'
 import { Button, FormControl, Container, Row, Col, Form } from 'react-bootstrap';
 import { Label } from 'react-bootstrap';
+import data from "./Mock";
+import { getPerson} from './actions';
 
 class Admin extends Component {
 
-    data = [
-        {
-            name:"Artur",
-            lastName:"Garaev",
-            dateOfBirth:"01-05-1978",
-            maritalStatus:"Soltero",
-            nationality: "Ruso",
-        },
-        {
-            name:"Artur",
-            lastName:"Garaev",
-            dateOfBirth:"01-05-1978",
-            maritalStatus:"Soltero",
-            nationality: "Ruso",
-        },
-        {
-            name:"Artur",
-            lastName:"Garaev",
-            dateOfBirth:"01-05-1978",
-            maritalStatus:"Soltero",
-            nationality: "Ruso",
-        },
-        {
-            name:"Artur",
-            lastName:"Garaev",
-            dateOfBirth:"01-05-1978",
-            maritalStatus:"Soltero",
-            nationality: "Ruso",
-        },
-        {
-            name:"Artur",
-            lastName:"Garaev",
-            dateOfBirth:"01-05-1978",
-            maritalStatus:"Soltero",
-            nationality: "Ruso",
-        },
-        {
-            name:"Artur",
-            lastName:"Garaev",
-            dateOfBirth:"01-05-1978",
-            maritalStatus:"Soltero",
-            nationality: "Ruso",
-        },
-        {
-            name:"Artur",
-            lastName:"Garaev",
-            dateOfBirth:"01-05-1978",
-            maritalStatus:"Soltero",
-            nationality: "Ruso",
-        },
-        {
-            name:"Artur",
-            lastName:"Garaev",
-            dateOfBirth:"01-05-1978",
-            maritalStatus:"Soltero",
-            nationality: "Ruso",
-        },
-        {
-            name:"Artur",
-            lastName:"Garaev",
-            dateOfBirth:"01-05-1978",
-            maritalStatus:"Soltero",
-            nationality: "Ruso",
-        },
-        {
-            name:"Artur",
-            lastName:"Garaev",
-            dateOfBirth:"01-05-1978",
-            maritalStatus:"Soltero",
-            nationality: "Ruso",
-        },
-        {
-            name:"Artur",
-            lastName:"Garaev",
-            dateOfBirth:"01-05-1978",
-            maritalStatus:"Soltero",
-            nationality: "Ruso",
-        },
-        {
-            name:"Artur",
-            lastName:"Garaev",
-            dateOfBirth:"01-05-1978",
-            maritalStatus:"Soltero",
-            nationality: "Ruso",
-        },
-        {
-            name:"Artur",
-            lastName:"Garaev",
-            dateOfBirth:"01-05-1978",
-            maritalStatus:"Soltero",
-            nationality: "Ruso",
-        },
-        {
-            name:"Artur",
-            lastName:"Garaev",
-            dateOfBirth:"01-05-1978",
-            maritalStatus:"Soltero",
-            nationality: "Ruso",
-        },
-        {
-            name:"Artur",
-            lastName:"Garaev",
-            dateOfBirth:"01-05-1978",
-            maritalStatus:"Soltero",
-            nationality: "Ruso",
-        },
-        {
-            name:"Artur",
-            lastName:"Garaev",
-            dateOfBirth:"01-05-1978",
-            maritalStatus:"Soltero",
-            nationality: "Ruso",
-        },
-        {
-            name:"Artur",
-            lastName:"Garaev",
-            dateOfBirth:"01-05-1978",
-            maritalStatus:"Soltero",
-            nationality: "Ruso",
-        },
-        {
-            name:"Artur",
-            lastName:"Garaev",
-            dateOfBirth:"01-05-1978",
-            maritalStatus:"Soltero",
-            nationality: "Ruso",
-        },
-        {
-            name:"Artur",
-            lastName:"Garaev",
-            dateOfBirth:"01-05-1978",
-            maritalStatus:"Soltero",
-            nationality: "Ruso",
-        },
-        {
-            name:"Artur",
-            lastName:"Garaev",
-            dateOfBirth:"01-05-1978",
-            maritalStatus:"Soltero",
-            nationality: "Ruso",
-        },
-        {
-            name:"Artur",
-            lastName:"Garaev",
-            dateOfBirth:"01-05-1978",
-            maritalStatus:"Soltero",
-            nationality: "Ruso",
-        },
-        {
-            name:"Artur",
-            lastName:"Garaev",
-            dateOfBirth:"01-05-1978",
-            maritalStatus:"Soltero",
-            nationality: "Ruso",
-        },
-        {
-            name:"Artur",
-            lastName:"Garaev",
-            dateOfBirth:"01-05-1978",
-            maritalStatus:"Soltero",
-            nationality: "Rusode",
-        },
-    ];
+    componentDidMount(){
+        this.props.dispatch(getPerson());
+        console.log("print props")
+        console.log(this.props);
+    }
 
     columns = [
 
@@ -204,6 +48,8 @@ class Admin extends Component {
         },
     ]
 
+    
+
     render() {
         
         
@@ -225,7 +71,7 @@ class Admin extends Component {
                         </ol> 
                     </div>
                 </div>
-
+                
                 <div className="border-bottom white-bg page-heading">
                     <Form>
                         <Form.Row>
@@ -276,7 +122,7 @@ class Admin extends Component {
                     <div className="row"><div className="col-lg-8">
                         <div className="table-responsive"></div>
                         <GridTable 
-                            data={this.data} 
+                            data={this.props.personData} 
                             columns={this.columns} 
                             // ButtonComponent={ButtonDetail} 
                         />
@@ -287,4 +133,13 @@ class Admin extends Component {
     }
 }
 
-export default Admin; 
+const mapStateToProps = (state) => ({
+    personData: state.personReducer.personData
+ 
+ });
+ 
+ const mapDispatchToProps = (dispatch) => ({
+     dispatch: (action) => { dispatch(action); },
+ })
+
+export default connect(mapStateToProps,mapDispatchToProps)(Admin);
