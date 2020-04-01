@@ -1,22 +1,9 @@
-import React, { Component } from 'react';
-import Button from "@material-ui/core/Button";
-import { NavLink } from "react-router-dom";
-import ListItem from "@material-ui/core/ListItem";
+import React from 'react';
+import Button from 'react-bootstrap/Button'
 import Person from "../../../styles/formCreatePerson";
 
-class Navigation extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            step: 1
-        }
-    }
-    continue = e => {
-        e.preventDefault();
-        this.props.nextStep();
-    }
-    render() {
-        const {step, disabledPrevious} = this.props;
+function Navigation(props) {
+    const {step, sendPerson, backStep, nextStep, isLoading} = props;
         return (
             <div className="container">
                 <div className="row">
@@ -26,7 +13,7 @@ class Navigation extends Component {
                         size="large"
                         style={step <= 1? Person.createPersonStyle.btnDownDisabled: Person.createPersonStyle.buttonDown}
                         disabled={step <= 1? true: false}
-                        onClick={() => this.props.backStep()}>
+                        onClick={() => backStep()}>
                         Previous
                     </Button>
                     </div>
@@ -36,7 +23,7 @@ class Navigation extends Component {
                             style={step > 2 ? Person.createPersonStyle.btnDownDisabled: Person.createPersonStyle.buttonDown}
                             size="large"
                             disabled={step > 2? true: false}
-                            onClick={this.continue}>
+                            onClick={() => nextStep()}>
                             Next
                         </Button>
                     </div>
@@ -44,9 +31,11 @@ class Navigation extends Component {
                     <Button
                         variant="contained"
                         size="large"
+                        disabled={isLoading}
                         style={Person.createPersonStyle.buttonDown}
-                        onClick={() => this.props.enviar()}>
-                        Send
+                        onClick={!isLoading ? () => sendPerson() : null}>
+                        {/* onClick={!isLoading ? handleSendPerson : null}> */}
+                        {isLoading ? 'Loading…' : 'Send'}
                     </Button>
                     </div>
                     <div className="col-1">
@@ -54,7 +43,8 @@ class Navigation extends Component {
                         variant="contained"
                         style={Person.createPersonStyle.buttonDown}
                         size="large"
-                        onClick={() => this.stepCancel(0)}>
+                        // onClick={() => this.stepCancel(0)}
+                        >
                         Cancel
                     </Button>
                     </div>
@@ -62,7 +52,7 @@ class Navigation extends Component {
                 </div>
             </div>
         );
-    }
-}
+    //}
 
+}
 export default Navigation;

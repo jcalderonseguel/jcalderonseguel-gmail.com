@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Button from "@material-ui/core/Button";
 import { NavLink } from "react-router-dom";
 import ListItem from "@material-ui/core/ListItem";
 import CreatePerson from "../../../styles/formCreatePerson";
@@ -13,12 +12,9 @@ class NavigationTop extends Component {
    
     render() {
         const {
-            step, 
             goSummary, 
             goPerson, 
-            goAddress,firstName, 
-            lastName, 
-            streetName,
+            goAddress,
             enableAddress, 
             enableSummary,
             personInputsValid,
@@ -48,7 +44,7 @@ class NavigationTop extends Component {
                                     CreatePerson.createPersonStyle.button 
                                     : !addressInputsValid ? CreatePerson.createPersonStyle.invalidInput
                                     : CreatePerson.createPersonStyle.buttonDisabled}
-                                disabled={ !enableAddress ? true: false}
+                                disabled={ !enableAddress }
                                 onClick={() => goAddress()}>
                             2. Address
                             </NavLink>

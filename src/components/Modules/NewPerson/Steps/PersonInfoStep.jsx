@@ -1,6 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
-import Navigation from "../navigation";
 import FormHelperText from '@material-ui/core/FormHelperText';
 
 class PersonInfoStep extends React.Component {
@@ -10,12 +8,16 @@ class PersonInfoStep extends React.Component {
   }
   render() {
     const {
-      firstName, 
-      lastName,
       firstNameErrorMessage,
       lastNameErrorMessage,
-      handleChange
+      emailErrorMessage,
+      handleChange,
+      firstName,
+      lastName,
+      email,
+      phone,
     } = this.props;
+
     return (
       <div className="container">
         <div className="row">
@@ -49,6 +51,34 @@ class PersonInfoStep extends React.Component {
                   onChange={handleChange ? handleChange('lastName') : null}
                 />
                 <FormHelperText id="component-error-text" error>{lastNameErrorMessage}</FormHelperText>
+              </div>
+              <div className="form-group">
+                <label>Email*</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="text"
+                  className="form-control required valid"
+                  aria-required="true"
+                  value={email}
+                  aria-invalid="false"
+                  onChange={handleChange ? handleChange('email') : null}
+                />
+                <FormHelperText id="component-error-text" error>{emailErrorMessage}</FormHelperText>
+              </div>
+              <div className="form-group">
+                <label>Phone*</label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="text"
+                  className="form-control required valid"
+                  aria-required="true"
+                  value={phone}
+                  aria-invalid="false"
+                  onChange={handleChange ? handleChange('phone') : null}
+                />
+                {/* <FormHelperText id="component-error-text" error>{phoneErrorMessage}</FormHelperText> */}
               </div>
             </div>
           </div>

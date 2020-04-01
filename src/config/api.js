@@ -14,7 +14,8 @@ switch (true) {
   case hostname.includes("localhost"): {
 
     apiUri = "https://api.dev.gruposuperdigital.com";   
-    apiPerson = `${apiUri}/pa-person/v1`; 
+    apiPerson = `http://localhost:5000/v1`; 
+    // apiPerson = `${apiUri}/pa-person/v1`; 
     break;
   }
   default: {

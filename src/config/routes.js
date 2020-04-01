@@ -2,7 +2,7 @@ import Dashboard from "../components/Modules/Dashboard";
 import Form from "../components/Modules/NewPerson/form";
 import PersonInfoStep from "../components/Modules/NewPerson/Steps/PersonInfoStep";
 import AddressInfoStep from "../components/Modules/NewPerson/Steps/AddressInfoStep";
-import WarningStep from "../components/Modules/NewPerson/Steps/WarningStep";
+// import WarningStep from "../components/Modules/NewPerson/Steps/WarningStep";
 import FinishStep from "../components/Modules/NewPerson/Steps/FinishStep";
 import ApiCountries from "../components/Modules/Maintainers/Countries/view";
 
@@ -16,7 +16,6 @@ export const paths = {
   // warning: "/warning",
   finish: "/finish",
   apiCountries:"/ApiCountriesSample",
-  person: "/new-person"
 };
 
 const routes = [

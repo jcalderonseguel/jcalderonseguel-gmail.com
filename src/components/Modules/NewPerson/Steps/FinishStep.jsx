@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 /*const AccountStep = props => {
   return <div></div>;
@@ -15,17 +14,17 @@ class FinishStep extends React.Component {
     this.state = {};
   }
   render() {
-    const {firstName, lastName, city, streetName } = this.props;
+    const { person } = this.props;
 
     return (
       <div>
         <div className="container">
             <h2>Resumen</h2>
-            First Name: <b>{firstName}</b><br/>
-            Last Name: <b>{lastName}</b><br/>
-            City: <b>{city}</b><br/>
-            Street Name: <b>{streetName}</b><br/>
-        </div>;
+            First Name: <b>{person.firstName}</b><br/>
+            Last Name: <b>{person.lastName}</b><br/>
+            City: <b>{person.city}</b><br/>
+            Street Name: <b>{person.streetName}</b><br/>
+        </div>
       </div>
     )
   }

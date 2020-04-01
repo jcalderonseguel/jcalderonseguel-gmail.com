@@ -2,10 +2,12 @@ import React from 'react';
 import StepWizard from 'react-step-wizard';
 import PersonInfoStep from "./Steps/PersonInfoStep";
 import AddressInfoStep from "./Steps/AddressInfoStep";
-import WarningStep from "./Steps/WarningStep";
+// import WarningStep from "./Steps/WarningStep";
 import FinishStep from "./Steps/FinishStep";
 import Navigation from "./navigation";
 import NavigationTop from "./navigationTop";
+import { CreatePerson } from './action';
+import {  connect } from "react-redux"
 
 
 const steperStyle = {
@@ -17,20 +19,22 @@ class Form extends React.Component {
         super(props);
         this.state = {
             step: 1,
-            data: [],
             firstName: "",
             lastName: "",
+            email: "",
             city: 0,
             streetName: "",
+            phone: "",
+            attachment: "",
+            documentNumber: "",
             firstNameErrorMessage: null,
             personInputsValid: true,
             addressInputsValid: true
         }
     }
     nextStep = () => {
-        const {step, firstName, lastName, streetName} = this.state;
-        console.log("step", step)
-        console.log("lastName", lastName)
+        const {step, firstName, lastName, streetName } = this.state;
+        // console.log("step", step)
 
         switch (step) {
             case 1:
@@ -63,7 +67,7 @@ class Form extends React.Component {
                         addressInputsValid: false});
     
                 } else {
-                    this.setState({
+                    this.setState({ 
                         step: step + 1, 
                         enableSummary : true, 
                         addressInputsValid: true});
@@ -99,7 +103,7 @@ class Form extends React.Component {
 
     }
     goSummary = () => {
-        const { step, firstName, lastName, streetName} = this.state;
+        const {firstName, lastName, streetName} = this.state;
 
         if(firstName !== "" && lastName !== "" && streetName !== ""){
             this.setState({step: 3});
@@ -110,9 +114,9 @@ class Form extends React.Component {
         }
 
     }
-    
+
     goPerson = () => {
-        const { firstName, lastName, streetName} = this.state;
+        const { firstName, lastName} = this.state;
         
         if(firstName.trim() !== "") this.setState({firstNameErrorMessage: ""});
         if(lastName.trim() !== "") this.setState({lastNameErrorMessage: ""});
@@ -151,7 +155,6 @@ class Form extends React.Component {
     }
     handleChange = input => e => {
         this.setState({[input]: e.target.value});
-
         switch (input) {
             case "firstName":
                 if(e.target.value === ""){
@@ -180,22 +183,55 @@ class Form extends React.Component {
         }
     }
 
-    enviar = () => {
-        const {step, firstName, lastName, city, streetName } = this.state;
+    sendPerson = () => {
+        // const {step, firstName, lastName, city, streetName } = this.state;
+
+        this.setState({isLoading: true});
+
+        console.log("sending...")
+        
+        // const dataObject = {
+        //     firstName: firstName,
+        //     lastName: lastName,
+        //     city: city,
+        //     streetName: streetName
+        // }
+        // return this.props.dispatch(CreatePerson(this.state))
+        //     .catch(err => console.log(err))
+        //     .then((data) => {
+        //         if(data){
+        //             console.log("ver si hay data de vuelta")
+        //         }
+        //     })
+        Promise.all([new Promise(CreatePerson(this.state))])
+        .then(data=>{
+            debugger
+            if(data && data[0]) {
+                console.log("llegó de vuelta")
+                this.setState({isLoading: false});
+            }
+        })
+        .catch(e => console.log("erros=>>>",e))
+            
     }
 
     render() {
         const {
             step, 
-            firstName, 
-            lastName, 
-            city, 
-            streetName, 
             firstNameErrorMessage,
             lastNameErrorMessage,
             streetNameErrorMessage,
+            emailErrorMessage,
+            cityErrorMessage,
             enableAddress,
             enableSummary,
+            isLoading,
+            firstName,
+            lastName,
+            streetName,
+            city,
+            email,
+            phone,
             personInputsValid,
             addressInputsValid
         } = this.state;
@@ -205,9 +241,6 @@ class Form extends React.Component {
                     goSummary={this.goSummary}
                     goPerson={this.goPerson}
                     goAddress={this.goAddress}
-                    firstName={firstName}
-                    lastName={lastName}
-                    streetName={streetName}
                     enableAddress={enableAddress}
                     enableSummary={enableSummary}
                     personInputsValid={personInputsValid}
@@ -217,36 +250,47 @@ class Form extends React.Component {
                     {step === 1 && 
                         <PersonInfoStep 
                             handleChange={this.handleChange}
-                            firstName={firstName}
                             lastName={lastName}
                             firstNameErrorMessage={firstNameErrorMessage}
                             lastNameErrorMessage={lastNameErrorMessage}
-                            hashKey={'person'}/> }
+                            emailErrorMessage={emailErrorMessage}
+                            firstName={firstName}
+                            email={email}
+                            phone={phone}
+                            // hashKey={'person'}
+                            /> }
                     {step === 2 && 
                         <AddressInfoStep 
                             handleChange={this.handleChange} 
                             city={city}
                             streetName={streetName}
                             streetNameErrorMessage={streetNameErrorMessage}
-                            hashKey={'address'}/>}
+                            // cityErrorMessage={cityErrorMessage}
+                            // hashKey={'address'}
+                            />}
                     {/* {step === 3 && <WarningStep hashKey={'warning'}/>} */}
                     {step === 3 && 
                         <FinishStep
-                            firstName={firstName}
-                            lastName= {lastName}
-                            city={city}
-                            streetName={streetName}
+                            person={this.state}
                             hashKey={'finish'}/>}
                 </StepWizard>
                 <Navigation 
                     nextStep={this.nextStep}
                     backStep={this.backStep}
-                    enviar={this.enviar}
+                    sendPerson={this.sendPerson}
+                    isLoading={isLoading}
                     step={step}
                     />
             </div>
         );
     }
 }
-
-export default Form;
+const mapStateToProps = (state) => ({
+ 
+ });
+ 
+ const mapDispatchToProps = (dispatch) => ({
+     dispatch: (action) => { dispatch(action); },
+ })
+ 
+ export default connect(mapStateToProps,mapDispatchToProps)(Form);
