@@ -1,32 +1,44 @@
-import React, { Component } from "react";
 import axios from "axios";
+const GetPerson = () => {
+  axios
+    .post(url, {
+      headers: {
+        Authorization: `Basic ${token}`
+      }
+    })
+    .get("http://localhost:5000/v1/persons")
+    .then(res => {
+      const personData = res.data;
+      console.log(personData);
+      this.setState({ personData });
+    })
+    .catch(err => {
+      console.log(err);
+    });
 
-class PersonContainer extends Component {
-  state = {
-    personData: []
-  };
+  return { personData };
+};
 
-  componentDidMount() {
-    axios
-      .get("http://localhost:5000/v1/persons")
-      .then(res => {
-        const personData = res.data;
-        console.log(personData);
-        this.setState({ personData });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
+const GetPersonById = id => {
+  let id = id;
+  axios
+    .post(url, {
+      headers: {
+        Authorization: `Basic ${token}`
+      }
+    })
+    .get("http://localhost:5000/v1/persons/`${id}`")
+    .then(res => {
+      const personData = res.data;
+      console.log(personData);
+      this.setState({ personData });
+    })
+    .catch(err => {
+      console.log(err);
+    });
 
-  render() {
-    const { personData } = this.state;
-    return (
-      <>
-        <div>{personData}</div>
-      </>
-    );
-  }
-}
+  return { personData };
+};
 
-export default PersonContainer;
+export default GetPerson;
+GetPersonById;
