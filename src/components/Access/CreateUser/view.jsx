@@ -1,10 +1,7 @@
 import React, { Component} from 'react'
 import { REGISTER_USER_MSG , 
-         HOME_MSG, 
-         APP_VIEW_MSG, 
-         CREATE_USER_MSG, 
          TITLE_MSG, 
-         TITLE_COMP} from './messages';
+        } from './messages';
 
 import ids from './indentifiers';
 
@@ -14,29 +11,64 @@ import {NAME_LBL, PASSWORD_LBL, EMAIL_LBL, BTN_REGISTER  } from './label';
 
 class CreateUser extends Component {
 
-  
+    constructor(props){
+        super(props);
+    
+        this.state = {
+          fields: {},
+          errors: {}
+        }
+      }
+      handleValidation(){
+        let fields = this.state.fields;
+        let errors = {};
+        let formIsValid = true;
+    
+        //Name
+        if(!fields["name"]){
+          formIsValid = false;
+          errors["name"] = "Cannot be empty";
+        }
+    
+        if(typeof fields["name"] !== "undefined"){
+          if(!fields["name"].match(/^[a-zA-Z]+$/)){
+            formIsValid = false;
+            errors["name"] = "Only letters";
+          }      	
+        }
+    
+        //Email
+        if(!fields["email"]){
+          formIsValid = false;
+          errors["email"] = "Cannot be empty";
+        }
+    
+        if(typeof fields["email"] !== "undefined"){
+          let lastAtPos = fields["email"].lastIndexOf('@');
+          let lastDotPos = fields["email"].lastIndexOf('.');
+    
+          if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') === -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2)) {
+            formIsValid = false;
+            errors["email"] = "Email is not valid";
+          }
+        }
+    
+    
+    
+        this.setState({errors: errors});
+        return formIsValid;
+      }
       
+      handleChange(field, e){    		
+        let fields = this.state.fields;
+        fields[field] = e.target.value;        
+        this.setState({fields});
+      }
+
     render() {
         return (
             <div>
-                <div className="row wrapper border-bottom white-bg page-heading">
-                    <div className="col-lg-9">
-                        <h2>{TITLE_COMP}</h2>
-                        <ol className="breadcrumb">
-                            <li className="breadcrumb-item">
-                                <a href="index.html">{HOME_MSG}</a>
-                            </li>
-                            <li className="breadcrumb-item">
-                               {APP_VIEW_MSG}
-                            </li>
-                            <li className="breadcrumb-item active">
-                                <strong>{CREATE_USER_MSG}</strong>
-                            </li>
-                        </ol>
-                        
-
-                    </div> 
-                </div>
+               
                 <div className="middle-box text-center loginscreen animated fadeInDown">
                  
                     <h2>{TITLE_MSG}</h2>

@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
-
+import { paths } from '../../config/routes'
 
 class Dashboard extends Component {
 
 
     goCreateUser = () => {
-
+        this.props.dispatch( push(paths.createUser) )
     }
 
 
@@ -26,8 +26,9 @@ class Dashboard extends Component {
                                 </h1>
                               
                                 <small>
-                                   Hello world
-
+                                  <span onClick={this.goCreateUser}>
+                                      Hola Mundo
+                                  </span>
                                 </small>
                             </div>
                         </div>
