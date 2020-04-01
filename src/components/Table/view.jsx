@@ -6,6 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import Paper from '@material-ui/core/Paper';
 import { AutoSizer, Column, Table } from 'react-virtualized';
 import { Divider, Button } from '@material-ui/core';
+import Drawer from '../Modules/DrawerPerson/Drawer'
 
 const styles = theme => ({
   flexContainer: {
@@ -41,6 +42,7 @@ class MuiVirtualizedTable extends React.PureComponent {
   static defaultProps = {
     headerHeight: 48,
     rowHeight: 48,
+    rowWidth: 100,
   };
 
   getRowClassName = ({ index }) => {
@@ -131,7 +133,7 @@ class MuiVirtualizedTable extends React.PureComponent {
                 //headerRenderer={() => <TableCell className={clsx(this.props.classes.tableCell, this.props.classes.flexContainer, this.props.classes.noClick)} component="div" variant="head"><span>Detalle</span></TableCell>}
                 cellRenderer={
                     ({ rowIndex, columnIndex }) => {
-                      const { columns, classes, rowHeight, onRowClick } = this.props;
+                      const { columns, classes, rowHeight, onRowClick, rowWidth } = this.props;
                             return (
                               <TableCell 
                               className={clsx(classes.tableCell, classes.flexContainer, {
@@ -139,14 +141,10 @@ class MuiVirtualizedTable extends React.PureComponent {
                               })}
                                 component="div" 
                                 variant="body"
-                                style={{ height: rowHeight }}
+                                style={{ height: rowHeight, width: rowWidth }}
                                 >
                                   <span>
-                                    {ButtonComponent &&
-                                      <ButtonComponent></ButtonComponent> }
-                                      
-                                    {/* {data[rowIndex].name} */}
-                                    {/* Button Component... */}
+                                  <Drawer/>
                                   </span>
                                 </TableCell>)
                            

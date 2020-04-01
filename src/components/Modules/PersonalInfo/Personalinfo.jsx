@@ -47,7 +47,6 @@ const Personalinfo = () => {
   return (
     <Card className={classes.root}>
       <CardContent className={classes.cardcontent}>
-      <React.Fragment>
         <Typography className={classes.title} color="textPrimary">
         Tarjeta de persona
         </Typography>
@@ -87,7 +86,6 @@ const Personalinfo = () => {
           </Typography>
           </td>
         </tr>
-      </React.Fragment>
       </CardContent>
     </Card>
   );

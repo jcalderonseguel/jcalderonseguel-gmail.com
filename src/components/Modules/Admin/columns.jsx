@@ -25,6 +25,7 @@ const columns = [
         label: 'Natiionality',
         dataKey: 'nationality',
     },
+    
 ]
 
 export default columns;
