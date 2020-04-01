@@ -6,13 +6,14 @@ import { Button, FormControl, Container, Row, Col, Form } from 'react-bootstrap'
 import { Label } from 'react-bootstrap';
 import { getPerson} from './actions';
 import columns from './columns';
+import axios from "axios";
+import Grid from "./table";
 
 class Admin extends Component {
 
     componentDidMount(){
         this.props.dispatch(getPerson());
-        console.log("print props")
-        console.log(this.props);
+
     }
 
     render() {
@@ -41,40 +42,54 @@ class Admin extends Component {
                 <div className="border-bottom white-bg page-heading">
                     <Form>
                         <Form.Row>
-                            <Form.Group as={Col} controlId="formGridEmail">
+                            <Form.Group as={Col}>
                                 <Form.Label>Document Number</Form.Label>
                                 <Form.Control type="text"/>
                             </Form.Group>
 
-                            <Form.Group as={Col} controlId="formGridPassword">
+                            <Form.Group as={Col}>
                                 <Form.Label>Identification Document</Form.Label>
                                 <Form.Control type="text"/>
                             </Form.Group>
-                        </Form.Row>
-                        
-                        <Form.Row>
-                            <Form.Group as={Col} controlId="formGridEmail">
+
+                            <Form.Group as={Col}>
                                 <Form.Label>Gender</Form.Label>
                                 <Form.Control type="text"/>
                             </Form.Group>
 
-                            <Form.Group as={Col} controlId="formGridPassword">
+                            <Form.Group as={Col}>
                                 <Form.Label>Alias</Form.Label>
                                 <Form.Control type="password" />
                             </Form.Group>
-                        </Form.Row>
 
-                        <Form.Row>
-                            <Form.Group as={Col} controlId="formGridEmail">
+                            <Form.Group as={Col}>
                                 <Form.Label>Email</Form.Label>
                                 <Form.Control type="email" />
                             </Form.Group>
 
-                            <Form.Group as={Col} controlId="formGridPassword">
+                            <Form.Group as={Col}>
                                 <Form.Label>Phone Number</Form.Label>
                                 <Form.Control type="text"/>
                             </Form.Group>
+
                         </Form.Row>
+                        
+                        {/* <Form.Row>
+                            <Form.Group as={Col}>
+                                <Form.Label>Alias</Form.Label>
+                                <Form.Control type="password" />
+                            </Form.Group>
+
+                            <Form.Group as={Col}>
+                                <Form.Label>Email</Form.Label>
+                                <Form.Control type="email" />
+                            </Form.Group>
+
+                            <Form.Group as={Col}>
+                                <Form.Label>Phone Number</Form.Label>
+                                <Form.Control type="text"/>
+                            </Form.Group>
+                        </Form.Row> */}
 
                         <Button variant="primary" type="submit">
                             Search
@@ -85,13 +100,14 @@ class Admin extends Component {
 
                 <div className="clearfix"></div>
                 <React.Fragment>
-                    <div className="row"><div className="col-lg-8">
+                    <div className="row"><div className="col-lg-10">
                         <div className="table-responsive"></div>
-                        <GridTable 
-                            data={personData} 
-                            columns={columns} 
-                            // ButtonComponent={ButtonDetail} 
-                        />
+                       
+                        <Grid
+                            columns={columns}
+                            data={personData}
+                            //ButtonComponent={ButtonDetail} 
+                         />
                     </div></div>
                 </React.Fragment>
             </div>
