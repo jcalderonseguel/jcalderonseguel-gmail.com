@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 class MenuAction extends Component {
   constructor(props) {
@@ -7,7 +7,7 @@ class MenuAction extends Component {
     console.log(props);
   }
   render() {
-    const { nextStep } = this.props;
+    const { backStep, nextStep, send, step } = this.props;
 
     return (
       <div>
@@ -15,23 +15,31 @@ class MenuAction extends Component {
           <div className="row">
             <div className="col-lg-12">
               <div style={{ float: "right", margin: 40 }}>
-                {/* <button type="button" className="btn btn-outline-primary">
-                  <Link onClick={backStep} to="#previous">
-                    Previous
-                  </Link>
-                </button> */}
+                <Button
+                  type="button"
+                  className="btn btn-outline-primary"
+                  onClick={backStep}
+                  disabled={step <= 1 ? true : false}
+                >
+                  Previous
+                </Button>
 
-                <button type="button" className="btn btn-outline-primary">
-                  <Link onClick={nextStep} to="#next">
-                    Next
-                  </Link>
-                </button>
+                <Button
+                  type="button"
+                  className="btn btn-outline-primary"
+                  onClick={nextStep}
+                  disabled={step > 3 ? true : false}
+                >
+                  Next
+                </Button>
 
-                {/* <button type="button" className="btn btn-outline-primary">
-                  <Link onClick={send} to="#finish">
-                    Finish
-                  </Link>
-                </button> */}
+                <Button
+                  type="button"
+                  className="btn btn-outline-primary"
+                  onClick={send}
+                >
+                  Finish
+                </Button>
               </div>
             </div>
           </div>

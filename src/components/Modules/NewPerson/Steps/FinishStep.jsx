@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 /*const AccountStep = props => {
   return <div></div>;
@@ -24,7 +23,6 @@ class FinishStep extends React.Component {
             name="acceptTerms"
             type="checkbox"
             className="required"
-            aria-required="true"
           />
           <label htmlFor="acceptTerms">
             I agree with the Terms and Conditions.

@@ -1,13 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-/*const AccountStep = props => {
-  return <div></div>;
-};
-
-AccountStep.propTypes = {};
-
-export default AccountStep;*/
+import FormHelperText from "@material-ui/core/FormHelperText";
 
 class ProfileStep extends React.Component {
   constructor(props) {
@@ -15,56 +8,79 @@ class ProfileStep extends React.Component {
     this.state = {};
   }
   render() {
+    const {
+      handleChange,
+      firstName,
+      firstNameError,
+      lastName,
+      lastNameError,
+      email,
+      emailError
+    } = this.props;
     return (
       <div className="container">
         <div className="row">
-          <div className="col-lg-12">
-            <h2>Profile Information</h2>
+          <div className="col-12">
+            <h2>Profile</h2>
             <div className="row">
-              <div className="col-lg-6">
+              <div className="col-lg-8">
                 <div className="form-group">
-                  <label>First name *</label>
+                  <label>Firstname *</label>
                   <input
                     id="name"
                     name="name"
                     type="text"
                     className="form-control required"
                     aria-required="true"
+                    onChange={handleChange ? handleChange("firstName") : null}
+                    value={firstName || null}
                   />
+                  <FormHelperText id="component-error-text" error>
+                    {firstNameError}
+                  </FormHelperText>
                 </div>
                 <div className="form-group">
-                  <label>Last name *</label>
+                  <label>Lastname *</label>
                   <input
-                    id="surname"
-                    name="surname"
+                    id="lastname"
+                    name="lastname"
                     type="text"
-                    className="form-control required"
+                    className="form-control required valid"
+                    aria-required="true"
+                    aria-invalid="false"
+                    onChange={handleChange ? handleChange("lastName") : null}
+                    value={lastName || null}
                   />
+                  <FormHelperText id="component-error-text" error>
+                    {lastNameError}
+                  </FormHelperText>
                 </div>
-              </div>
-              <div className="col-lg-6">
                 <div className="form-group">
-                  <label>email *</label>
+                  <label>Email *</label>
                   <input
                     id="email"
                     name="email"
-                    type="text"
-                    className="form-control required email"
+                    type="email"
+                    className="form-control required "
+                    onChange={handleChange ? handleChange("email") : null}
+                    value={email || null}
                   />
+                  <FormHelperText id="component-error-text" error>
+                    {emailError}
+                  </FormHelperText>
                 </div>
-                <div className="form-group">
-                  <label>Address *</label>
-                  <input
-                    id="address"
-                    name="address"
-                    type="text"
-                    className="form-control"
-                  />
+              </div>
+              <div className="col-lg-4">
+                <div className="text-center">
+                  <div style={{ margin: 20 }}>
+                    <i className="fa fa-sign-in" style={{ fontSize: 180 }}></i>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <div className="col-lg-12"></div>
       </div>
     );
   }
