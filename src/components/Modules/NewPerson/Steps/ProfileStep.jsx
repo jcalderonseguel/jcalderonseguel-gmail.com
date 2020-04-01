@@ -15,7 +15,9 @@ class ProfileStep extends React.Component {
       lastName,
       lastNameError,
       email,
-      emailError
+      emailError,
+      phone,
+      phoneError
     } = this.props;
     return (
       <div className="container">
@@ -67,6 +69,20 @@ class ProfileStep extends React.Component {
                   />
                   <FormHelperText id="component-error-text" error>
                     {emailError}
+                  </FormHelperText>
+                </div>
+                <div className="form-group">
+                  <label>Phone *</label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="text"
+                    className="form-control required "
+                    onChange={handleChange ? handleChange("phone") : null}
+                    value={phone || null}
+                  />
+                  <FormHelperText id="component-error-text" error>
+                    {phoneError}
                   </FormHelperText>
                 </div>
               </div>

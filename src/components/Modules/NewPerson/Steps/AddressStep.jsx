@@ -1,4 +1,6 @@
 import React from "react";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import Dropdown from "react-bootstrap/Dropdown";
 
 class AddressStep extends React.Component {
   constructor(props) {
@@ -6,7 +8,14 @@ class AddressStep extends React.Component {
     this.state = {};
   }
   render() {
-    const { handleChange, firstName, firstNameError } = this.props;
+    const {
+      handleChange,
+      street,
+      streetError,
+      city,
+      cityError,
+      btnCity
+    } = this.props;
     return (
       <div className="container">
         <div className="row">
@@ -15,42 +24,42 @@ class AddressStep extends React.Component {
             <div className="row">
               <div className="col-lg-6">
                 <div className="form-group">
-                  <label> name *</label>
+                  <label> Street name *</label>
                   <input
-                    id="surname"
-                    name="surname"
+                    id="street"
+                    name="street"
                     type="text"
                     className="form-control required"
+                    onChange={handleChange ? handleChange("street") : null}
+                    value={street || null}
                   />
+                  <FormHelperText id="component-error-text" error>
+                    {streetError}
+                  </FormHelperText>
                 </div>
-                <div className="form-group">
-                  <label>Last name *</label>
-                  <input
-                    id="surname"
-                    name="surname"
-                    type="text"
-                    className="form-control required"
-                  />
-                </div>
-              </div>
-              <div className="col-lg-6">
-                <div className="form-group">
-                  <label>email *</label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="text"
-                    className="form-control required email"
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Address *</label>
-                  <input
-                    id="address"
-                    name="address"
-                    type="text"
-                    className="form-control"
-                  />
+
+                <div class="dropdown">
+                  <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                      City
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      <Dropdown.Item
+                        href="#/action-1"
+                        value={1}
+                        onChange={handleChange ? handleChange("city") : null}
+                      >
+                        Action
+                      </Dropdown.Item>
+                      <Dropdown.Item href="#/action-2" value={2}>
+                        Another action
+                      </Dropdown.Item>
+                      <Dropdown.Item href="#/action-3">
+                        Something else
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
                 </div>
               </div>
             </div>

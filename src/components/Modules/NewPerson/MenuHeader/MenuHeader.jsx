@@ -3,8 +3,14 @@ import Nav from "react-bootstrap/Nav";
 
 class MenuHeader extends Component {
   render() {
-    const { btnAddress, btnProfile, btnSummary, enabledAddress } = this.props;
-    console.log("enabledAddress", enabledAddress);
+    const {
+      btnAddress,
+      btnProfile,
+      btnSummary,
+      enabledAddress,
+      enabledSummary
+    } = this.props;
+
     return (
       <div>
         <div className="container">
@@ -20,7 +26,9 @@ class MenuHeader extends Component {
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link onClick={btnSummary}>3.Summary</Nav.Link>
+                  <Nav.Link onClick={btnSummary} disabled={!enabledSummary}>
+                    3.Summary
+                  </Nav.Link>
                 </Nav.Item>
               </Nav>
             </div>
