@@ -1,94 +1,160 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import { Row, Col } from 'react-bootstrap';
 
-const useStyles = makeStyles({
-  root: {
-    minWidth: 275,
-    maxWidth: 300,
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  left: {
-    fontSize: 14,
-  },
-  right: {
-    fontSize: 14,
-    paddingLeft: '10px'
-  },
-  pos: {
-    marginBottom: 12,
-  },
-  cardcontent: {
-    textAlign:'left'
-  },
-  tr: {
-    paddingTop:'10px'
-  },
-  title: {
-    textAlign:'center',
-    paddingRight: '10px',
-    paddingBottom: '20px',
-    textDecoration:'underline'
+class Personalinfo extends React.Component{
+  
+  
+  
+  getData = (personId) => {
+   return (  {
+      "personId": "1fcc760a-766f-4fda-8ea0-96820ffc05e1",
+      "firstName": "dfsf",
+      "lastNamePrefix": "jie",
+      "lastName": "Konopelski",
+      "fullName": "Ricardo Zieme",
+      "genderId": 2,
+      "description": "Masculino",
+      "personCategory": "Natural",
+      "phones": [
+          {
+              "areaCode": "+56",
+              "phoneNumber": "5491164528923",
+              "extension": "Chile"
+          }
+      ],
+      "emails": [
+          {
+              "emailAddres": "artour@gmail.com",
+              "validated": true
+          }
+      ],
+      "birthDate": "1978-09-02T00:00:00",
+      "maritalStatus": "Soltero",
+      "nationality": "Chileno(a)",
+      "documents": [
+          {
+              "documentTypeCode": "RUN",
+              "documentTypeDescription": "Numero de identificacion Chilena",
+              "documentNumber": "577"
+          }
+      ]
+  })
+  };
+
+  cel(item, index) {
+    return (<Col>
+        <Row>
+          <Col>
+          Teléfono:
+          </Col>
+          <Col>
+          {item.areaCode + ' ' + item.phoneNumber}
+          </Col>
+        </Row>
+      </Col>)
+  };
+  emails(item, index) {
+    return (<Col>
+        <Row>
+          <Col>
+          Email:
+          </Col>
+          <Col>
+          {item.emailAddres}
+          </Col>
+        </Row>
+      </Col>)
+  };
+  documents(item, index) {
+    return (<Col>
+        <Row>
+          <Col>
+          Tipo de doc.:
+          </Col>
+          <Col>
+          {item.documentTypeCode}
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+          N° de doc.:
+          </Col>
+          <Col>
+          {item.documentNumber}
+          </Col>
+        </Row>
+      </Col>)
+  };
+
+  
+
+  render(){
+
+    const  {personId} = this.props.personId;
+    console.log(personId)
+    const data =this.getData(personId);
+    console.log(data)
+
+    return (
+    <div className='contact-box'>
+      <div className="text-center">
+      <strong> Detalle personal</strong>
+      </div>
+      <Col>
+        <Row>
+          <Col>
+          Nombre Completo:
+          </Col>
+          <Col>
+          {data.fullName}
+          </Col>
+        </Row>
+      </Col>
+      <Col>
+        <Row>
+          <Col>
+          Género:
+          </Col>
+          <Col>
+          {data.description}
+          </Col>
+        </Row>
+      </Col>
+      <Col>
+        <Row>
+          <Col>
+          Nacimiento:
+          </Col>
+          <Col>
+          {data.birthDate}
+          </Col>
+        </Row>
+      </Col>
+      <Col>
+        <Row>
+          <Col>
+          Estado Civil:
+          </Col>
+          <Col>
+          {data.maritalStatus}
+          </Col>
+        </Row>
+      </Col>
+      <Col>
+        <Row>
+          <Col>
+          Nacionalidad:
+          </Col>
+          <Col>
+          {data.nationality}
+          </Col>
+        </Row>
+      </Col>
+      {data.phones.map((item, index) => this.cel(item, index))}
+      {data.emails.map((item, index) => this.emails(item, index))}
+      {data.documents.map((item, index) => this.documents(item, index))}
+    </div>)
   }
-});
-
-const Personalinfo = () => {
-  const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
-
-  return (
-    <Card className={classes.root}>
-      <CardContent className={classes.cardcontent}>
-        <Typography className={classes.title} color="textPrimary">
-        Tarjeta de persona
-        </Typography>
-        <tr className={classes.tr}>
-         <td className={classes.firstcolumn}> 
-          <Typography className={classes.left} color="textPrimary">
-            Nombre Persona: 
-          </Typography>
-          </td>
-          <td className={classes.secondcolumn}>
-          <Typography className={classes.right} color="textPrimary">
-            Franco Arenas
-          </Typography>
-          </td>
-        </tr>
-        <tr>
-         <td className={classes.firstcolumn}> 
-          <Typography className={classes.left} color="textPrimary">
-            Dirección: 
-          </Typography>
-          </td>
-          <td className={classes.secondcolumn}>
-          <Typography className={classes.right} color="textPrimary">
-            Cochrane 12356
-          </Typography>
-          </td>
-        </tr>
-        <tr>
-         <td className={classes.firstcolumn}> 
-          <Typography className={classes.left} color="textPrimary">
-            Cel: 
-          </Typography>
-          </td>
-          <td className={classes.secondcolumn}>
-          <Typography className={classes.right} color="textPrimary">
-            +56990590045
-          </Typography>
-          </td>
-        </tr>
-      </CardContent>
-    </Card>
-  );
 }
 
 export default Personalinfo

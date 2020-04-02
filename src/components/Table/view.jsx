@@ -42,7 +42,7 @@ class MuiVirtualizedTable extends React.PureComponent {
   static defaultProps = {
     headerHeight: 48,
     rowHeight: 48,
-    rowWidth: 100,
+    rowWidth: 200,
   };
 
   getRowClassName = ({ index }) => {

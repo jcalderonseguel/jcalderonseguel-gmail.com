@@ -8,12 +8,11 @@ const useStyles = makeStyles({
   list: {
     width: 250,
   },
-  fullList: {
-    width: 'auto',
-  },
 });
 
-const TemporaryDrawer = () => {
+const TemporaryDrawer = (props) => {
+
+  const personId = props;
   const classes = useStyles();
   const [state, setState] = React.useState({
     right: false,
@@ -33,7 +32,7 @@ const TemporaryDrawer = () => {
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
           <Drawer anchor={'right'} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
-          <Personalinfo/>
+          <Personalinfo personId={personId}/>
           </Drawer>
         </React.Fragment>
       ))}

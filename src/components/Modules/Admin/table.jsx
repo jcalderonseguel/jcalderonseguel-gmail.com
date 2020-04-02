@@ -34,6 +34,8 @@ export default function StickyHeadTable(props) {
   };
 
   const { data, columns, ButtonComponent } = props;
+  
+  
 
   return (
     <Paper className={classes.root}>
@@ -62,7 +64,7 @@ export default function StickyHeadTable(props) {
                   <TableCell>{row.person.fullName}</TableCell>
                   <TableCell>{row.person.gender.description}</TableCell>
                   <TableCell>
-                      <Drawer/>
+                      <Drawer personId={row.personId}/>
                     </TableCell>
                 </TableRow>
               );
