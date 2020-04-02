@@ -7,20 +7,28 @@ class MenuHeader extends Component {
     console.log("enabledAddress", enabledAddress);
     return (
       <div>
-        <div className="container">
-          <div className="col-lg-12">
+        <div className="container  ">
+          <div className="col-lg-12 text-left mt-4 mb-3">
             <div className="steps">
-              <Nav class="nav nav-pills nav-fill">
+              <Nav class="nav nav-pills nav-fill ">
                 <Nav.Item>
-                  <Nav.Link onClick={btnProfile}>1.Profile</Nav.Link>
+                  <Nav.Link eventKey="2" onClick={btnProfile}>
+                    1.Profile
+                  </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link onClick={btnAddress} disabled={!enabledAddress}>
+                  <Nav.Link
+                    eventKey="2"
+                    onClick={btnAddress}
+                    disabled={!enabledAddress}
+                  >
                     2.Address
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link onClick={btnSummary}>3.Summary</Nav.Link>
+                  <Nav.Link eventKey="3" onClick={btnSummary}>
+                    3.Summary
+                  </Nav.Link>
                 </Nav.Item>
               </Nav>
             </div>

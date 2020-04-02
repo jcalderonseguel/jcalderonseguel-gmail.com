@@ -17,29 +17,33 @@ class MenuAction extends Component {
               <div style={{ float: "right", margin: 40 }}>
                 <Button
                   type="button"
-                  className="btn btn-outline-primary"
+                  className="btn btn-outline-success"
                   onClick={backStep}
+                  size="lg"
                   disabled={step <= 1 ? true : false}
                 >
                   Previous
                 </Button>
-
+                {"    "}
                 <Button
                   type="button"
-                  className="btn btn-outline-primary"
+                  className="btn btn-outline-success"
                   onClick={nextStep}
+                  size="lg"
                   disabled={step > 3 ? true : false}
                 >
                   Next
                 </Button>
-
+                {"   "}
                 <Button
                   type="button"
-                  className="btn btn-outline-primary"
+                  className="btn btn-outline-success"
+                  size="lg"
                   onClick={send}
                 >
                   Finish
                 </Button>
+                {"    "}
               </div>
             </div>
           </div>
