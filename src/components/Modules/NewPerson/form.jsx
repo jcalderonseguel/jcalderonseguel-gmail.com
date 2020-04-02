@@ -79,7 +79,12 @@ class Form extends React.Component {
                         lastNameErrorMessage: "Last Name is required.", 
                         personInputsValid: false});
     
-                } else {
+                } else if(phone.trim() === ""){
+                    this.setState({
+                        lastNameErrorMessage: "Phone is required.", 
+                        personInputsValid: false});
+                }
+                else {
                     if(!validateEmail(email)) {
                         this.setState({
                             emailErrorMessage: "Email is not valid."
@@ -102,9 +107,6 @@ class Form extends React.Component {
                                 personInputsValid: true});
                         }
                     }
-                    
-                   
-                   
                 }
                 break;
             case 2:
