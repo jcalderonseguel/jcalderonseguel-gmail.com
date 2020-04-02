@@ -34,7 +34,7 @@ class AddressStep extends React.Component {
                     value={street || null}
                   />
                   <FormHelperText id="component-error-text" error>
-                    {streetError}
+                    <strong>{streetError}</strong>
                   </FormHelperText>
                 </div>
 

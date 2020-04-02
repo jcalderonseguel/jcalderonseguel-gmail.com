@@ -84,7 +84,6 @@ class FormNewPerson extends React.Component {
           });
         } else {
           this.setState({
-            enabledAddress: true,
             personValid: true,
             firstNameError: null
           });
@@ -95,7 +94,6 @@ class FormNewPerson extends React.Component {
           });
         } else {
           this.setState({
-            enabledAddress: true,
             personValid: true,
             lastNameError: null
           });
@@ -107,7 +105,6 @@ class FormNewPerson extends React.Component {
           });
         } else {
           this.setState({
-            enabledAddress: true,
             personValid: true,
             emailError: null
           });
@@ -119,7 +116,6 @@ class FormNewPerson extends React.Component {
           });
         } else {
           this.setState({
-            enabledAddress: true,
             personValid: true,
             phoneError: null
           });
@@ -131,7 +127,7 @@ class FormNewPerson extends React.Component {
           email.trim() &&
           phone.trim() !== ""
         ) {
-          this.setState({ activeStep: activeStep + 1 });
+          this.setState({ activeStep: activeStep + 1, enabledAddress: true });
         }
         break;
       case 2:
@@ -181,7 +177,7 @@ class FormNewPerson extends React.Component {
   };
 
   btnAddress = () => {
-    this.setState({ activeStep: (this.state.activeStep = 2) });
+    this.setState({ activeStep: 2 });
   };
 
   btnSummary = () => {

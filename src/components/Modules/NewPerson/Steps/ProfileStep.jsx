@@ -38,7 +38,7 @@ class ProfileStep extends React.Component {
                     value={firstName || null}
                   />
                   <FormHelperText id="component-error-text" error>
-                    {firstNameError}
+                    <strong>{firstNameError}</strong>
                   </FormHelperText>
                 </div>
                 <div className="form-group">
@@ -54,7 +54,7 @@ class ProfileStep extends React.Component {
                     value={lastName || null}
                   />
                   <FormHelperText id="component-error-text" error>
-                    {lastNameError}
+                    <strong>{lastNameError}</strong>
                   </FormHelperText>
                 </div>
                 <div className="form-group">
@@ -68,7 +68,7 @@ class ProfileStep extends React.Component {
                     value={email || null}
                   />
                   <FormHelperText id="component-error-text" error>
-                    {emailError}
+                    <strong>{emailError}</strong>
                   </FormHelperText>
                 </div>
                 <div className="form-group">
@@ -82,7 +82,7 @@ class ProfileStep extends React.Component {
                     value={phone || null}
                   />
                   <FormHelperText id="component-error-text" error>
-                    {phoneError}
+                    <strong>{phoneError} </strong>
                   </FormHelperText>
                 </div>
               </div>
