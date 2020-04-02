@@ -7,16 +7,18 @@ const GetPerson = (
   genderId,
   alias
 ) => {
-  let email = email;
-  let phoneNumber = phoneNumber;
-  let identificationDocumentTypeId = identificationDocumentTypeId;
-  let documentNumber = documentNumber;
-  let genderId = genderId;
-  let alias = alias;
   axios
     .get("http://localhost:5000/v1/persons", {
       headers: {
         Authorization: `Bearer ${token}`
+      },
+      params: {
+        email: email,
+        phoneNumber: phoneNumber,
+        identificationDocumentTypeId: identificationDocumentTypeId,
+        documentNumber: documentNumber,
+        genderId: genderId,
+        alias: alias
       }
     })
     .then(res => {
@@ -35,12 +37,14 @@ const GetPersonById = id => {
   let id = id;
   let typeOfView = "full";
   axios
-    .post(url, {
+    .get("http://localhost:5000/v1/persons/`${id}`", {
       headers: {
         Authorization: `Bearer ${token}`
+      },
+      params: {
+        typeOfView: typeOfView
       }
     })
-    .get("http://localhost:5000/v1/persons/`${id}`")
     .then(res => {
       const personData = res.data;
       console.log(personData);
