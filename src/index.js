@@ -10,6 +10,7 @@ import './../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import './../node_modules/font-awesome/css/font-awesome.css'
 import './../node_modules/animate.css/animate.min.css'
 import "./assets/css/style.css"
+import "./assets/css/custom.css"
 
 // eslint-disable-next-line 
 import $ from 'jquery';

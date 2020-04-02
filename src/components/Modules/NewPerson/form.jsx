@@ -48,7 +48,6 @@ class Form extends React.Component {
         switch (step) {
             case 1:
                 let validate = validateStep1(this.state); 
-                 debugger
                 if(firstName.trim() === "" ){
                     this.setState({
                         firstNameErrorMessage: "First Name is required.", 

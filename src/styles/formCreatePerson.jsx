@@ -9,6 +9,15 @@ const createPersonStyle = {
         paddingLeft: 8,
 
     },
+    buttonOpacity: {
+        height: 35, 
+        width: 390,
+        color:"white",
+        textAlign: "left",
+        backgroundColor: "#6fd1bd",
+        paddingTop: 8,
+        paddingLeft: 8,
+    },
     buttonDisabled: {
         color: "gray",
         height: 35, 

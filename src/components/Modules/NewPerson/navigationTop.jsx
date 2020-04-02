@@ -18,19 +18,20 @@ class NavigationTop extends Component {
             enableAddress, 
             enableSummary,
             personInputsValid,
-            addressInputsValid
+            addressInputsValid, 
+            step
         } = this.props;
-console.log("enabled=>>",enableAddress)
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-4">
-                    <ListItem style={{paddingLeft: 0, paddingRight: 0}}>
+                    <ListItem  style={{paddingLeft: 0, paddingRight: 0}}>
                         <NavLink
                         to={"#"}
+                        // className=""
                         style={!personInputsValid ? 
                             CreatePerson.createPersonStyle.invalidInput
-                            : CreatePerson.createPersonStyle.button}
+                            : (step !== 1 ) ? CreatePerson.createPersonStyle.buttonOpacity : CreatePerson.createPersonStyle.button}
                         onClick={() => goPerson()}>
                             1. Person
                         </NavLink>
@@ -40,10 +41,10 @@ console.log("enabled=>>",enableAddress)
                         <ListItem style={{paddingLeft: 0, paddingRight: 0}}>
                             <NavLink
                                 to={"#"}
-                                style={ (enableAddress && addressInputsValid) ? 
+                                style={ (enableAddress && addressInputsValid && step === 2) ? 
                                     CreatePerson.createPersonStyle.button 
                                     : !addressInputsValid ? CreatePerson.createPersonStyle.invalidInput
-                                    : CreatePerson.createPersonStyle.buttonDisabled}
+                                    : step !== 2 && enableAddress? CreatePerson.createPersonStyle.buttonOpacity : CreatePerson.createPersonStyle.buttonDisabled}
                                 disabled={ !enableAddress }
                                 onClick={enableAddress ? () => goAddress() : null}>
                             2. Address
@@ -54,8 +55,10 @@ console.log("enabled=>>",enableAddress)
                         <ListItem style={{paddingLeft: 0, paddingRight: 0}}>
                             <NavLink
                                 to={"#"}
-                                style={enableSummary && addressInputsValid ? 
-                                    CreatePerson.createPersonStyle.button: CreatePerson.createPersonStyle.buttonDisabled}
+                                style={enableSummary && addressInputsValid && step === 3 ? 
+                                    CreatePerson.createPersonStyle.button
+                                    : step !== 3 && enableSummary ? CreatePerson.createPersonStyle.buttonOpacity 
+                                    : CreatePerson.createPersonStyle.buttonDisabled}
                                 disabled={ !enableSummary ? true: false}
                                 onClick={enableSummary ?  () => goSummary() : null}>
                                 3. Summary

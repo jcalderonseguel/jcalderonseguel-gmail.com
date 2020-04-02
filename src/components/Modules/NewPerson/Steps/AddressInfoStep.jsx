@@ -1,9 +1,7 @@
 import React from "react";
 import FormHelperText from '@material-ui/core/FormHelperText';
-import { DropdownButton, Dropdown, Form } from 'react-bootstrap';
-// import { MenuItem } from 'react-bootstrap';
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
+import {Form } from 'react-bootstrap';
+
 class AddressInfoStep extends React.Component {
   constructor(props) {
     super(props);
