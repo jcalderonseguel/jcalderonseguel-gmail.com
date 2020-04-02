@@ -7,7 +7,7 @@ class MenuAction extends Component {
     console.log(props);
   }
   render() {
-    const { backStep, nextStep, send, step } = this.props;
+    const { backStep, nextStep, btnSend, step } = this.props;
 
     return (
       <div>
@@ -36,7 +36,7 @@ class MenuAction extends Component {
                 <Button
                   type="button"
                   className="btn btn-outline-primary"
-                  onClick={send}
+                  onClick={() => btnSend()}
                 >
                   Finish
                 </Button>

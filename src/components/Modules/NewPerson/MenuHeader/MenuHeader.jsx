@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Nav from "react-bootstrap/Nav";
+import person from "../../../../Styles/CreatePersons";
 
 class MenuHeader extends Component {
   render() {
@@ -8,7 +9,8 @@ class MenuHeader extends Component {
       btnProfile,
       btnSummary,
       enabledAddress,
-      enabledSummary
+      enabledSummary,
+      personValid
     } = this.props;
 
     return (
@@ -18,10 +20,27 @@ class MenuHeader extends Component {
             <div className="steps">
               <Nav class="nav nav-pills nav-fill">
                 <Nav.Item>
-                  <Nav.Link onClick={btnProfile}>1.Profile</Nav.Link>
+                  <Nav.Link
+                    onClick={btnProfile}
+                    style={
+                      !personValid
+                        ? person.personStyle.btnRed
+                        : person.personStyle.btnGreen
+                    }
+                  >
+                    1.Profile
+                  </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link onClick={btnAddress} disabled={!enabledAddress}>
+                  <Nav.Link
+                    onClick={btnAddress}
+                    disabled={!enabledAddress}
+                    style={
+                      !personValid
+                        ? { backgroundColor: "#6fd1bd" }
+                        : { backgroundColor: "6fd1bd" }
+                    }
+                  >
                     2.Address
                   </Nav.Link>
                 </Nav.Item>

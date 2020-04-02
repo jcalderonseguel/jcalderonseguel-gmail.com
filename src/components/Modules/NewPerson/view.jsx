@@ -5,11 +5,13 @@ import FinishStep from "./Steps/FinishStep";
 import MenuAction from "./MenuActions/MenuAction";
 import { connect } from "react-redux";
 import MenuHeader from "./MenuHeader/MenuHeader";
+import { CreatePerson } from "./action";
 
 class FormNewPerson extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      personValid: true,
       activeStep: 1,
       firstName: "",
       lastName: "",
@@ -21,6 +23,7 @@ class FormNewPerson extends React.Component {
   }
 
   handleChange = input => e => {
+    debugger;
     this.setState({ [input]: e.target.value });
     switch (input) {
       case "firstName":
@@ -32,24 +35,29 @@ class FormNewPerson extends React.Component {
         if (e.target.value === "") {
           this.setState({ lastNameError: "Lastname is required" });
         }
+        break;
       case "email":
         if (e.target.value === "") {
           this.setState({ emailError: "Email is required" });
         }
+        break;
       case "phone":
         if (e.target.value === "") {
           this.setState({
             phoneError: "Phone is required"
           });
         }
+        break;
       case "street":
         if (e.target.value === "") {
           this.setState({ streetError: "Street is required" });
         }
+        break;
       case "city":
         if (e.target.value === "") {
           this.setState({ cityError: "City is required" });
         }
+        break;
 
       default:
         break;
@@ -122,12 +130,15 @@ class FormNewPerson extends React.Component {
         }
 
         if (
-          firstName.trim() &&
-          lastName.trim() &&
-          email.trim() &&
+          firstName.trim() !== "" &&
+          lastName.trim() !== "" &&
+          email.trim() !== "" &&
           phone.trim() !== ""
         ) {
-          this.setState({ activeStep: activeStep + 1, enabledAddress: true });
+          this.setState({
+            activeStep: activeStep + 1,
+            enabledAddress: true
+          });
         }
         break;
       case 2:
@@ -173,22 +184,84 @@ class FormNewPerson extends React.Component {
   };
 
   btnProfile = () => {
-    this.setState({ activeStep: (this.state.activeStep = 1) });
+    this.setState({ activeStep: 1 });
   };
 
   btnAddress = () => {
-    this.setState({ activeStep: 2 });
+    const { firstName, lastName, email, phone, activeStep } = this.state;
+
+    switch (activeStep) {
+      case 1:
+        if (firstName.trim() === "") {
+          this.setState({
+            personValid: false,
+            firstNameError: "Firstname is required"
+          });
+        } else {
+          this.setState({ firstNameError: null });
+        }
+
+        if (lastName.trim() === "") {
+          this.setState({
+            personValid: false,
+            lastNameError: "Lastname is required"
+          });
+        } else {
+          this.setState({ lastNameError: false });
+        }
+
+        if (email.trim() === "") {
+          this.setState({
+            personValid: false,
+            emailError: "Email is required"
+          });
+        } else {
+          this.setState({ emailError: false });
+        }
+
+        if (phone.trim() === "") {
+          this.setState({
+            personValid: false,
+            phoneError: "Phone is required"
+          });
+        } else {
+          this.setState({ phoneError: false });
+        }
+
+        if (
+          firstName.trim() !== "" &&
+          lastName.trim() !== "" &&
+          email.trim() !== "" &&
+          phone.trim() !== ""
+        ) {
+          this.setState({
+            activeStep: 2,
+            personValid: true
+          });
+        }
+
+      default:
+        break;
+    }
   };
 
   btnSummary = () => {
-    this.setState({ activeStep: (this.state.activeStep = 3) });
+    this.setState({ activeStep: 3 });
+  };
+
+  btnSend = () => {
+    Promise.all([new Promise(CreatePerson(this.state))])
+      .then(data => {
+        debugger;
+        if (data && data[0]) {
+          console.log("exitoso");
+        }
+      })
+      .catch(err => console.log(err));
   };
 
   render() {
-    /*const send = () => {
-      console.log(step);
-    };
-    console.log(this.state);*/
+    console.log(this.state);
     const {
       activeStep,
       firstName,
@@ -204,17 +277,19 @@ class FormNewPerson extends React.Component {
       city,
       cityError,
       phone,
-      phoneError
+      phoneError,
+      personValid
     } = this.state;
     return (
       <div>
         <form action="">
           <MenuHeader
             enabledAddress={enabledAddress}
-            enabledAddress={enabledSummary}
-            btnAddress={this.btnAddress}
+            enabledSummary={enabledSummary}
             btnProfile={this.btnProfile}
+            btnAddress={this.btnAddress}
             btnSummary={this.btnSummary}
+            personValid={personValid}
           ></MenuHeader>
           {this.state.activeStep === 1 && (
             <ProfileStep
@@ -244,6 +319,7 @@ class FormNewPerson extends React.Component {
               nextStep={this.nextStep}
               backStep={this.backStep}
               step={activeStep}
+              btnSend={this.btnSend}
             ></MenuAction>
           </div>
         </form>
