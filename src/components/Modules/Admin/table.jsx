@@ -16,7 +16,6 @@ function createData(name, code, population, size) {
   return { name, code, population, size, density };
 }
 
-console.log("DATA DE ROW")
 
 const useStyles = makeStyles({
   root: {
@@ -40,10 +39,10 @@ export default function StickyHeadTable(props) {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-  console.log("LAS PROPS");
-  console.log(props);
 
   const { data, columns, ButtonComponent } = props;
+  
+  
 
   return (
     <Paper className={classes.root}>
@@ -72,7 +71,7 @@ export default function StickyHeadTable(props) {
                   <TableCell>{row.person.fullName}</TableCell>
                   <TableCell>{row.person.gender.description}</TableCell>
                   <TableCell>
-                      <Drawer/>
+                      <Drawer personId={row.personId}/>
                     </TableCell>
                 </TableRow>
               );

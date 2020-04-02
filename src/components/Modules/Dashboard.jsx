@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import Drawer from './DrawerPerson/Drawer'
-
 
 class Dashboard extends Component {
 
@@ -24,7 +22,7 @@ class Dashboard extends Component {
                                 <small>
                                    Hello world
                                 
-                                <Drawer/>
+                                
                                 </small>
                             </div>
                         </div>
