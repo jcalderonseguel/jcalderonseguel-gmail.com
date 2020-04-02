@@ -8,15 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import { Button } from '@material-ui/core';
 import Drawer from '../DrawerPerson/Drawer'
-
-function createData(name, code, population, size) {
-  const density = population / size;
-  return { name, code, population, size, density };
-}
-
-console.log("DATA DE ROW")
 
 const useStyles = makeStyles({
   root: {
@@ -40,8 +32,6 @@ export default function StickyHeadTable(props) {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-  console.log("LAS PROPS");
-  console.log(props);
 
   const { data, columns, ButtonComponent } = props;
 
