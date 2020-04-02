@@ -15,6 +15,9 @@ const { Types, Creators } = createActions(
     }
   );
 
+// Todo: 1. Crear funcion para conectarse a la Api Local
+//       2. Logica autentificacion: Rescato dato api (email,password) =>token
+//       3. Exitoso: setLoginSuccess = true, dejar la informacion de la api en el localstorage.
 // Obtengo las acciones para utilizarlas
 const {
     setLoginSuccess,
