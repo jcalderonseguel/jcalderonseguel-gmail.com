@@ -380,6 +380,7 @@ class Form extends React.Component {
         // const {step, firstName, lastName, city, streetName } = this.state;
         
         this.setState({isLoading: true});
+        this.props.dispatch(CreatePerson(this.state));
 
         console.log("sending...")
         
@@ -396,15 +397,15 @@ class Form extends React.Component {
         //             console.log("ver si hay data de vuelta")
         //         }
         //     })
-        Promise.all([new Promise(CreatePerson(this.state))])
-        .then(data=>{
-            debugger
-            if(data && data[0]) {
-                console.log("llegó de vuelta")
-                this.setState({isLoading: false});
-            }
-        })
-        .catch(e => console.log("erros=>>>",e))
+        // Promise.all([new Promise(CreatePerson(this.state))])
+        // .then(data=>{
+        //     debugger
+        //     if(data && data[0]) {
+        //         console.log("llegó de vuelta")
+        //         this.setState({isLoading: false});
+        //     }
+        // })
+        // .catch(e => console.log("erros=>>>",e))
             
     }
 

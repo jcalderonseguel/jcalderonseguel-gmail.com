@@ -1,6 +1,6 @@
 import { createPersonApi } from '../../../services/app';
 
-export const CreatePerson  = (params) => () => {
+export const CreatePerson  =  (params) => async () => {
     // const { data } = params;
 
     const data = {
@@ -30,10 +30,10 @@ export const CreatePerson  = (params) => () => {
             fileName: "name"
         }
     }      
-            
     console.log("data a enviar=>>>", data)
-    return createPersonApi(data)
-            .then(response => response)
+    return await createPersonApi(data)
+            .then(response =>  response
+            )
             .catch(error => error)
 }
 
