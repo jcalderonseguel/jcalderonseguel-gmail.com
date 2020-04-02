@@ -20,7 +20,7 @@ class NavigationTop extends Component {
             personInputsValid,
             addressInputsValid
         } = this.props;
-
+console.log("enabled=>>",enableAddress)
         return (
             <div className="container">
                 <div className="row">
@@ -45,7 +45,7 @@ class NavigationTop extends Component {
                                     : !addressInputsValid ? CreatePerson.createPersonStyle.invalidInput
                                     : CreatePerson.createPersonStyle.buttonDisabled}
                                 disabled={ !enableAddress }
-                                onClick={() => goAddress()}>
+                                onClick={enableAddress ? () => goAddress() : null}>
                             2. Address
                             </NavLink>
                         </ListItem>

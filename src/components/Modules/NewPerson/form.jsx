@@ -81,7 +81,7 @@ class Form extends React.Component {
     
                 } else if(phone.trim() === ""){
                     this.setState({
-                        lastNameErrorMessage: "Phone is required.", 
+                        phoneErrorMessage: "Phone is required.", 
                         personInputsValid: false});
                 }
                 else {
@@ -179,33 +179,74 @@ class Form extends React.Component {
     }
 
     goAddress = () => {
-        const { step, firstName, lastName, streetName} = this.state;
-
+        const { step, firstName, lastName, streetName, email, phone, city} = this.state;
+console.log("city vlue",city)
         if(streetName.trim() !== "") this.setState({streetNameErrorMessage: ""});
-        
-        if(firstName.trim() !== "" && lastName.trim() !== ""){
-            this.setState({step: 2});
+        if(city.trim() !== 0) this.setState({cityErrorMessage: ""});
 
-        } else {
+        if(firstName.trim() === ""){
+            this.setState({
+                firstNameErrorMessage: "First Name is required.",
+                personInputsValid: false
+            });
+        }
+        if(lastName.trim() === "" ){
+            this.setState({
+                lastNameErrorMessage: "Last Name is required.",
+                personInputsValid: false
+
+            });
+        }
+        if(email.trim() === "" ){
+            this.setState({
+                emailErrorMessage: "Email is required.",
+                personInputsValid: false
+
+            });
+        }
+        if(phone.trim() === "" ){
+            this.setState({
+                phoneErrorMessage: "Phone is required.",
+                personInputsValid: false
+            });
+        }
+        
+        if(firstName.trim() !== "" 
+            && lastName.trim() !== ""
+            && email.trim() !== ""
+            && phone.trim() !== ""
+        ) 
+        {
+            this.setState({
+                step: 2,
+                personInputsValid: true
+            });
+
+        }
+        // if(firstName.trim() !== "" && lastName.trim() !== ""){
+        //     this.setState({step: 2});
+
+        // } else {
             switch (step) {
                 case 1:
-                    if(firstName.trim() === ""){
-                        this.setState({firstNameErrorMessage: "First Name is required."});
+                    // if(firstName.trim() === ""){
+                    //     this.setState({firstNameErrorMessage: "First Name is required."});
                         
-                        if(lastName.trim() === "" ){
-                        this.setState({lastNameErrorMessage: "Last Name is required."});
-                        }
-                    } 
-                    else if(lastName.trim() === "" ){
-                        this.setState({lastNameErrorMessage: "Last Name is required."});
-                    }
+                    //     if(lastName.trim() === "" ){
+                    //     this.setState({lastNameErrorMessage: "Last Name is required."});
+                    //     }
+                    // } 
+                    // else if(lastName.trim() === "" ){
+                    //     this.setState({lastNameErrorMessage: "Last Name is required."});
+                    // }
+                    
                     break;
             
                 default:
                     break;
             }
             
-        }
+        //}
     }
     handleChange = input => e => {
         this.setState({[input]: e.target.value});

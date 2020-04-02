@@ -9,7 +9,7 @@ class AddressInfoStep extends React.Component {
     super(props);
     this.state = {
       cities: [
-        {id: 0, name: "Select city"},
+        {id: 0, name: "Select City"},
         {id: 1, name: "Concepción"},
         {id: 2, name: "Santiago"},
         {id: 3, name: "Valparaíso"},

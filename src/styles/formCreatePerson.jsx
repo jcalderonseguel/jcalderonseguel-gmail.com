@@ -13,6 +13,8 @@ const createPersonStyle = {
         color: "gray",
         height: 35, 
         width: 390,
+        textDecoration: "none",
+        cursor: "default"
     },
     buttonDown: {   
         height: 35, 
