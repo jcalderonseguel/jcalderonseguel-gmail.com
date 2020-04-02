@@ -5,9 +5,9 @@ import Person from "../../../styles/formCreatePerson";
 function Navigation(props) {
     const {step, sendPerson, backStep, nextStep, isLoading} = props;
         return (
-            <div className="container">
+            <div className="container" style={{ float: "left"/*marginLeft: 720*/}}>
                 <div className="row">
-                    <div className="col-1" style={{marginLeft: 720}}>
+                    <div className="col-1" style={{ float: "left"/*marginLeft: 720*/}}>
                     <Button
                         variant="contained"
                         size="large"

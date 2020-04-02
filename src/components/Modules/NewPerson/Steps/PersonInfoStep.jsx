@@ -16,6 +16,7 @@ class PersonInfoStep extends React.Component {
       lastName,
       email,
       phone,
+      phoneErrorMessage
     } = this.props;
 
     return (
@@ -78,7 +79,7 @@ class PersonInfoStep extends React.Component {
                   aria-invalid="false"
                   onChange={handleChange ? handleChange('phone') : null}
                 />
-                {/* <FormHelperText id="component-error-text" error>{phoneErrorMessage}</FormHelperText> */}
+                <FormHelperText id="component-error-text" error>{phoneErrorMessage}</FormHelperText>
               </div>
             </div>
           </div>

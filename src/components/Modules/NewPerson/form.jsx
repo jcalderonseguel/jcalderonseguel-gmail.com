@@ -8,7 +8,7 @@ import Navigation from "./navigation";
 import NavigationTop from "./navigationTop";
 import { CreatePerson } from './action';
 import {  connect } from "react-redux"
-
+import {validateStep1} from './Validations/ValidateSteps'
 
 const steperStyle = {
     flexDirection: "column-reverse"
@@ -33,11 +33,12 @@ class Form extends React.Component {
         }
     }
     nextStep = () => {
-        const {step, firstName, lastName, streetName } = this.state;
+        const {step, firstName, lastName, streetName, city, email } = this.state;
         // console.log("step", step)
 
         switch (step) {
             case 1:
+                let validate = validateStep1(this.state);  
                 if(firstName.trim() === "" ){
                     this.setState({
                         firstNameErrorMessage: "First Name is required.", 
@@ -47,6 +48,11 @@ class Form extends React.Component {
                     this.setState({
                         lastNameErrorMessage: "Last Name is required.", 
                         personInputsValid: false});
+                    }
+                    if(email.trim() === "") {
+                        this.setState({
+                            emailErrorMessage: "Email is required."
+                        });
                     }
                 } else if(lastName.trim() === ""){
                     this.setState({
@@ -65,8 +71,13 @@ class Form extends React.Component {
                     this.setState({
                         streetNameErrorMessage: "Street Name is required.", 
                         addressInputsValid: false});
-    
-                } else {
+                    if(city === 0){
+                        this.setState({cityErrorMessage: "City es required."});
+                    }
+                } else if(city === "0"){
+                    this.setState({cityErrorMessage: "City es required."});
+                }
+                else {
                     this.setState({ 
                         step: step + 1, 
                         enableSummary : true, 
@@ -155,6 +166,7 @@ class Form extends React.Component {
     }
     handleChange = input => e => {
         this.setState({[input]: e.target.value});
+
         switch (input) {
             case "firstName":
                 if(e.target.value === ""){
@@ -178,14 +190,21 @@ class Form extends React.Component {
                     this.setState({streetNameErrorMessage: ""});
                 }
                 break
+            case "city":
+                if(e.target.value === "0"){
+                    this.setState({cityErrorMessage: "City is required."});
+                } else {
+                    this.setState({cityErrorMessage: ""});
+                }
+                break
             default:
                 break;
         }
     }
-
+    
     sendPerson = () => {
         // const {step, firstName, lastName, city, streetName } = this.state;
-
+        
         this.setState({isLoading: true});
 
         console.log("sending...")
@@ -233,6 +252,7 @@ class Form extends React.Component {
             email,
             phone,
             personInputsValid,
+            handleSelect,
             addressInputsValid
         } = this.state;
         return (
@@ -262,8 +282,11 @@ class Form extends React.Component {
                     {step === 2 && 
                         <AddressInfoStep 
                             handleChange={this.handleChange} 
+                            handleSelect={this.handleSelect}
                             city={city}
                             streetName={streetName}
+                            cityErrorMessage={cityErrorMessage}
+                            handleSelect={handleSelect}
                             streetNameErrorMessage={streetNameErrorMessage}
                             // cityErrorMessage={cityErrorMessage}
                             // hashKey={'address'}
