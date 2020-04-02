@@ -54,10 +54,10 @@ console.log("enabled=>>",enableAddress)
                         <ListItem style={{paddingLeft: 0, paddingRight: 0}}>
                             <NavLink
                                 to={"#"}
-                                style={enableSummary ? 
+                                style={enableSummary && addressInputsValid ? 
                                     CreatePerson.createPersonStyle.button: CreatePerson.createPersonStyle.buttonDisabled}
                                 disabled={ !enableSummary ? true: false}
-                                onClick={() => goSummary()}>
+                                onClick={enableSummary ?  () => goSummary() : null}>
                                 3. Summary
                             </NavLink>
                         </ListItem>

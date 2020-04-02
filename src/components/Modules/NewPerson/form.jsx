@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { isValidElement } from 'react';
 import StepWizard from 'react-step-wizard';
 import PersonInfoStep from "./Steps/PersonInfoStep";
 import AddressInfoStep from "./Steps/AddressInfoStep";
@@ -115,10 +115,10 @@ class Form extends React.Component {
                         streetNameErrorMessage: "Street Name is required.", 
                         addressInputsValid: false});
                     if(city === 0){
-                        this.setState({cityErrorMessage: "City es required."});
+                        this.setState({cityErrorMessage: "City is required."});
                     }
                 } else if(city === "0"){
-                    this.setState({cityErrorMessage: "City es required."});
+                    this.setState({cityErrorMessage: "City is required."});
                 }
                 else {
                     this.setState({ 
@@ -133,7 +133,7 @@ class Form extends React.Component {
     }
 
     backStep = () => {
-        const {step, firstName, lastName, streetName} = this.state;
+        const {step, firstName, lastName, streetName, city} = this.state;
 
         switch (step) {
             case 2:
@@ -148,6 +148,9 @@ class Form extends React.Component {
                 if(streetName.trim() !== ""){
                     this.setState({streetNameErrorMessage: ""});
                 }
+                if(city !== 0){
+                    this.setState({cityErrorMessage: ""});
+                }
                 break
             default:
                 break;
@@ -157,16 +160,90 @@ class Form extends React.Component {
 
     }
     goSummary = () => {
-        const {firstName, lastName, streetName} = this.state;
+        const {firstName, lastName, streetName, city, email, phone, step} = this.state;
 
-        if(firstName !== "" && lastName !== "" && streetName !== ""){
-            this.setState({step: 3});
-        } else {
-            if(firstName === "") this.setState({firstNameErrorMessage: "First Name is required."});
-            if(lastName === "")  this.setState({lastNameErrorMessage: "Last Name is required."});
-            if(streetName === "")  this.setState({streetNameErrorMessage: "Street Name is required."});
+        switch (step) {
+            case 1:
+                if(firstName.trim() === "") {
+                    this.setState({
+                        firstNameErrorMessage: "First Name is required.",
+                    });
+                }
+                if(lastName.trim() === "") {
+                    this.setState({
+                        lastNameErrorMessage: "Last Name is required.",
+                    });
+                } 
+                if(email.trim() === "") {
+                    this.setState({
+                        emailErrorMessage: "Email is required.",
+                    });
+                } 
+                if(!validateEmail(email)) {
+                    this.setState({
+                        emailErrorMessage: "Email is not valid.",
+                    });
+                }
+                if(!validatePhone(phone)) {
+                    this.setState({
+                        phoneErrorMessage: "Phone is not valid.",
+                    });
+                }
+                if(phone.trim() === "" ){
+                    this.setState({
+                        phoneErrorMessage: "Phone Name is required.",
+                    });
+                }
+                if(firstName.trim() !== "" 
+                    && lastName.trim() !== "" 
+                    && email.trim() !== "" 
+                    && phone.trim() !== "" 
+                    && validateEmail(email) 
+                    && validatePhone(phone)) {
+                    this.setState({
+                        step: 3,
+                        personInputsValid: true
+                    });
+                } else {
+                    this.setState({
+                        personInputsValid: false
+                    });
+                }
+                break;
+                case 2:
+                    if(city === "0" ){
+                        this.setState({
+                            cityErrorMessage: "City is required.",
+                        });
+                    }
+                    if(streetName === "" ){
+                        this.setState({
+                            streetNameErrorMessage: "Street Name is required.",
+                        });
+                    }
+                    if( streetName.trim() !== "" 
+                        && city !== "0" 
+                     ) {
+                        this.setState({
+                            step: 3,
+                            addressInputsValid: true
+                        });
+                    }
+                    else {
+                        this.setState({
+                            addressInputsValid: false
+
+                        });
+                    }
+                    break;
+        
+            default:
+                break;
         }
-
+        
+       
+        
+       
     }
 
     goPerson = () => {
@@ -180,9 +257,10 @@ class Form extends React.Component {
 
     goAddress = () => {
         const { step, firstName, lastName, streetName, email, phone, city} = this.state;
-console.log("city vlue",city)
+
         if(streetName.trim() !== "") this.setState({streetNameErrorMessage: ""});
-        if(city.trim() !== 0) this.setState({cityErrorMessage: ""});
+
+        if(city !== 0) this.setState({cityErrorMessage: ""});
 
         if(firstName.trim() === ""){
             this.setState({

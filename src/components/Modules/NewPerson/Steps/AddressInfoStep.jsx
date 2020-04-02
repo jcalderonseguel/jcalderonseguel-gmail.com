@@ -13,12 +13,8 @@ class AddressInfoStep extends React.Component {
         {id: 1, name: "Concepción"},
         {id: 2, name: "Santiago"},
         {id: 3, name: "Valparaíso"},
-
-
       ]
         
-
-    
     };
   }
   render() {
@@ -26,6 +22,7 @@ class AddressInfoStep extends React.Component {
       streetNameErrorMessage, 
       handleChange,
       streetName,
+      city,
       cityErrorMessage
     } = this.props;
     const {cities} = this.state;
@@ -39,7 +36,7 @@ class AddressInfoStep extends React.Component {
             <div className="form-group">
               <label>City*</label>
                 <FormHelperText id="component-error-text" error>{cityErrorMessage}</FormHelperText>
-                <Form.Control onChange={handleChange ? handleChange('city') : null} as="select">
+                <Form.Control value={city}  onChange={handleChange ? handleChange('city') : null} as="select">
                   {cities.map(item => 
                   <option
                     key={item.id}
