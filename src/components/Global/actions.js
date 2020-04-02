@@ -15,9 +15,7 @@ const { Types, Creators } = createActions(
     }
   );
 
-// Todo: 1. Crear funcion para conectarse a la Api Local
-//       2. Logica autentificacion: Rescato dato api (email,password) =>token
-//       3. Exitoso: setLoginSuccess = true, dejar la informacion de la api en el localstorage.
+
 // Obtengo las acciones para utilizarlas
 const {
     setLoginSuccess,
@@ -31,9 +29,20 @@ const {
      SET_CLOSE_OPEN_MENU
   } = Types;
 
+  // Todo: 1. Crear funcion para conectarse a la Api Local
 const doLogin =(email, pass) =>async dispatch =>{
   const request = await doLoginApi(email, pass);
+  // 2. Logica autentificacion: Rescato token de api
+  // 2.1 le doy al token 15 minutos de validez.
+  // 2.2 Extraigo data del token, Full name y Email y la seteo al state userData{}
+  // 2.3 dejo token en storage y seteo state setLogingSuccess = true
   console.log("fui a la api de person:>",request.status)
+
+
+
+
+
+
 }
 
   export {
