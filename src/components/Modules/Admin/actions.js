@@ -1,6 +1,7 @@
 import { createActions } from 'reduxsauce';
 //import data from './Mock';
 import axios from 'axios';
+import { GetPersonApi } from '../../../services/PersonApi';
 
 const { Types, Creators } = createActions(
     {
@@ -42,8 +43,8 @@ const { Types, Creators } = createActions(
     });
    
   const getPerson = (documentNumber, idocType, gender, alias, email, phoneNumber) => async dispatch => {
-    const response = await getPersonAPI(documentNumber, idocType, gender, alias, email, phoneNumber);
-   
+    const response = await GetPersonApi(documentNumber, idocType, gender, alias, email, phoneNumber);
+    
     if(response)
       dispatch(setDataPerson(response.data))
     else

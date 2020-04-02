@@ -1,61 +1,63 @@
 import axios from "axios";
-const GetPerson = (
+
+const loginApi = async () =>
+   axios.post("http://localhost:5001/v1/persons/login",
+    {
+      email:"admin@site.com",
+      password:"1234"
+    }
+  ).catch(err => {
+      console.log(err);
+    });
+
+const GetPersonApi = async (
+  documentNumber,
+  identificationDocumentTypeId,
+  genderId,
+  alias,
   email,
   phoneNumber,
-  identificationDocumentTypeId,
-  documentNumber,
-  genderId,
-  alias
 ) => {
-  axios
-    .get("http://localhost:5000/v1/persons", {
+
+  const response = await loginApi();
+  const token = response.data.token;
+
+  return axios
+    .get("http://localhost:5001/v1/persons", {
       headers: {
         Authorization: `Bearer ${token}`
       },
       params: {
-        email: email,
-        phoneNumber: phoneNumber,
-        identificationDocumentTypeId: identificationDocumentTypeId,
-        documentNumber: documentNumber,
-        genderId: genderId,
-        alias: alias
+        email,
+        phoneNumber,
+        identificationDocumentTypeId,
+        documentNumber,
+        genderId,
+        alias
       }
-    })
-    .then(res => {
-      const personData = res.data;
-      console.log(personData);
-      this.setState({ personData });
     })
     .catch(err => {
       console.log(err);
-    });
+    })
+  }
 
-  return { personData };
-};
+const GetPersonByIdApi = async id => {
 
-const GetPersonById = id => {
-  let id = id;
-  let typeOfView = "full";
-  axios
-    .get("http://localhost:5000/v1/persons/`${id}`", {
+  const response = await loginApi();
+  const token = response.data.token;
+
+  return axios
+    .get(`http://localhost:5001/v1/persons/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`
       },
       params: {
-        typeOfView: typeOfView
+        typeOfView: "full"
       }
-    })
-    .then(res => {
-      const personData = res.data;
-      console.log(personData);
-      this.setState({ personData });
     })
     .catch(err => {
       console.log(err);
     });
-
-  return { personData };
 };
 
-export default GetPerson;
-GetPersonById;
+export { GetPersonApi, GetPersonByIdApi };
