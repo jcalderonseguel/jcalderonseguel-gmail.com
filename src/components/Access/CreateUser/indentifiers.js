@@ -6,6 +6,7 @@ const ids = {
   INPUT_EMAIL: `${prefix}INPUT_EMAIL`,
   INPUT_PASSWORD: `${prefix}BUTTON_PASSWORD`,
   FORM_CREATE_USER: `${prefix}FORM`,
+  CHECKBOX_IDS: `${prefix}CHECKBOX_IDS`,
 
 };
 

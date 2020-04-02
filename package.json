@@ -27,7 +27,8 @@
     "redux-logger": "3.0.6",
     "redux-thunk": "2.3.0",
     "reduxsauce": "1.1.1",
-    "source-map-explorer": "2.1.2"
+    "source-map-explorer": "2.1.2",
+    "validator": "^13.0.0"
   },
   "scripts": {
     "analyze": "source-map-explorer build/static/js/main.*",
