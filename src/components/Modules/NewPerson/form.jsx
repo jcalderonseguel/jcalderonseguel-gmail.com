@@ -9,6 +9,8 @@ import NavigationTop from "./navigationTop";
 import { CreatePerson } from './action';
 import {  connect } from "react-redux"
 import {validateStep1} from './Validations/ValidateSteps'
+import {validateEmail} from './Validations/validations'
+import {validatePhone} from './Validations/validations'
 
 const steperStyle = {
     flexDirection: "column-reverse"
@@ -33,12 +35,20 @@ class Form extends React.Component {
         }
     }
     nextStep = () => {
-        const {step, firstName, lastName, streetName, city, email } = this.state;
+        const {step, 
+            firstName, 
+            lastName,
+            streetName,
+            city, 
+            email,
+            phone 
+        } = this.state;
         // console.log("step", step)
 
         switch (step) {
             case 1:
-                let validate = validateStep1(this.state);  
+                let validate = validateStep1(this.state); 
+                 debugger
                 if(firstName.trim() === "" ){
                     this.setState({
                         firstNameErrorMessage: "First Name is required.", 
@@ -54,16 +64,47 @@ class Form extends React.Component {
                             emailErrorMessage: "Email is required."
                         });
                     }
-                } else if(lastName.trim() === ""){
+                    if(phone.trim() === "") {
+                        this.setState({
+                            phoneErrorMessage: "Phone is required."
+                        });
+                    }
+                } else if(email.trim() === ""){
+                    this.setState({
+                        emailErrorMessage: "Email is required."
+                    });
+                }
+                else if(lastName.trim() === ""){
                     this.setState({
                         lastNameErrorMessage: "Last Name is required.", 
                         personInputsValid: false});
     
                 } else {
-                    this.setState({
-                        step: step + 1, 
-                        enableAddress : true, 
-                        personInputsValid: true});
+                    if(!validateEmail(email)) {
+                        this.setState({
+                            emailErrorMessage: "Email is not valid."
+                        });
+                        if(!validatePhone(phone)){
+                            this.setState({
+                                phoneErrorMessage: "Phone is not valid."
+                            });
+                        }
+                    } else{
+                        if(!validatePhone(phone)){
+                            this.setState({
+                                phoneErrorMessage: "Phone is not valid."
+                            });
+                        }
+                        else {
+                            this.setState({
+                                step: step + 1, 
+                                enableAddress : true, 
+                                personInputsValid: true});
+                        }
+                    }
+                    
+                   
+                   
                 }
                 break;
             case 2:
@@ -182,7 +223,6 @@ class Form extends React.Component {
                     this.setState({lastNameErrorMessage: ""});
                 } 
                 break;
-
             case "streetName":
                 if(e.target.value === ""){
                     this.setState({streetNameErrorMessage: "Street Name is required."});
@@ -190,6 +230,20 @@ class Form extends React.Component {
                     this.setState({streetNameErrorMessage: ""});
                 }
                 break
+            case "email":
+                if(e.target.value === ""){
+                    this.setState({emailErrorMessage: "Email is required."});
+                } else {
+                    this.setState({emailErrorMessage: ""});
+                }
+                break;
+            case "phone":
+                if(e.target.value === ""){
+                    this.setState({phoneErrorMessage: "Phone is required."});
+                } else {
+                    this.setState({phoneErrorMessage: ""});
+                }
+                break;
             case "city":
                 if(e.target.value === "0"){
                     this.setState({cityErrorMessage: "City is required."});
@@ -241,6 +295,7 @@ class Form extends React.Component {
             lastNameErrorMessage,
             streetNameErrorMessage,
             emailErrorMessage,
+            phoneErrorMessage,
             cityErrorMessage,
             enableAddress,
             enableSummary,
@@ -274,6 +329,7 @@ class Form extends React.Component {
                             firstNameErrorMessage={firstNameErrorMessage}
                             lastNameErrorMessage={lastNameErrorMessage}
                             emailErrorMessage={emailErrorMessage}
+                            phoneErrorMessage={phoneErrorMessage}
                             firstName={firstName}
                             email={email}
                             phone={phone}
