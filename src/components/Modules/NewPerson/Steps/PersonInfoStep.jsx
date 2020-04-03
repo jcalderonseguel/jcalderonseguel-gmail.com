@@ -1,5 +1,6 @@
 import React from "react";
 import FormHelperText from '@material-ui/core/FormHelperText';
+import CreatePerson from "../../../../styles/formCreatePerson";
 
 class PersonInfoStep extends React.Component {
   constructor(props) {
@@ -16,9 +17,9 @@ class PersonInfoStep extends React.Component {
       lastName,
       email,
       phone,
-      phoneErrorMessage
+      phoneErrorMessage,
+      personInputsValid
     } = this.props;
-
     return (
       <div className="container">
         <div className="row">
@@ -35,6 +36,7 @@ class PersonInfoStep extends React.Component {
                   className="form-control required"
                   aria-required="true"
                   value={firstName}
+                  style={!personInputsValid? CreatePerson.createPersonStyle.inputError: null}
                   onChange={handleChange ? handleChange('firstName') : null}
                 />
                 <FormHelperText id="component-error-text" error>{firstNameErrorMessage}</FormHelperText>
@@ -48,6 +50,7 @@ class PersonInfoStep extends React.Component {
                   className="form-control required valid"
                   aria-required="true"
                   value={lastName}
+                  style={!personInputsValid? CreatePerson.createPersonStyle.inputError: null}
                   aria-invalid="false"
                   onChange={handleChange ? handleChange('lastName') : null}
                 />
@@ -60,6 +63,7 @@ class PersonInfoStep extends React.Component {
                   name="email"
                   type="text"
                   className="form-control required valid"
+                  style={!personInputsValid? CreatePerson.createPersonStyle.inputError: null}
                   aria-required="true"
                   value={email}
                   aria-invalid="false"
@@ -73,6 +77,7 @@ class PersonInfoStep extends React.Component {
                   id="phone"
                   name="phone"
                   type="text"
+                  style={!personInputsValid? CreatePerson.createPersonStyle.inputError: null}
                   className="form-control required valid"
                   aria-required="true"
                   value={phone}

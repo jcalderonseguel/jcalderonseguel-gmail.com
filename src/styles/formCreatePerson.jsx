@@ -47,6 +47,9 @@ const createPersonStyle = {
         color:"white",
         backgroundColor: "red"
 
-    }
+    },
+    inputError: {
+        backgroundColor: "rgb(251, 227, 228)"
+      }
 }
 export default {createPersonStyle}

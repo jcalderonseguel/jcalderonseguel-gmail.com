@@ -48,8 +48,8 @@ class Form extends React.Component {
 
         switch (step) {
             case 1:
-                let validate = validateStep1(this.state); 
-                if(firstName.trim() === "" ){
+            let notifications = validateStep1(this.state);     
+            if(firstName.trim() === "" ){
                     this.setState({
                         firstNameErrorMessage: "First Name is required.", 
                         personInputsValid: false});
@@ -410,7 +410,6 @@ class Form extends React.Component {
             addressInputsValid,
         } = this.state;
         const {isOpenModalSuccess, isOpenModalError} = this.props;
-        console.log("isOpenModalError",isOpenModalError)
         return (
             <div>
                 <Modal 
@@ -466,6 +465,7 @@ class Form extends React.Component {
                             firstName={firstName}
                             email={email}
                             phone={phone}
+                            personInputsValid={personInputsValid}
                             // hashKey={'person'}
                             /> }
                     {step === 2 && 
