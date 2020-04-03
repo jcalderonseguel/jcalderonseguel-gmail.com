@@ -35,14 +35,14 @@ const styles = theme => ({
   },
   noClick: {
     cursor: 'initial',
-  },
+  }
 });
 
 class MuiVirtualizedTable extends React.PureComponent {
   static defaultProps = {
     headerHeight: 48,
     rowHeight: 48,
-    rowWidth: 200,
+    rowWidth: 500,
   };
 
   getRowClassName = ({ index }) => {
@@ -143,9 +143,8 @@ class MuiVirtualizedTable extends React.PureComponent {
                                 variant="body"
                                 style={{ height: rowHeight, width: rowWidth }}
                                 >
-                                  <span>
                                   <Drawer/>
-                                  </span>
+                                  
                                 </TableCell>)
                            
                        
