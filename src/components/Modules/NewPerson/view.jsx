@@ -5,7 +5,11 @@ import FinishStep from "./Steps/FinishStep";
 import MenuAction from "./MenuActions/MenuAction";
 import { connect } from "react-redux";
 import MenuHeader from "./MenuHeader/MenuHeader";
-import { CreatePerson } from "./action";
+import { CreatePerson, setOpenModalSuccess } from "./action";
+import { createPersonApi } from "../../../services/app";
+import Modal from "react-bootstrap/Modal";
+import { setCloseOpenMenu } from "../../Global/actions";
+import Button from "react-bootstrap/Button";
 
 class FormNewPerson extends React.Component {
   constructor(props) {
@@ -269,18 +273,14 @@ class FormNewPerson extends React.Component {
   };
 
   btnSend = () => {
-    Promise.all([new Promise(CreatePerson(this.state))])
-      .then(data => {
-        debugger;
-        if (data && data[0]) {
-          console.log("exitoso");
-        }
-      })
-      .catch(err => console.log(err));
+    this.props.dispatch(CreatePerson(this.state));
+  };
+
+  handleClose = () => {
+    this.props.dispatch(setOpenModalSuccess(false));
   };
 
   render() {
-    console.log(this.state);
     const {
       activeStep,
       firstName,
@@ -303,8 +303,28 @@ class FormNewPerson extends React.Component {
       summaryValid,
       summary
     } = this.state;
+    const { isLoading, isOpenModalSuccess } = this.props;
+
+    console.log("LOADING", isLoading);
     return (
       <div>
+        <Modal
+          show={isOpenModalSuccess}
+          onHide={this.handleClose}
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Success!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Person created successfully!</Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={this.handleClose}>
+              OK
+            </Button>
+          </Modal.Footer>
+        </Modal>
+
         <form action="">
           <MenuHeader
             enabledAddress={enabledAddress}
@@ -349,6 +369,7 @@ class FormNewPerson extends React.Component {
               backStep={this.backStep}
               step={activeStep}
               btnSend={this.btnSend}
+              isLoading={isLoading}
             ></MenuAction>
           </div>
         </form>
@@ -357,9 +378,12 @@ class FormNewPerson extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   return {
-    activeStep: state.activeStep
+    activeStep: state.activeStep,
+    isLoading: state.personReducer.isLoading,
+    isOpenModalSuccess: state.personReducer.isOpenModalSuccess,
+    isOpenModalError: state.personReducer.isOpenModalError
   };
 };
 

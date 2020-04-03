@@ -8,7 +8,14 @@ const apiPerson = config.apiPerson;
 
 export const createPersonApi = params => {
   return api
-    .post(`${apiPerson}/persons`, params)
+    .post(`${apiPerson}/persons`, params, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Cache-Control": "no-cache"
+      }
+    })
+
     .then(res => res)
     .catch(err => console.log(err));
 };

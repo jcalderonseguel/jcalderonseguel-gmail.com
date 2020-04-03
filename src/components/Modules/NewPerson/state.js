@@ -1,5 +1,6 @@
-const menuActionState = {
-  activeStep: 1
+const INITIAL_STATE = {
+  isLoading: false,
+  isOpenModalSuccess: false
 };
 
-export default menuActionState;
+export default INITIAL_STATE;

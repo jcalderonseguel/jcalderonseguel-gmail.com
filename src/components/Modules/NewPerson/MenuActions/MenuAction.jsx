@@ -7,7 +7,7 @@ class MenuAction extends Component {
     console.log(props);
   }
   render() {
-    const { backStep, nextStep, btnSend, step } = this.props;
+    const { backStep, nextStep, btnSend, step, isloading } = this.props;
 
     return (
       <div>
@@ -36,9 +36,9 @@ class MenuAction extends Component {
                 <Button
                   type="button"
                   className="btn btn-outline-primary"
-                  onClick={() => btnSend()}
+                  onClick={!isloading ? () => btnSend() : null}
                 >
-                  Finish
+                  {isloading ? "...loading" : "Send"}
                 </Button>
               </div>
             </div>

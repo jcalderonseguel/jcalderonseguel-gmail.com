@@ -1,13 +1,20 @@
-import defaultState from "./state";
+import INITIAL_STATE from "./state";
+import { createReducer } from "reduxsauce";
+import produce from "immer";
+import { SET_LOADING, SET_OPEN_MODAL_SUCCESSS } from "./action";
 
-const menuActionReducer = (state = defaultState, action) => {
-  switch (action.type) {
-    case "nextStep":
-      return Object.assign({}, state, { activeStep: action });
+const setLoading = produce((state, { loading }) => {
+  state.isLoading = loading;
+});
 
-    default:
-      return state;
-  }
-};
+const setOpenModalSuccess = produce((state, { open }) => {
+  state.isOpenModalSuccess = open;
+});
 
-export default menuActionReducer;
+const personReducer = createReducer(INITIAL_STATE, {
+  [SET_LOADING]: setLoading,
+  [SET_OPEN_MODAL_SUCCESSS]: setOpenModalSuccess
+});
+
+export { INITIAL_STATE };
+export default personReducer;
