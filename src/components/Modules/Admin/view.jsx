@@ -6,6 +6,7 @@ import { Button, Col, Form, Container, Row } from 'react-bootstrap';
 import { getPerson} from './actions';
 import columns from './columns';
 import Grid from "./table";
+import style from "./styles";
 
 class Admin extends Component {
 
@@ -46,7 +47,8 @@ class Admin extends Component {
 
     render() {
 
-        const {personData} = this.props;
+        const { personData } = this.props;
+        const { label } = style;
         
         return (
             <div>
@@ -71,7 +73,7 @@ class Admin extends Component {
                     <Form>
                         <Form.Row>
                             <Form.Group as={Col}>
-                                <Form.Label>Document Number</Form.Label>
+                                <Form.Label style={label}>Document Number</Form.Label>
                                 <Form.Control type="text" 
                                                 name="docNumber" 
                                                 onChange={this.handleInputChange} 
@@ -80,7 +82,7 @@ class Admin extends Component {
                             </Form.Group>
 
                             <Form.Group as={Col}>
-                                <Form.Label>Identification Document</Form.Label>
+                                <Form.Label style={label}>Identification Document</Form.Label>
                                 <Form.Control 
                                     type="text"
                                     name="idocType"
@@ -90,7 +92,7 @@ class Admin extends Component {
                             </Form.Group>
 
                             <Form.Group as={Col}>
-                                <Form.Label>Gender</Form.Label>
+                                <Form.Label style={label}>Gender</Form.Label>
                                 <Form.Control 
                                     type="text"
                                     name="gender"
@@ -100,7 +102,7 @@ class Admin extends Component {
                             </Form.Group>
 
                             <Form.Group as={Col}>
-                                <Form.Label>Alias</Form.Label>
+                                <Form.Label style={label}>Alias</Form.Label>
                                 <Form.Control
                                      type="text"
                                      name="alias"
@@ -110,7 +112,7 @@ class Admin extends Component {
                             </Form.Group>
 
                             <Form.Group as={Col}>
-                                <Form.Label>Email</Form.Label>
+                                <Form.Label style={label}>Email</Form.Label>
                                 <Form.Control 
                                     type="email" 
                                     name="email"
@@ -120,7 +122,7 @@ class Admin extends Component {
                             </Form.Group>
 
                             <Form.Group as={Col}>
-                                <Form.Label>Phone Number</Form.Label>
+                                <Form.Label style={label}>Phone Number</Form.Label>
                                 <Form.Control 
                                      type="text"
                                      name="phoneNumber"
