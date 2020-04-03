@@ -8,14 +8,7 @@ class AddressStep extends React.Component {
     this.state = {};
   }
   render() {
-    const {
-      handleChange,
-      street,
-      streetError,
-      city,
-      cityError,
-      btnCity
-    } = this.props;
+    const { handleChange, street, streetError } = this.props;
     return (
       <div className="container">
         <div className="row">

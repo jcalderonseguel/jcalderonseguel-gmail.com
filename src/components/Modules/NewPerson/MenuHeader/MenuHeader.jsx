@@ -10,9 +10,11 @@ class MenuHeader extends Component {
       btnSummary,
       enabledAddress,
       enabledSummary,
-      personValid
+      personValid,
+      activeStep,
+      addressValid
     } = this.props;
-
+    console.log("addressValid", addressValid);
     return (
       <div>
         <div className="container">
@@ -25,6 +27,8 @@ class MenuHeader extends Component {
                     style={
                       !personValid
                         ? person.personStyle.btnRed
+                        : activeStep !== 1
+                        ? person.personStyle.btnGreenLight
                         : person.personStyle.btnGreen
                     }
                   >
@@ -36,9 +40,13 @@ class MenuHeader extends Component {
                     onClick={btnAddress}
                     disabled={!enabledAddress}
                     style={
-                      !personValid
-                        ? { backgroundColor: "#6fd1bd" }
-                        : { backgroundColor: "6fd1bd" }
+                      activeStep === 2 && enabledAddress && addressValid
+                        ? person.personStyle.btnGreen
+                        : !addressValid
+                        ? person.personStyle.btnRed
+                        : activeStep !== 2 && enabledAddress
+                        ? person.personStyle.btnGreenLight
+                        : person.personStyle.btnDefault
                     }
                   >
                     2.Address

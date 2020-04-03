@@ -11,6 +11,8 @@ class FormNewPerson extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      addressValid: true,
+      personValidInput: true,
       personValid: true,
       activeStep: 1,
       firstName: "",
@@ -23,7 +25,6 @@ class FormNewPerson extends React.Component {
   }
 
   handleChange = input => e => {
-    debugger;
     this.setState({ [input]: e.target.value });
     switch (input) {
       case "firstName":
@@ -80,51 +81,50 @@ class FormNewPerson extends React.Component {
       lastName,
       email,
       street,
-      phone,
-      city
+      phone
     } = this.state;
 
     switch (activeStep) {
       case 1:
         if (firstName.trim() === "") {
           this.setState({
-            firstNameError: "Firstname is required"
+            firstNameError: "Firstname is required",
+            personValid: false
           });
         } else {
           this.setState({
-            personValid: true,
             firstNameError: null
           });
         }
         if (lastName.trim() === "") {
           this.setState({
-            lastNameError: "Lastname is required"
+            lastNameError: "Lastname is required",
+            personValid: false
           });
         } else {
           this.setState({
-            personValid: true,
             lastNameError: null
           });
         }
 
         if (email.trim() === "") {
           this.setState({
-            emailError: "Email is required"
+            emailError: "Email is required",
+            personValid: false
           });
         } else {
           this.setState({
-            personValid: true,
             emailError: null
           });
         }
 
         if (phone.trim() === "") {
           this.setState({
-            phoneError: "Phone is required"
+            phoneError: "Phone is required",
+            personValid: false
           });
         } else {
           this.setState({
-            personValid: true,
             phoneError: null
           });
         }
@@ -137,19 +137,19 @@ class FormNewPerson extends React.Component {
         ) {
           this.setState({
             activeStep: activeStep + 1,
-            enabledAddress: true
+            enabledAddress: true,
+            personValid: true
           });
         }
         break;
       case 2:
         if (street.trim() === "") {
           this.setState({
-            streetError: "Street is required"
+            streetError: "Street is required",
+            addressValid: false
           });
         } else {
           this.setState({
-            enabledSummary: true,
-            personValid: true,
             streetError: null
           });
         }
@@ -165,19 +165,23 @@ class FormNewPerson extends React.Component {
         // }
 
         if (street.trim() !== "") {
-          this.setState({ activeStep: activeStep + 1 });
+          this.setState({
+            activeStep: activeStep + 1,
+            addressValid: true,
+            enabledSummary: true
+          });
         }
 
-      // if (city.trim() === "") {
-      //   this.setState({ cityError: "City is required" });
-      // } else {
-      //   this.setState({
-      //     enabledSummary: true,
-      //     personValid: true,
-      //     cityError: null
-      //   });
-      // }
-
+        // if (city.trim() === "") {
+        //   this.setState({ cityError: "City is required" });
+        // } else {
+        //   this.setState({
+        //     enabledSummary: true,
+        //     personValid: true,
+        //     cityError: null
+        //   });
+        // }
+        break;
       default:
         break;
     }
@@ -239,7 +243,7 @@ class FormNewPerson extends React.Component {
             personValid: true
           });
         }
-
+        break;
       default:
         break;
     }
@@ -278,7 +282,9 @@ class FormNewPerson extends React.Component {
       cityError,
       phone,
       phoneError,
-      personValid
+      personValidInput,
+      personValid,
+      addressValid
     } = this.state;
     return (
       <div>
@@ -290,6 +296,8 @@ class FormNewPerson extends React.Component {
             btnAddress={this.btnAddress}
             btnSummary={this.btnSummary}
             personValid={personValid}
+            activeStep={activeStep}
+            addressValid={addressValid}
           ></MenuHeader>
           {this.state.activeStep === 1 && (
             <ProfileStep
@@ -301,6 +309,7 @@ class FormNewPerson extends React.Component {
               emailError={emailError}
               phone={phone}
               phoneError={phoneError}
+              personValidInput={personValidInput}
               handleChange={this.handleChange}
             />
           )}

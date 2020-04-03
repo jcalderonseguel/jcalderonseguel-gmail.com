@@ -4,8 +4,25 @@ const personStyle = {
     color: "white",
     textAlign: "left"
   },
+
+  btnGreenLight: {
+    backgroundColor: "#6fd1bd",
+    color: "white",
+    textAlign: "left"
+  },
+
   btnRed: {
-    backgroundColor: "red"
+    backgroundColor: "#ED5565",
+    color: "white",
+    textAlign: "left"
+  },
+
+  btnDefault: {
+    backgroundColor: "#eee"
+  },
+
+  inputError: {
+    backgroundColor: "rgb(251, 227, 228)"
   }
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
-
 import FormHelperText from "@material-ui/core/FormHelperText";
+import person from "../../../../Styles/CreatePersons";
 
 class ProfileStep extends React.Component {
   constructor(props) {
@@ -17,8 +17,11 @@ class ProfileStep extends React.Component {
       email,
       emailError,
       phone,
-      phoneError
+      phoneError,
+      personValid,
+      personValidInput
     } = this.props;
+    console.log("personValidInput", personValidInput);
     return (
       <div className="container">
         <div className="row">
@@ -35,7 +38,12 @@ class ProfileStep extends React.Component {
                     className="form-control required"
                     aria-required="true"
                     onChange={handleChange ? handleChange("firstName") : null}
-                    value={firstName || null}
+                    value={firstName}
+                    style={
+                      personValidInput === false
+                        ? person.personStyle.inputError
+                        : (person.personStyle.inputError = null)
+                    }
                   />
                   <FormHelperText id="component-error-text" error>
                     <strong>{firstNameError}</strong>
@@ -51,7 +59,7 @@ class ProfileStep extends React.Component {
                     aria-required="true"
                     aria-invalid="false"
                     onChange={handleChange ? handleChange("lastName") : null}
-                    value={lastName || null}
+                    value={lastName}
                   />
                   <FormHelperText id="component-error-text" error>
                     <strong>{lastNameError}</strong>
@@ -65,7 +73,7 @@ class ProfileStep extends React.Component {
                     type="email"
                     className="form-control required "
                     onChange={handleChange ? handleChange("email") : null}
-                    value={email || null}
+                    value={email}
                   />
                   <FormHelperText id="component-error-text" error>
                     <strong>{emailError}</strong>
@@ -79,7 +87,7 @@ class ProfileStep extends React.Component {
                     type="text"
                     className="form-control required "
                     onChange={handleChange ? handleChange("phone") : null}
-                    value={phone || null}
+                    value={phone}
                   />
                   <FormHelperText id="component-error-text" error>
                     <strong>{phoneError} </strong>
