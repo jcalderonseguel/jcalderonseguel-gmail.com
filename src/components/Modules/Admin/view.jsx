@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import GridTable from '../../../components/Table/view';
 //import ButtonDetail from './ButtonDetail'
-import { Button, Col, Form } from 'react-bootstrap';
+import { Button, Col, Form, Container, Row } from 'react-bootstrap';
 import { getPerson} from './actions';
 import columns from './columns';
 import Grid from "./table";
@@ -159,19 +159,17 @@ class Admin extends Component {
                     </Form>
                 </div>       
 
-                <div className="clearfix"></div>
                 <React.Fragment>
-                    <div className="row"><div className="col-lg-10">
-                        <div className="table-responsive"></div>
-                       
+                    <div>   
                         <Grid
                             columns={columns}
                             data={personData}
                             //ButtonComponent={ButtonDetail} 
                          />
-                    </div></div>
+                    </div>
                 </React.Fragment>
             </div>
+           
         )
     }
 }
