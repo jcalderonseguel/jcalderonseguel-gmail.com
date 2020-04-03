@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
+import '../../Styles/Personalinfo.css'
 
 class Personalinfo extends React.Component{
   
@@ -96,7 +97,7 @@ class Personalinfo extends React.Component{
     console.log(data)
 
     return (
-    <div className='contact-box'>
+    <div className='contact-box Personal-Info-Box'>
       <div className="text-center">
       <strong> Detalle personal</strong>
       </div>

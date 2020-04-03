@@ -8,6 +8,9 @@ const useStyles = makeStyles({
   list: {
     width: 250,
   },
+  drawer: {
+    minWidth: '500px'
+  }
 });
 
 const TemporaryDrawer = (props) => {
@@ -18,6 +21,8 @@ const TemporaryDrawer = (props) => {
     right: false,
   });
 
+  console.log('CLASES CSS')
+  console.log(classes)
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
