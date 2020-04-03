@@ -8,16 +8,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import { Button } from '@material-ui/core';
 import Drawer from '../DrawerPerson/Drawer'
 
-function createData(name, code, population, size) {
-  const density = population / size;
-  return { name, code, population, size, density };
-}
-
-
-const useStyles = makeStyles({
+const useStyles = makeStyles({  
   root: {
     width: '100%',
   },
@@ -41,10 +34,9 @@ export default function StickyHeadTable(props) {
   };
 
   const { data, columns, ButtonComponent } = props;
-  
-  
 
   return (
+
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
         <Table stickyHeader aria-label="sticky table">
@@ -62,7 +54,7 @@ export default function StickyHeadTable(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+            {data && data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
               return (
                 <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                   <TableCell>{row.personId}</TableCell>
@@ -82,7 +74,7 @@ export default function StickyHeadTable(props) {
       <TablePagination
         rowsPerPageOptions={[5, 10, 25, 100]}
         component="div"
-        count={data.length}
+        count={(data)?data.length:0}
         rowsPerPage={rowsPerPage}
         page={page}
         onChangePage={handleChangePage}
