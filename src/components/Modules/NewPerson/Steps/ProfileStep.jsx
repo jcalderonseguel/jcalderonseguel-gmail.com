@@ -18,7 +18,6 @@ class ProfileStep extends React.Component {
       emailError,
       phone,
       phoneError,
-      personValid,
       personValidInput
     } = this.props;
     console.log("personValidInput", personValidInput);
@@ -40,7 +39,7 @@ class ProfileStep extends React.Component {
                     onChange={handleChange ? handleChange("firstName") : null}
                     value={firstName}
                     style={
-                      personValidInput === false
+                      !personValidInput
                         ? person.personStyle.inputError
                         : (person.personStyle.inputError = null)
                     }

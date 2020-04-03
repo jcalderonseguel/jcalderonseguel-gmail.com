@@ -12,7 +12,8 @@ class MenuHeader extends Component {
       enabledSummary,
       personValid,
       activeStep,
-      addressValid
+      addressValid,
+      summaryValid
     } = this.props;
     console.log("addressValid", addressValid);
     return (
@@ -20,7 +21,7 @@ class MenuHeader extends Component {
         <div className="container">
           <div className="col-lg-12">
             <div className="steps">
-              <Nav class="nav nav-pills nav-fill">
+              <Nav className="nav nav-pills nav-fill">
                 <Nav.Item>
                   <Nav.Link
                     onClick={btnProfile}
@@ -53,7 +54,19 @@ class MenuHeader extends Component {
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link onClick={btnSummary} disabled={!enabledSummary}>
+                  <Nav.Link
+                    onClick={btnSummary}
+                    disabled={!enabledSummary}
+                    style={
+                      activeStep === 3 && enabledSummary && summaryValid
+                        ? person.personStyle.btnGreen
+                        : !summaryValid
+                        ? person.personStyle.btnRed
+                        : activeStep !== 3 && enabledSummary
+                        ? person.personStyle.btnGreenLight
+                        : person.personStyle.btnDefault
+                    }
+                  >
                     3.Summary
                   </Nav.Link>
                 </Nav.Item>

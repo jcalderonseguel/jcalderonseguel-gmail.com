@@ -24,7 +24,7 @@ class AddressStep extends React.Component {
                     type="text"
                     className="form-control required"
                     onChange={handleChange ? handleChange("street") : null}
-                    value={street || null}
+                    value={street}
                   />
                   <FormHelperText id="component-error-text" error>
                     <strong>{streetError}</strong>

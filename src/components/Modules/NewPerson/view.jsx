@@ -11,6 +11,7 @@ class FormNewPerson extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      summaryValid: true,
       addressValid: true,
       personValidInput: true,
       personValid: true,
@@ -20,7 +21,8 @@ class FormNewPerson extends React.Component {
       email: "",
       street: "",
       phone: "",
-      city: ""
+      city: "",
+      summary: 1
     };
   }
 
@@ -59,7 +61,11 @@ class FormNewPerson extends React.Component {
           this.setState({ cityError: "City is required" });
         }
         break;
-
+      case "summary":
+        if (e.target.value === "") {
+          this.setState({ cityError: "Summary is required" });
+        }
+        break;
       default:
         break;
     }
@@ -81,7 +87,8 @@ class FormNewPerson extends React.Component {
       lastName,
       email,
       street,
-      phone
+      phone,
+      summary
     } = this.state;
 
     switch (activeStep) {
@@ -181,6 +188,14 @@ class FormNewPerson extends React.Component {
         //     cityError: null
         //   });
         // }
+        break;
+
+      case 3:
+        if (summary.trim() !== 1) {
+          this.setState({
+            summaryValid: true
+          });
+        }
         break;
       default:
         break;
@@ -284,7 +299,9 @@ class FormNewPerson extends React.Component {
       phoneError,
       personValidInput,
       personValid,
-      addressValid
+      addressValid,
+      summaryValid,
+      summary
     } = this.state;
     return (
       <div>
@@ -298,6 +315,7 @@ class FormNewPerson extends React.Component {
             personValid={personValid}
             activeStep={activeStep}
             addressValid={addressValid}
+            summaryValid={summaryValid}
           ></MenuHeader>
           {this.state.activeStep === 1 && (
             <ProfileStep
@@ -322,7 +340,9 @@ class FormNewPerson extends React.Component {
               handleChange={this.handleChange}
             />
           )}
-          {this.state.activeStep === 3 && <FinishStep />}
+          {this.state.activeStep === 3 && (
+            <FinishStep summary={summary} handleChange={this.handleChange} />
+          )}
           <div>
             <MenuAction
               nextStep={this.nextStep}

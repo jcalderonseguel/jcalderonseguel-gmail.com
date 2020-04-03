@@ -14,6 +14,7 @@ class FinishStep extends React.Component {
     this.state = {};
   }
   render() {
+    const { summary } = this.props;
     return (
       <div className="container">
         <div className="col-lg-12">
@@ -23,6 +24,7 @@ class FinishStep extends React.Component {
             name="acceptTerms"
             type="checkbox"
             className="required"
+            value={summary}
           />
           <label htmlFor="acceptTerms">
             I agree with the Terms and Conditions.
