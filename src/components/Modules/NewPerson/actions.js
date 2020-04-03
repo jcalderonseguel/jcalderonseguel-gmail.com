@@ -4,7 +4,8 @@ import { createActions } from 'reduxsauce';
 const { Types, Creators } = createActions(
     {
       loadingCreatePerson: ['loading'],
-      openModalSuccess: ['openModalSuccess']      
+      openModalSuccess: ['openModalSuccess'],
+      openModalError: ['open']      
     },
     {
       prefix: 'CREATEPERSON/'
@@ -12,11 +13,13 @@ const { Types, Creators } = createActions(
   );
   const {
       loadingCreatePerson, 
-      openModalSuccess
+      openModalSuccess,
+      openModalError
     } = Creators;
   const {
       LOADING_CREATE_PERSON,
-      OPEN_MODAL_SUCCESS
+      OPEN_MODAL_SUCCESS,
+      OPEN_MODAL_ERROR
     } = Types;
   
  const CreatePerson  =  params => async dispatch => {
@@ -120,8 +123,11 @@ const { Types, Creators } = createActions(
         if( response && response.status === 200){
             console.log("response****=>=>=>***>>",response)
             dispatch(openModalSuccess(true))
+        } else {
+          dispatch(openModalError(true))
         }
     } catch (error) {
+        dispatch(openModalError(true))
         console.log("ERROR ===>",error)
     }
       dispatch(loadingCreatePerson(false));
@@ -132,7 +138,9 @@ export {
     loadingCreatePerson,
     openModalSuccess,
     LOADING_CREATE_PERSON,
-    OPEN_MODAL_SUCCESS
+    OPEN_MODAL_SUCCESS,
+    openModalError,
+    OPEN_MODAL_ERROR
 }
 
 export default Creators;

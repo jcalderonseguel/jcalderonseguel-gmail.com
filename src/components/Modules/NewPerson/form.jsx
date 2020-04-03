@@ -8,7 +8,7 @@ import AddressInfoStep from "./Steps/AddressInfoStep";
 import FinishStep from "./Steps/FinishStep";
 import Navigation from "./navigation";
 import NavigationTop from "./navigationTop";
-import { CreatePerson, openModalSuccess } from './actions';
+import { CreatePerson, openModalSuccess, openModalError } from './actions';
 import {  connect } from "react-redux"
 import {validateStep1} from './Validations/ValidateSteps'
 import {validateEmail} from './Validations/validations'
@@ -384,6 +384,10 @@ class Form extends React.Component {
     handleClose = () => {
         this.props.dispatch(openModalSuccess(false));
     }
+    handleCloseModalError = () => {
+        this.props.dispatch(openModalError(false));
+
+    }
     render() {
         const {
             step, 
@@ -405,16 +409,38 @@ class Form extends React.Component {
             handleSelect,
             addressInputsValid,
         } = this.state;
-        const {isOpenModalSuccess} = this.props;
+        const {isOpenModalSuccess, isOpenModalError} = this.props;
+        console.log("isOpenModalError",isOpenModalError)
         return (
             <div>
-                <Modal show={isOpenModalSuccess} onHide={this.handleClose}>
+                <Modal 
+                    show={isOpenModalSuccess} 
+                    onHide={this.handleClose}
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                >
                     <Modal.Header closeButton>
                     <Modal.Title>Success!</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>Person created successfully!</Modal.Body>
                     <Modal.Footer>
                     <Button variant="primary" onClick={this.handleClose}>
+                        OK
+                    </Button>
+                    </Modal.Footer>
+                </Modal>
+                <Modal 
+                    show={isOpenModalError} 
+                    onHide={this.handleCloseModalError}
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                >
+                    <Modal.Header closeButton>
+                    <Modal.Title>Oops! Something went wrong</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>An error has ocurred creating a Person</Modal.Body>
+                    <Modal.Footer>
+                    <Button variant="primary" onClick={this.handleCloseModalError}>
                         OK
                     </Button>
                     </Modal.Footer>
@@ -473,7 +499,8 @@ class Form extends React.Component {
 }
 const mapStateToProps = (state) => ({
     isLoading: state.personReducer.isLoading,
-    isOpenModalSuccess: state.personReducer.isOpenModalSuccess
+    isOpenModalSuccess: state.personReducer.isOpenModalSuccess,
+    isOpenModalError: state.personReducer.isOpenModalError
  });
  
  const mapDispatchToProps = (dispatch) => ({
