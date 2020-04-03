@@ -1,7 +1,9 @@
 import React from 'react';
 import { Row, Col, Image } from 'react-bootstrap';
 import '../../Styles/Personalinfo.css';
-import { phone } from '../../Images/phone.jpg'
+import phone  from '../../Images/phone.jpg'
+import mail  from '../../Images/mail.png'
+import docu  from '../../Images/docu.jpg'
 
 class Personalinfo extends React.Component{
   
@@ -115,7 +117,7 @@ class Personalinfo extends React.Component{
     return (
     <div className='contact-box Personal-Info-Box text-center'>
       <div>
-      <h3 className='Title-Box'> Detalle personal</h3>
+      <h3 className='Title-Box-Central'> Detalle personal</h3>
       </div>
       <div className='Box-Column'>
       <Col className='Column-Style'>
@@ -169,16 +171,25 @@ class Personalinfo extends React.Component{
         </Row>
       </Col>
       </div>
-      <div>
-      <h4 className='Title-Box'> Teléfonos</h4><Image src={phone} roundedCircle />
+      <div className='Section-Boxes'>
+        <Col>      
+        <a className='Title-Box'> Teléfonos</a>
+        <Image src={phone}  className='Icono-Title' />
+        </Col>
       </div>
       {data.phones.map((item, index) => this.cel(item, index))}
-      <div>
-      <h4 className='Title-Box'> Correos</h4>
+      <div className='Section-Boxes'>
+        <Col>
+          <a className='Title-Box'> Correos</a>
+          <Image src={mail}  className='Icono-Title' />
+        </Col>
       </div>
-      {data.emails.map((item, index) => this.emails(item, index))}
-      <div>
-      <h4 className='Title-Box'> Documentos</h4>
+        {data.emails.map((item, index) => this.emails(item, index))}
+      <div className='Section-Boxes'>
+        <Col>
+          <a className='Title-Box'> Documentos</a>
+          <Image src={docu}  className='Icono-Title' />
+        </Col>
       </div>
       {data.documents.map((item, index) => this.documents(item, index))}
     </div>)

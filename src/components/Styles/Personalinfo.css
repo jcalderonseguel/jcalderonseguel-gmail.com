@@ -10,7 +10,22 @@
 .Title-Box {
     text-decoration-line: underline;
     font-weight: bold;
+    font-size: 14px;
+}
+.Title-Box-Central {
+    text-decoration-line: underline;
+    font-weight: bold;
+    font-size: 20px;
 }
 .Column-Style{
     padding-top: 0.8em;
+}
+.Icono-Title {
+    height: 30px;
+    width: 30px;
+    padding-bottom: 4px;
+    padding-left: 4px;
+}
+.Section-Boxes {
+    padding-top: 2em;
 }
