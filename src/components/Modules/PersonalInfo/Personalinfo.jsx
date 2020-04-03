@@ -46,11 +46,45 @@ class Personalinfo extends React.Component{
       "maritalStatus": "Soltero",
       "nationality": "Chileno(a)",
       "documents": [
-          {
-              "documentTypeCode": "RUN",
-              "documentTypeDescription": "Numero de identificacion Chilena",
-              "documentNumber": "577"
-          }
+                    {
+                        "documentTypeCode": "RUN",
+                        "documentTypeDescription": "Numero de identificacion Chilena",
+                        "documentNumber": "577"
+                    },
+                    {
+                      "documentTypeCode": "RUN",
+                      "documentTypeDescription": "Numero de identificacion Chilena",
+                      "documentNumber": "577"
+                    },
+                    {
+                    "documentTypeCode": "RUN",
+                    "documentTypeDescription": "Numero de identificacion Chilena",
+                    "documentNumber": "577"
+                    },
+                    {
+                    "documentTypeCode": "RUN",
+                    "documentTypeDescription": "Numero de identificacion Chilena",
+                    "documentNumber": "577"
+                    },{
+                    "documentTypeCode": "RUN",
+                    "documentTypeDescription": "Numero de identificacion Chilena",
+                    "documentNumber": "577"
+                    },
+                    {
+                    "documentTypeCode": "RUN",
+                    "documentTypeDescription": "Numero de identificacion Chilena",
+                    "documentNumber": "577"
+                    },
+                    {
+                    "documentTypeCode": "RUN",
+                    "documentTypeDescription": "Numero de identificacion Chilena",
+                    "documentNumber": "577"
+                    },
+                    {
+                    "documentTypeCode": "RUN",
+                    "documentTypeDescription": "Numero de identificacion Chilena",
+                    "documentNumber": "577"
+                    }
       ]
   })
   };

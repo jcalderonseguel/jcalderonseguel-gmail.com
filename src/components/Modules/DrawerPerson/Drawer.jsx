@@ -37,7 +37,7 @@ const TemporaryDrawer = (props) => {
       {['+'].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)} className={'Button-Plus'}>{anchor}</Button>
-          <Drawer className='Drawer-Box' anchor={'right'} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
+          <Drawer anchor={'right'} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
           <Personalinfo personId={personId}/>
           </Drawer>
         </React.Fragment>
