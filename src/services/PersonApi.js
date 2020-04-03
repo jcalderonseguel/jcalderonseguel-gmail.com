@@ -20,44 +20,55 @@ const GetPersonApi = async (
 ) => {
 
   const response = await loginApi();
-  const token = response.data.token;
 
-  return axios
-    .get("http://localhost:5001/v1/persons", {
-      headers: {
-        Authorization: `Bearer ${token}`
-      },
-      params: {
-        email,
-        phoneNumber,
-        identificationDocumentTypeId,
-        documentNumber,
-        genderId,
-        alias
-      }
-    })
-    .catch(err => {
-      console.log(err);
-    })
+  if(response){
+
+    const token = response.data.token;
+
+    return axios
+      .get("http://localhost:5001/v1/persons", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        params: {
+          email,
+          phoneNumber,
+          identificationDocumentTypeId,
+          documentNumber,
+          genderId,
+          alias
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    }
+
+    return {};
   }
 
 const GetPersonByIdApi = async id => {
 
   const response = await loginApi();
-  const token = response.data.token;
 
-  return axios
-    .get(`http://localhost:5001/v1/persons/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      },
-      params: {
-        typeOfView: "full"
-      }
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  if(response){
+
+    const token = response.data.token;
+
+    return axios
+      .get(`http://localhost:5001/v1/persons/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        params: {
+          typeOfView: "full"
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    }
+    return {};
 };
 
 export { GetPersonApi, GetPersonByIdApi };

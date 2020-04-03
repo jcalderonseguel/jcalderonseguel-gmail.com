@@ -45,7 +45,7 @@ class Admin extends Component {
       }
 
     render() {
-        
+
         const {personData} = this.props;
         
         return (
