@@ -12,7 +12,7 @@ const { Types, Creators } = createActions(
 );
 const { setLoading, setOpenModalSuccess } = Creators;
 
-const { SET_LOADING, SET_OPEN_MODAL_SUCCESSS } = Types;
+const { SET_LOADING, SET_OPEN_MODAL_SUCCESS } = Types;
 
 const CreatePerson = params => async dispatch => {
   dispatch(setLoading(true));
@@ -126,6 +126,6 @@ export {
   setLoading,
   CreatePerson,
   setOpenModalSuccess,
-  SET_OPEN_MODAL_SUCCESSS
+  SET_OPEN_MODAL_SUCCESS
 };
 export default Creators;

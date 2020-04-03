@@ -277,7 +277,7 @@ class FormNewPerson extends React.Component {
   };
 
   handleClose = () => {
-    this.props.dispatch(setOpenModalSuccess(false));
+    //this.props.dispatch(setOpenModalSuccess(false));
   };
 
   render() {
@@ -382,8 +382,8 @@ const mapStateToProps = state => {
   return {
     activeStep: state.activeStep,
     isLoading: state.personReducer.isLoading,
-    isOpenModalSuccess: state.personReducer.isOpenModalSuccess,
-    isOpenModalError: state.personReducer.isOpenModalError
+    isOpenModalSuccess: state.personReducer.isOpenModalSuccess
+    // isOpenModalError: state.personReducer.isOpenModalError
   };
 };
 
