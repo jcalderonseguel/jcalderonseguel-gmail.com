@@ -1,6 +1,7 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
-import '../../Styles/Personalinfo.css'
+import { Row, Col, Image } from 'react-bootstrap';
+import '../../Styles/Personalinfo.css';
+import { phone } from '../../Images/phone.jpg'
 
 class Personalinfo extends React.Component{
   
@@ -18,10 +19,20 @@ class Personalinfo extends React.Component{
       "personCategory": "Natural",
       "phones": [
           {
-              "areaCode": "+56",
+              "areaCode": "+156",
               "phoneNumber": "5491164528923",
               "extension": "Chile"
-          }
+          },
+          {
+            "areaCode": "+256",
+            "phoneNumber": "5491164528923",
+            "extension": "Chile"
+          },
+          {
+            "areaCode": "+356",
+            "phoneNumber": "5491164528923",
+            "extension": "Chile"
+        }
       ],
       "emails": [
           {
@@ -43,10 +54,10 @@ class Personalinfo extends React.Component{
   };
 
   cel(item, index) {
-    return (<Col>
+    return (<Col className='Column-Style'>
         <Row>
-          <Col>
-          Teléfono:
+          <Col className='First-Column'>
+          Teléfono {index+1}:
           </Col>
           <Col>
           {item.areaCode + ' ' + item.phoneNumber}
@@ -55,10 +66,10 @@ class Personalinfo extends React.Component{
       </Col>)
   };
   emails(item, index) {
-    return (<Col>
+    return (<Col className='Column-Style'>
         <Row>
-          <Col>
-          Email:
+          <Col className='First-Column'>
+          Email {index+1}:
           </Col>
           <Col>
           {item.emailAddres}
@@ -67,23 +78,28 @@ class Personalinfo extends React.Component{
       </Col>)
   };
   documents(item, index) {
-    return (<Col>
-        <Row>
-          <Col>
-          Tipo de doc.:
-          </Col>
-          <Col>
-          {item.documentTypeCode}
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-          N° de doc.:
-          </Col>
-          <Col>
-          {item.documentNumber}
-          </Col>
-        </Row>
+    return (
+    <Col>
+      <Col className='Column-Style'>
+          <Row>
+            <Col className='First-Column'>
+            Tipo de documento:
+            </Col>
+            <Col>
+            {item.documentTypeCode}
+            </Col>
+          </Row>
+      </Col>
+        <Col className='Column-Style'>
+          <Row>
+              <Col className='First-Column'>
+              N° de documento:
+              </Col>
+              <Col>
+              {item.documentNumber}
+              </Col>
+          </Row>
+        </Col>
       </Col>)
   };
 
@@ -97,13 +113,14 @@ class Personalinfo extends React.Component{
     console.log(data)
 
     return (
-    <div className='contact-box Personal-Info-Box'>
-      <div className="text-center">
-      <strong> Detalle personal</strong>
+    <div className='contact-box Personal-Info-Box text-center'>
+      <div>
+      <h3 className='Title-Box'> Detalle personal</h3>
       </div>
-      <Col>
+      <div className='Box-Column'>
+      <Col className='Column-Style'>
         <Row>
-          <Col>
+          <Col className='First-Column'>
           Nombre Completo:
           </Col>
           <Col>
@@ -111,9 +128,9 @@ class Personalinfo extends React.Component{
           </Col>
         </Row>
       </Col>
-      <Col>
+      <Col className='Column-Style'>
         <Row>
-          <Col>
+          <Col className='First-Column'>
           Género:
           </Col>
           <Col>
@@ -121,9 +138,9 @@ class Personalinfo extends React.Component{
           </Col>
         </Row>
       </Col>
-      <Col>
+      <Col className='Column-Style'>
         <Row>
-          <Col>
+          <Col className='First-Column'>
           Nacimiento:
           </Col>
           <Col>
@@ -131,9 +148,9 @@ class Personalinfo extends React.Component{
           </Col>
         </Row>
       </Col>
-      <Col>
+      <Col className='Column-Style'>
         <Row>
-          <Col>
+          <Col className='First-Column'>
           Estado Civil:
           </Col>
           <Col>
@@ -141,9 +158,9 @@ class Personalinfo extends React.Component{
           </Col>
         </Row>
       </Col>
-      <Col>
+      <Col className='Column-Style'>
         <Row>
-          <Col>
+          <Col className='First-Column'>
           Nacionalidad:
           </Col>
           <Col>
@@ -151,8 +168,18 @@ class Personalinfo extends React.Component{
           </Col>
         </Row>
       </Col>
+      </div>
+      <div>
+      <h4 className='Title-Box'> Teléfonos</h4><Image src={phone} roundedCircle />
+      </div>
       {data.phones.map((item, index) => this.cel(item, index))}
+      <div>
+      <h4 className='Title-Box'> Correos</h4>
+      </div>
       {data.emails.map((item, index) => this.emails(item, index))}
+      <div>
+      <h4 className='Title-Box'> Documentos</h4>
+      </div>
       {data.documents.map((item, index) => this.documents(item, index))}
     </div>)
   }

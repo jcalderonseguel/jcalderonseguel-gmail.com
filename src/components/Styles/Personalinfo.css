@@ -2,5 +2,15 @@
     min-width: 500px;
 }
 .Box-Column{
-    padding-top: 5%;
+    padding-top: 2%;
+}
+.First-Column{
+    font-weight: bold;
+}
+.Title-Box {
+    text-decoration-line: underline;
+    font-weight: bold;
+}
+.Column-Style{
+    padding-top: 0.8em;
 }
