@@ -28,10 +28,10 @@ function Navigation(props) {
                             <Button
                                 variant="contained"
                                 size="large"
+                                type="submit"
                                 disabled={isLoading}
                                 style={Person.createPersonStyle.buttonDown}
                                 onClick={!isLoading ? () => sendPerson() : null}>
-                                {/* onClick={!isLoading ? handleSendPerson : null}> */}
                                 {isLoading ? 'Loading…' : 'Send'}
                             </Button>
                             <Button

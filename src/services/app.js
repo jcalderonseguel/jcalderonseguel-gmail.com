@@ -4,21 +4,23 @@ import api from './api';
 
 const apiPerson = config.apiPerson;
 
-// const instance = axios.create();
+ const instance = api.create();
 
-// export const getDocumentTypeApi = (countryId) =>
-//   api.get(`${config.apiPerson}/documentTypes?countryId=${countryId}`);
 
-export const createPersonApi = (params) => {
-  const data = JSON.stringify(params);
-  return api.post(`${apiPerson}/persons`, data,{
-    'Access-Control-Allow-Origin' : '*',
-      'Access-Control-Allow-Methods' : 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-      'Content-Type': 'application/json'
-  }
-          )
-          .then((resp) => resp)
-          .catch(error => error)
+export const createPersonApi = async (params) => {
+   const data = JSON.stringify(params);
+  return await instance.post(`${apiPerson}/persons`, 
+    data, 
+    {
+      headers: {
+           'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            "Cache-Control": "no-cache"
+      }
+    }
+    )
+    .then((resp) => resp)
+    .catch(error => error)
 
 } 
 export const getCountrysApi = () =>

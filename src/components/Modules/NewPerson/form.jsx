@@ -1,4 +1,6 @@
 import React, { isValidElement } from 'react';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import StepWizard from 'react-step-wizard';
 import PersonInfoStep from "./Steps/PersonInfoStep";
 import AddressInfoStep from "./Steps/AddressInfoStep";
@@ -6,7 +8,7 @@ import AddressInfoStep from "./Steps/AddressInfoStep";
 import FinishStep from "./Steps/FinishStep";
 import Navigation from "./navigation";
 import NavigationTop from "./navigationTop";
-import { CreatePerson } from './action';
+import { CreatePerson, openModalSuccess } from './actions';
 import {  connect } from "react-redux"
 import {validateStep1} from './Validations/ValidateSteps'
 import {validateEmail} from './Validations/validations'
@@ -43,7 +45,6 @@ class Form extends React.Component {
             email,
             phone 
         } = this.state;
-        // console.log("step", step)
 
         switch (step) {
             case 1:
@@ -377,38 +378,12 @@ class Form extends React.Component {
     }
     
     sendPerson = () => {
-        // const {step, firstName, lastName, city, streetName } = this.state;
-        
-        this.setState({isLoading: true});
-        this.props.dispatch(CreatePerson(this.state));
-
-        console.log("sending...")
-        
-        // const dataObject = {
-        //     firstName: firstName,
-        //     lastName: lastName,
-        //     city: city,
-        //     streetName: streetName
-        // }
-        // return this.props.dispatch(CreatePerson(this.state))
-        //     .catch(err => console.log(err))
-        //     .then((data) => {
-        //         if(data){
-        //             console.log("ver si hay data de vuelta")
-        //         }
-        //     })
-        // Promise.all([new Promise(CreatePerson(this.state))])
-        // .then(data=>{
-        //     debugger
-        //     if(data && data[0]) {
-        //         console.log("llegó de vuelta")
-        //         this.setState({isLoading: false});
-        //     }
-        // })
-        // .catch(e => console.log("erros=>>>",e))
-            
+        this.props.dispatch(CreatePerson(this.state))
     }
 
+    handleClose = () => {
+        this.props.dispatch(openModalSuccess(false));
+    }
     render() {
         const {
             step, 
@@ -420,7 +395,6 @@ class Form extends React.Component {
             cityErrorMessage,
             enableAddress,
             enableSummary,
-            isLoading,
             firstName,
             lastName,
             streetName,
@@ -429,10 +403,22 @@ class Form extends React.Component {
             phone,
             personInputsValid,
             handleSelect,
-            addressInputsValid
+            addressInputsValid,
         } = this.state;
+        const {isOpenModalSuccess} = this.props;
         return (
             <div>
+                <Modal show={isOpenModalSuccess} onHide={this.handleClose}>
+                    <Modal.Header closeButton>
+                    <Modal.Title>Success!</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Person created successfully!</Modal.Body>
+                    <Modal.Footer>
+                    <Button variant="primary" onClick={this.handleClose}>
+                        OK
+                    </Button>
+                    </Modal.Footer>
+                </Modal>
                 <NavigationTop 
                     goSummary={this.goSummary}
                     goPerson={this.goPerson}
@@ -478,7 +464,7 @@ class Form extends React.Component {
                     nextStep={this.nextStep}
                     backStep={this.backStep}
                     sendPerson={this.sendPerson}
-                    isLoading={isLoading}
+                    isLoading={this.props.isLoading}
                     step={step}
                     />
             </div>
@@ -486,7 +472,8 @@ class Form extends React.Component {
     }
 }
 const mapStateToProps = (state) => ({
- 
+    isLoading: state.personReducer.isLoading,
+    isOpenModalSuccess: state.personReducer.isOpenModalSuccess
  });
  
  const mapDispatchToProps = (dispatch) => ({
