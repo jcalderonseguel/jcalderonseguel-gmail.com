@@ -1,4 +1,4 @@
-// import config from '../config/api';
+import config from "../config/api";
 
 import api from "./api";
 // export const getDocumentTypeApi = (countryId) =>
@@ -7,5 +7,8 @@ import api from "./api";
 export const getCountrysApi = () =>
   api.get(`https://restcountries.eu/rest/v2/all`);
 
-export const getUserLoggedApi = () =>
-  api.get(`http://localhost:5000/v1/persons/login`);
+export const doLoginApi = (mail, pass) =>
+  api.post(`${config.apiPerson}/persons/login`, {
+    email: `${mail}`,
+    password: `${pass}`
+  });
