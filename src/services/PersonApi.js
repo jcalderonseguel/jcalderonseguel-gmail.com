@@ -50,7 +50,7 @@ const GetPersonApi = async (
 const GetPersonByIdApi = async id => {
 
   const response = await loginApi();
-
+  console.log(id);
   if(response){
 
     const token = response.data.token;

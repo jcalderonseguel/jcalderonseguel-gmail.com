@@ -22,8 +22,6 @@ const TemporaryDrawer = (props) => {
     right: false,
   });
 
-  console.log('CLASES CSS')
-  console.log(classes)
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;

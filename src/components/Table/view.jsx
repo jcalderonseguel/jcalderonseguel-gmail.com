@@ -143,7 +143,6 @@ class MuiVirtualizedTable extends React.PureComponent {
                                 variant="body"
                                 style={{ height: rowHeight, width: rowWidth }}
                                 >
-                                  <Drawer/>
                                   
                                 </TableCell>)
                            

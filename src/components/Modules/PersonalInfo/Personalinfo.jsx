@@ -1,94 +1,22 @@
 import React from 'react';
 import { Row, Col, Image } from 'react-bootstrap';
 import '../../Styles/Personalinfo.css';
-import phone  from '../../Images/phone.jpg'
-import mail  from '../../Images/mail.png'
-import docu  from '../../Images/docu.jpg'
+import phone  from '../../Images/phone.jpg';
+import mail  from '../../Images/mail.png';
+import docu  from '../../Images/docu.jpg';
+import { getPersonById}  from '../../../redux/actions/loadPersonalinfo';
+import { connect } from 'react-redux';
+
 
 class Personalinfo extends React.Component{
   
   
+ 
+  componentDidMount(){
+    this.props.dispatch(getPersonById(this.props.personId.personId));
+    
+}
   
-  getData = (personId) => {
-   return (  {
-      "personId": "1fcc760a-766f-4fda-8ea0-96820ffc05e1",
-      "firstName": "dfsf",
-      "lastNamePrefix": "jie",
-      "lastName": "Konopelski",
-      "fullName": "Ricardo Zieme",
-      "genderId": 2,
-      "description": "Masculino",
-      "personCategory": "Natural",
-      "phones": [
-          {
-              "areaCode": "+156",
-              "phoneNumber": "5491164528923",
-              "extension": "Chile"
-          },
-          {
-            "areaCode": "+256",
-            "phoneNumber": "5491164528923",
-            "extension": "Chile"
-          },
-          {
-            "areaCode": "+356",
-            "phoneNumber": "5491164528923",
-            "extension": "Chile"
-        }
-      ],
-      "emails": [
-          {
-              "emailAddres": "artour@gmail.com",
-              "validated": true
-          }
-      ],
-      "birthDate": "1978-09-02T00:00:00",
-      "maritalStatus": "Soltero",
-      "nationality": "Chileno(a)",
-      "documents": [
-                    {
-                        "documentTypeCode": "RUN",
-                        "documentTypeDescription": "Numero de identificacion Chilena",
-                        "documentNumber": "577"
-                    },
-                    {
-                      "documentTypeCode": "RUN",
-                      "documentTypeDescription": "Numero de identificacion Chilena",
-                      "documentNumber": "577"
-                    },
-                    {
-                    "documentTypeCode": "RUN",
-                    "documentTypeDescription": "Numero de identificacion Chilena",
-                    "documentNumber": "577"
-                    },
-                    {
-                    "documentTypeCode": "RUN",
-                    "documentTypeDescription": "Numero de identificacion Chilena",
-                    "documentNumber": "577"
-                    },{
-                    "documentTypeCode": "RUN",
-                    "documentTypeDescription": "Numero de identificacion Chilena",
-                    "documentNumber": "577"
-                    },
-                    {
-                    "documentTypeCode": "RUN",
-                    "documentTypeDescription": "Numero de identificacion Chilena",
-                    "documentNumber": "577"
-                    },
-                    {
-                    "documentTypeCode": "RUN",
-                    "documentTypeDescription": "Numero de identificacion Chilena",
-                    "documentNumber": "577"
-                    },
-                    {
-                    "documentTypeCode": "RUN",
-                    "documentTypeDescription": "Numero de identificacion Chilena",
-                    "documentNumber": "577"
-                    }
-      ]
-  })
-  };
-
   cel(item, index) {
     return (<Col className='Column-Style'>
         <Row>
@@ -144,9 +72,9 @@ class Personalinfo extends React.Component{
   render(){
 
     const  {personId} = this.props.personId;
-    console.log(personId)
-    const data =this.getData(personId);
-    console.log(data)
+    const data = this.props.personInfo;
+    
+    
 
     return (
     <div className='contact-box Personal-Info-Box text-center'>
@@ -211,23 +139,32 @@ class Personalinfo extends React.Component{
         <Image src={phone}  className='Icono-Title' />
         </Col>
       </div>
-      {data.phones.map((item, index) => this.cel(item, index))}
+      {data.phones && data.phones.map((item, index) => this.cel(item, index))}
       <div className='Section-Boxes'>
         <Col>
           <a className='Title-Box'> Correos</a>
           <Image src={mail}  className='Icono-Title' />
         </Col>
       </div>
-        {data.emails.map((item, index) => this.emails(item, index))}
+        {data.emails && data.emails.map((item, index) => this.emails(item, index))}
       <div className='Section-Boxes'>
         <Col>
           <a className='Title-Box'> Documentos</a>
           <Image src={docu}  className='Icono-Title' />
         </Col>
       </div>
-      {data.documents.map((item, index) => this.documents(item, index))}
-    </div>)
+      {data.documents && data.documents.map((item, index) => this.documents(item, index))}
+    </div>
+    )
   }
 }
 
-export default Personalinfo
+const mapStateToProps = (state) => {
+  return {
+   personInfo: state.personalinfo.personInfo
+
+}
+};
+
+
+export default connect(mapStateToProps)(Personalinfo);
