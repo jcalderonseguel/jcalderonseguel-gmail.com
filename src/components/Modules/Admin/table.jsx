@@ -13,9 +13,13 @@ import Drawer from '../DrawerPerson/Drawer'
 const useStyles = makeStyles({  
   root: {
     width: '100%',
+    height: 550,
+    //maxHeight:550
+    //paddingBottom: 10
   },
   container: {
-    maxHeight: 200,
+    //height: 400,
+    maxHeight:400
   },
 });
 
@@ -38,7 +42,7 @@ export default function StickyHeadTable(props) {
   return (
 
     <Paper className={classes.root}>
-      <TableContainer className={classes.container}>
+      <TableContainer type="div" className={classes.container}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
