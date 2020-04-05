@@ -72,16 +72,16 @@ class Admin extends Component {
                 <div className="border-bottom white-bg page-heading">
                     <Form>
                         <Form.Row>
-                            <Form.Group as={Col}>
+                            <Col lg={2} xs={6}>
                                 <Form.Label style={label}>Document Number</Form.Label>
                                 <Form.Control type="text" 
                                                 name="docNumber" 
                                                 onChange={this.handleInputChange} 
                                                 value={this.state.docNumber} 
                                             />
-                            </Form.Group>
+                            </Col>
 
-                            <Form.Group as={Col}>
+                            <Col lg={2} xs={6}>
                                 <Form.Label style={label}>Identification Document</Form.Label>
                                 <Form.Control 
                                     type="text"
@@ -89,9 +89,9 @@ class Admin extends Component {
                                     onChange={this.handleInputChange} 
                                     value={this.state.idocType}
                                 />
-                            </Form.Group>
+                            </Col>
 
-                            <Form.Group as={Col}>
+                            <Col lg={2} xs={6}>
                                 <Form.Label style={label}>Gender</Form.Label>
                                 <Form.Control 
                                     type="text"
@@ -99,9 +99,9 @@ class Admin extends Component {
                                     onChange={this.handleInputChange} 
                                     value={this.state.gender}
                                 />
-                            </Form.Group>
+                            </Col>
 
-                            <Form.Group as={Col}>
+                            <Col lg={2} xs={6}>
                                 <Form.Label style={label}>Alias</Form.Label>
                                 <Form.Control
                                      type="text"
@@ -109,9 +109,9 @@ class Admin extends Component {
                                      onChange={this.handleInputChange} 
                                      value={this.state.alias}
                                 />
-                            </Form.Group>
+                            </Col>
 
-                            <Form.Group as={Col}>
+                            <Col lg={2} xs={6}>
                                 <Form.Label style={label}>Email</Form.Label>
                                 <Form.Control 
                                     type="email" 
@@ -119,9 +119,9 @@ class Admin extends Component {
                                     onChange={this.handleInputChange} 
                                     value={this.state.email}
                                 />
-                            </Form.Group>
+                            </Col>
 
-                            <Form.Group as={Col}>
+                            <Col lg={2} xs={6}>
                                 <Form.Label style={label}>Phone Number</Form.Label>
                                 <Form.Control 
                                      type="text"
@@ -129,30 +129,13 @@ class Admin extends Component {
                                      onChange={this.handleInputChange} 
                                      value={this.state.phoneNumber}
                                 />
-                            </Form.Group>
+                            </Col>
 
                         </Form.Row>
                         
-                        {/* <Form.Row>
-                            <Form.Group as={Col}>
-                                <Form.Label>Alias</Form.Label>
-                                <Form.Control type="password" />
-                            </Form.Group>
-
-                            <Form.Group as={Col}>
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control type="email" />
-                            </Form.Group>
-
-                            <Form.Group as={Col}>
-                                <Form.Label>Phone Number</Form.Label>
-                                <Form.Control type="text"/>
-                            </Form.Group>
-                        </Form.Row> */}
-
                         <Button 
+                            style={{marginTop:"15px"}}
                             variant="primary" 
-                            //type="submit"
                             onClick={this.searchPerson}
                         >
                             Search
