@@ -31,6 +31,7 @@ const doLogin = () =>
     if (request.status === 200) {
       const user = request.data;
       // 2.2 Extraigo data del token, Full name y Email y la seteo al state userData{}
+      // 2.1 le doy al token 15 minutos de validez.
       const tokenInfo = jwt.decode(user.token, "secret", {
         expiresIn: "15m",
       });
@@ -42,7 +43,7 @@ const doLogin = () =>
 
       console.log(user.token, " ", tokenInfo.unique_name, " ", tokenInfo.email);
     }
-    // 2.1 le doy al token 15 minutos de validez.
+
     // seteo state setLogingSuccess = true
     console.log("fui a la api de person:>", request.status);
   };
