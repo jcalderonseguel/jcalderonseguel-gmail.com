@@ -26,11 +26,11 @@ class FormNewPerson extends React.Component {
       street: "",
       phone: "",
       city: "",
-      summary: 1
+      summary: 1,
     };
   }
 
-  handleChange = input => e => {
+  handleChange = (input) => (e) => {
     this.setState({ [input]: e.target.value });
     switch (input) {
       case "firstName":
@@ -51,7 +51,7 @@ class FormNewPerson extends React.Component {
       case "phone":
         if (e.target.value === "") {
           this.setState({
-            phoneError: "Phone is required"
+            phoneError: "Phone is required",
           });
         }
         break;
@@ -80,7 +80,7 @@ class FormNewPerson extends React.Component {
       activeStep:
         this.state.activeStep > 1
           ? this.state.activeStep - 1
-          : this.state.activeStep
+          : this.state.activeStep,
     });
   };
 
@@ -92,7 +92,7 @@ class FormNewPerson extends React.Component {
       email,
       street,
       phone,
-      summary
+      summary,
     } = this.state;
 
     switch (activeStep) {
@@ -100,43 +100,43 @@ class FormNewPerson extends React.Component {
         if (firstName.trim() === "") {
           this.setState({
             firstNameError: "Firstname is required",
-            personValid: false
+            personValid: false,
           });
         } else {
           this.setState({
-            firstNameError: null
+            firstNameError: null,
           });
         }
         if (lastName.trim() === "") {
           this.setState({
             lastNameError: "Lastname is required",
-            personValid: false
+            personValid: false,
           });
         } else {
           this.setState({
-            lastNameError: null
+            lastNameError: null,
           });
         }
 
         if (email.trim() === "") {
           this.setState({
             emailError: "Email is required",
-            personValid: false
+            personValid: false,
           });
         } else {
           this.setState({
-            emailError: null
+            emailError: null,
           });
         }
 
         if (phone.trim() === "") {
           this.setState({
             phoneError: "Phone is required",
-            personValid: false
+            personValid: false,
           });
         } else {
           this.setState({
-            phoneError: null
+            phoneError: null,
           });
         }
 
@@ -149,7 +149,7 @@ class FormNewPerson extends React.Component {
           this.setState({
             activeStep: activeStep + 1,
             enabledAddress: true,
-            personValid: true
+            personValid: true,
           });
         }
         break;
@@ -157,11 +157,11 @@ class FormNewPerson extends React.Component {
         if (street.trim() === "") {
           this.setState({
             streetError: "Street is required",
-            addressValid: false
+            addressValid: false,
           });
         } else {
           this.setState({
-            streetError: null
+            streetError: null,
           });
         }
 
@@ -179,7 +179,7 @@ class FormNewPerson extends React.Component {
           this.setState({
             activeStep: activeStep + 1,
             addressValid: true,
-            enabledSummary: true
+            enabledSummary: true,
           });
         }
 
@@ -197,7 +197,7 @@ class FormNewPerson extends React.Component {
       case 3:
         if (summary.trim() !== 1) {
           this.setState({
-            summaryValid: true
+            summaryValid: true,
           });
         }
         break;
@@ -218,7 +218,7 @@ class FormNewPerson extends React.Component {
         if (firstName.trim() === "") {
           this.setState({
             personValid: false,
-            firstNameError: "Firstname is required"
+            firstNameError: "Firstname is required",
           });
         } else {
           this.setState({ firstNameError: null });
@@ -227,7 +227,7 @@ class FormNewPerson extends React.Component {
         if (lastName.trim() === "") {
           this.setState({
             personValid: false,
-            lastNameError: "Lastname is required"
+            lastNameError: "Lastname is required",
           });
         } else {
           this.setState({ lastNameError: false });
@@ -236,7 +236,7 @@ class FormNewPerson extends React.Component {
         if (email.trim() === "") {
           this.setState({
             personValid: false,
-            emailError: "Email is required"
+            emailError: "Email is required",
           });
         } else {
           this.setState({ emailError: false });
@@ -245,7 +245,7 @@ class FormNewPerson extends React.Component {
         if (phone.trim() === "") {
           this.setState({
             personValid: false,
-            phoneError: "Phone is required"
+            phoneError: "Phone is required",
           });
         } else {
           this.setState({ phoneError: false });
@@ -259,7 +259,7 @@ class FormNewPerson extends React.Component {
         ) {
           this.setState({
             activeStep: 2,
-            personValid: true
+            personValid: true,
           });
         }
         break;
@@ -277,7 +277,7 @@ class FormNewPerson extends React.Component {
   };
 
   handleClose = () => {
-    //this.props.dispatch(setOpenModalSuccess(false));
+    this.props.dispatch(setOpenModalSuccess(false));
   };
 
   render() {
@@ -301,7 +301,7 @@ class FormNewPerson extends React.Component {
       personValid,
       addressValid,
       summaryValid,
-      summary
+      summary,
     } = this.state;
     const { isLoading, isOpenModalSuccess } = this.props;
 
@@ -378,19 +378,19 @@ class FormNewPerson extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     activeStep: state.activeStep,
     isLoading: state.personReducer.isLoading,
-    isOpenModalSuccess: state.personReducer.isOpenModalSuccess
+    isOpenModalSuccess: state.personReducer.isOpenModalSuccess,
     // isOpenModalError: state.personReducer.isOpenModalError
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  dispatch: action => {
+const mapDispatchToProps = (dispatch) => ({
+  dispatch: (action) => {
     dispatch(action);
-  }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FormNewPerson);

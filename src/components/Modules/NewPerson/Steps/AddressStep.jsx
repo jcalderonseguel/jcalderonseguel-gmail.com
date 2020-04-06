@@ -1,6 +1,7 @@
 import React from "react";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Dropdown from "react-bootstrap/Dropdown";
+import Form from "react-bootstrap/Form";
 
 class AddressStep extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class AddressStep extends React.Component {
     this.state = {};
   }
   render() {
-    const { handleChange, street, streetError } = this.props;
+    const { handleChange, street, streetError, cities } = this.props;
     return (
       <div className="container">
         <div className="row">
@@ -32,27 +33,16 @@ class AddressStep extends React.Component {
                 </div>
 
                 <div class="dropdown">
-                  <Dropdown>
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                      City
-                    </Dropdown.Toggle>
-
-                    <Dropdown.Menu>
-                      <Dropdown.Item
-                        href="#/action-1"
-                        value={1}
-                        onChange={handleChange ? handleChange("city") : null}
-                      >
-                        Action
-                      </Dropdown.Item>
-                      <Dropdown.Item href="#/action-2" value={2}>
-                        Another action
-                      </Dropdown.Item>
-                      <Dropdown.Item href="#/action-3">
-                        Something else
-                      </Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
+                  <Form.Control
+                    onChange={handleChange ? handleChange("city") : null}
+                    as="select"
+                  >
+                    {/* {cities.map((item) => (
+                      <option key={item.id} value={item.id}>
+                        {item.name}
+                      </option> */}
+                    ))}
+                  </Form.Control>
                 </div>
               </div>
             </div>
