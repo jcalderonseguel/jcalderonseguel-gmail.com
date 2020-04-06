@@ -52,52 +52,67 @@ class Form extends React.Component {
             if(firstName.trim() === "" ){
                     this.setState({
                         firstNameErrorMessage: "First Name is required.", 
-                        personInputsValid: false});
+                        personInputsValid: false,
+                        firstNameErrorStyle: true
+                    });
                     
                     if(lastName.trim() === ""){
                     this.setState({
                         lastNameErrorMessage: "Last Name is required.", 
-                        personInputsValid: false});
+                        personInputsValid: false,
+                        lastNameErrorStyle: true
+                    });
                     }
                     if(email.trim() === "") {
                         this.setState({
-                            emailErrorMessage: "Email is required."
+                            emailErrorMessage: "Email is required.",
+                            emailErrorStyle: true
                         });
                     }
                     if(phone.trim() === "") {
                         this.setState({
-                            phoneErrorMessage: "Phone is required."
+                            phoneErrorMessage: "Phone is required.",
+                            phoneErrorStyle: true
                         });
                     }
                 } else if(email.trim() === ""){
                     this.setState({
-                        emailErrorMessage: "Email is required."
+                        emailErrorMessage: "Email is required.",
+                        emailErrorStyle: true
                     });
                 }
                 else if(lastName.trim() === ""){
                     this.setState({
                         lastNameErrorMessage: "Last Name is required.", 
-                        personInputsValid: false});
+                        personInputsValid: false,
+                        lastNameErrorStyle: true
+                    });
     
                 } else if(phone.trim() === ""){
                     this.setState({
                         phoneErrorMessage: "Phone is required.", 
-                        personInputsValid: false});
-                }
+                        personInputsValid: false,
+                        phoneErrorStyle: true
+                    
+                    });
+                    }
                 else {
                     if(!validateEmail(email)) {
                         this.setState({
-                            emailErrorMessage: "Email is not valid."
+                            emailErrorMessage: "Email is not valid.",
+                            emailErrorStyle:true
                         });
                         if(!validatePhone(phone)){
                             this.setState({
-                                phoneErrorMessage: "Phone is not valid."
+                                phoneErrorMessage: "Phone is not valid.",
+                                phoneErrorStyle: true
                             });
                         }
                     } else{
                         if(!validatePhone(phone)){
                             this.setState({
-                                phoneErrorMessage: "Phone is not valid."
+                                phoneErrorMessage: "Phone is not valid.",
+                                phoneErrorStyle: true
                             });
                         }
                         else {
@@ -113,6 +128,7 @@ class Form extends React.Component {
                 if(streetName.trim() === ""){
                     this.setState({
                         streetNameErrorMessage: "Street Name is required.", 
+                        streetNameErrorStyle: true,
                         addressInputsValid: false});
                     if(city === 0){
                         this.setState({cityErrorMessage: "City is required."});
@@ -332,44 +348,103 @@ class Form extends React.Component {
         switch (input) {
             case "firstName":
                 if(e.target.value === ""){
-                    this.setState({firstNameErrorMessage: "First Name is required."});
+                    this.setState({
+                        firstNameErrorMessage: "First Name is required.",
+                        firstNameErrorStyle: true
+                    });
                 } else {
-                    this.setState({firstNameErrorMessage: ""});
+                    this.setState({
+                        firstNameErrorMessage: "",
+                        firstNameErrorStyle: false
+                    });
                 }
                 break;
             case "lastName":
                 if(e.target.value === ""){
-                    this.setState({lastNameErrorMessage: "Last Name is required."});
+                    this.setState({
+                        lastNameErrorMessage: "Last Name is required.",
+                        lastNameErrorStyle: true
+                    });
                 } else {
-                    this.setState({lastNameErrorMessage: ""});
+                    this.setState({
+                        lastNameErrorMessage: "",
+                        lastNameErrorStyle: false
+                    });
                 } 
                 break;
             case "streetName":
                 if(e.target.value === ""){
-                    this.setState({streetNameErrorMessage: "Street Name is required."});
+                    this.setState({
+                        streetNameErrorMessage: "Street Name is required.",
+                        streetNameErrorStyle: true
+                    });
                 } else {
-                    this.setState({streetNameErrorMessage: ""});
+                    this.setState({
+                        streetNameErrorMessage: "",
+                        streetNameErrorStyle: false
+                });
                 }
                 break
             case "email":
                 if(e.target.value === ""){
-                    this.setState({emailErrorMessage: "Email is required."});
+                    this.setState({
+                        emailErrorMessage: "Email is required.",
+                        emailErrorStyle: true
+                    });
                 } else {
-                    this.setState({emailErrorMessage: ""});
+                    this.setState({
+                        emailErrorMessage: "",
+                        emailErrorStyle: false
+                    });
+                }
+                let presentArroba = false;
+                const checkArroba = this.state.email.slice(-1);
+                let lastCharacter = e.target.value.slice(-1);
+                if(checkArroba ==="@") presentArroba = true;
+                debugger
+
+                if((checkArroba === "" 
+                    || lastCharacter === "" 
+                    || lastCharacter === "."  
+                    || e.target.value === ""  
+                    || presentArroba) 
+                    && lastCharacter !== " "
+                    && !validateEmail(e.target.value)){
+                    this.setState({
+                        emailErrorMessage: "Please enter a valid email address.",
+                        emailErrorStyle: true
+                    });
+                } else {
+                    this.setState({
+                        emailErrorMessage: "",
+                        emailErrorStyle: false
+                    });
                 }
                 break;
             case "phone":
                 if(e.target.value === ""){
-                    this.setState({phoneErrorMessage: "Phone is required."});
+                    this.setState({
+                        phoneErrorMessage: "Phone is required.",
+                        phoneErrorStyle: true
+                    });
                 } else {
-                    this.setState({phoneErrorMessage: ""});
+                    this.setState({
+                        phoneErrorMessage: "",
+                        phoneErrorStyle: false
+                    });
                 }
                 break;
             case "city":
                 if(e.target.value === "0"){
-                    this.setState({cityErrorMessage: "City is required."});
+                    this.setState({
+                        cityErrorMessage: "City is required.",
+                        cityErrorStyle: true
+                    });
                 } else {
-                    this.setState({cityErrorMessage: ""});
+                    this.setState({
+                        cityErrorMessage: "",
+                        cityErrorStyle: false
+                });
                 }
                 break
             default:
@@ -408,6 +483,11 @@ class Form extends React.Component {
             personInputsValid,
             handleSelect,
             addressInputsValid,
+            firstNameErrorStyle,
+            lastNameErrorStyle,
+            emailErrorStyle,
+            phoneErrorStyle,
+            streetNameErrorStyle
         } = this.state;
         const {isOpenModalSuccess, isOpenModalError} = this.props;
         return (
@@ -462,6 +542,11 @@ class Form extends React.Component {
                             lastNameErrorMessage={lastNameErrorMessage}
                             emailErrorMessage={emailErrorMessage}
                             phoneErrorMessage={phoneErrorMessage}
+                            personInputsValid={personInputsValid}
+                            firstNameErrorStyle={firstNameErrorStyle}
+                            lastNameErrorStyle={lastNameErrorStyle}
+                            phoneErrorStyle={phoneErrorStyle}
+                            emailErrorStyle={emailErrorStyle}
                             firstName={firstName}
                             email={email}
                             phone={phone}
@@ -477,7 +562,7 @@ class Form extends React.Component {
                             cityErrorMessage={cityErrorMessage}
                             handleSelect={handleSelect}
                             streetNameErrorMessage={streetNameErrorMessage}
-                            // cityErrorMessage={cityErrorMessage}
+                            streetNameErrorStyle={streetNameErrorStyle}
                             // hashKey={'address'}
                             />}
                     {/* {step === 3 && <WarningStep hashKey={'warning'}/>} */}

@@ -1,6 +1,7 @@
 import React from "react";
 import FormHelperText from '@material-ui/core/FormHelperText';
 import {Form } from 'react-bootstrap';
+import CreatePerson from '../../../../styles/formCreatePerson';
 
 class AddressInfoStep extends React.Component {
   constructor(props) {
@@ -17,7 +18,8 @@ class AddressInfoStep extends React.Component {
   }
   render() {
     const { 
-      streetNameErrorMessage, 
+      streetNameErrorMessage,
+      streetNameErrorStyle,
       handleChange,
       streetName,
       city,
@@ -54,6 +56,7 @@ class AddressInfoStep extends React.Component {
                     className="form-control required valid"
                     aria-required="true"
                     value={streetName}
+                    style={streetNameErrorStyle ? CreatePerson.createPersonStyle.inputError: null}
                     aria-invalid="false"
                     onChange={handleChange ? handleChange('streetName') : null}
                   />
