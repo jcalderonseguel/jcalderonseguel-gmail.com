@@ -1,6 +1,5 @@
 import React from "react";
 import FormHelperText from "@material-ui/core/FormHelperText";
-import person from "../../../../Styles/CreatePersons";
 
 class ProfileStep extends React.Component {
   constructor(props) {

@@ -1,15 +1,22 @@
 import React from "react";
 import FormHelperText from "@material-ui/core/FormHelperText";
-import Dropdown from "react-bootstrap/Dropdown";
+
 import Form from "react-bootstrap/Form";
 
 class AddressStep extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      cities: [
+        { id: 0, name: "Select City" },
+        { id: 1, name: "Concepción" },
+        { id: 2, name: "Santiago" },
+        { id: 3, name: "Valparaíso" },
+      ],
+    };
   }
   render() {
-    const { handleChange, street, streetError, cities } = this.props;
+    const { handleChange, street, streetError } = this.props;
     return (
       <div className="container">
         <div className="row">
@@ -40,8 +47,8 @@ class AddressStep extends React.Component {
                     {/* {cities.map((item) => (
                       <option key={item.id} value={item.id}>
                         {item.name}
-                      </option> */}
-                    ))}
+                      </option>
+                    ))} */}
                   </Form.Control>
                 </div>
               </div>

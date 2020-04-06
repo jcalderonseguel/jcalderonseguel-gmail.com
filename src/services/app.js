@@ -6,19 +6,25 @@ import api from "./api";
 
 const apiPerson = config.apiPerson;
 
-export const createPersonApi = params => {
+export const createPersonApi = (params) => {
   return api
     .post(`${apiPerson}/persons`, params, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        "Cache-Control": "no-cache"
-      }
+        "Cache-Control": "no-cache",
+      },
     })
 
-    .then(res => res)
-    .catch(err => console.log(err));
+    .then((res) => res)
+    .catch((err) => console.log(err));
 };
 
 export const getCountrysApi = () =>
   api.get(`https://restcountries.eu/rest/v2/all`);
+
+export const doLoginApi = (mail, pass) =>
+  api.post(`${config.apiPerson}/persons/login`, {
+    email: `${mail}`,
+    password: `${pass}`,
+  });

@@ -4,9 +4,7 @@ import DataCountries from "./CountriesData"
 
 import { getCountries } from './actions';
 
-import 'jquery';
-import 'metismenu';
-import 'bootstrap';
+
 
 class ApiCountries extends Component {
 
@@ -26,7 +24,7 @@ class ApiCountries extends Component {
                                 <li className="breadcrumb-item">
                                     <a href="index.html">Home</a>
                                 </li>
-                                <li class="breadcrumb-item">
+                                <li className="breadcrumb-item">
                                     App Views
                                 </li>
                                 <li className="breadcrumb-item active">

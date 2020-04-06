@@ -6,9 +6,9 @@ import MenuAction from "./MenuActions/MenuAction";
 import { connect } from "react-redux";
 import MenuHeader from "./MenuHeader/MenuHeader";
 import { CreatePerson, setOpenModalSuccess } from "./action";
-import { createPersonApi } from "../../../services/app";
+
 import Modal from "react-bootstrap/Modal";
-import { setCloseOpenMenu } from "../../Global/actions";
+
 import Button from "react-bootstrap/Button";
 
 class FormNewPerson extends React.Component {

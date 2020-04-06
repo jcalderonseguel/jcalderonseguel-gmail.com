@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { setCloseOpenMenu } from "../../Global/actions";
+import { setCloseOpenMenu, doLogin } from "../../Global/actions";
 
 class TopHeader extends Component {
   toggleNavigation = () => {
     this.props.dispatch(setCloseOpenMenu(!this.props.isOpenLateral));
+  };
+
+  toggleNavigation = () => {
+    this.props.dispatch(setCloseOpenMenu(!this.props.isOpenLateral));
+
+    this.props.dispatch(doLogin("hello@gmail.com", "test1"));
   };
 
   hideShowMenu = () => {
@@ -58,14 +64,14 @@ class TopHeader extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  isOpenLateral: state.global.isOpenLateral
+const mapStateToProps = (state) => ({
+  isOpenLateral: state.global.isOpenLateral,
 });
 
-const mapDispatchToProps = dispatch => ({
-  dispatch: action => {
+const mapDispatchToProps = (dispatch) => ({
+  dispatch: (action) => {
     dispatch(action);
-  }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopHeader);

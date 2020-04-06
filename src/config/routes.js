@@ -7,16 +7,18 @@ export const paths = {
   root: "/",
   home: "/home",
   person: "/new-person",
-  apiCountries: "/ApiCountriesSample"
+  apiCountries: "/ApiCountriesSample",
+  createUser: "/CreateUser",
 };
 
 const routes = [
   { path: paths.root, component: Dashboard },
-
+  { path: paths.apiCountries, component: ApiCountries },
+  { path: paths.createUser, component: CreateUser },
   {
     path: paths.person,
-    component: FormNewPerson
+    component: FormNewPerson,
   },
-  { path: paths.apiCountries, component: ApiCountries }
 ];
+
 export default routes;
