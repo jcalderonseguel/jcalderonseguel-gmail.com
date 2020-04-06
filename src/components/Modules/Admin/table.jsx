@@ -37,7 +37,7 @@ export default function StickyHeadTable(props) {
     setPage(0);
   };
 
-  const { data, columns, ButtonComponent } = props;
+  const { data, columns, /*ButtonComponent*/ } = props;
 
   return (
 

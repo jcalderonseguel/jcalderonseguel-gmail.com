@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import GridTable from '../../../components/Table/view';
-//import ButtonDetail from './ButtonDetail'
-import { Button, Col, Form, Container, Row } from 'react-bootstrap';
+import { Button, Col, Form } from 'react-bootstrap';
 import { getPerson} from './actions';
 import columns from './columns';
 import Grid from "./table";
@@ -73,7 +71,7 @@ class Admin extends Component {
                     <Form>
                         <Form.Row>
                             <Col lg={2} xs={6}>
-                                <Form.Label style={label}>Document Number</Form.Label>
+                                <Form.Label style={label}>Nro Documento</Form.Label>
                                 <Form.Control type="text" 
                                                 name="docNumber" 
                                                 onChange={this.handleInputChange} 
@@ -82,7 +80,7 @@ class Admin extends Component {
                             </Col>
 
                             <Col lg={2} xs={6}>
-                                <Form.Label style={label}>Identification Document</Form.Label>
+                                <Form.Label style={label}>Typo Documento</Form.Label>
                                 <Form.Control 
                                     type="text"
                                     name="idocType"
@@ -92,7 +90,7 @@ class Admin extends Component {
                             </Col>
 
                             <Col lg={2} xs={6}>
-                                <Form.Label style={label}>Gender</Form.Label>
+                                <Form.Label style={label}>Genero</Form.Label>
                                 <Form.Control 
                                     type="text"
                                     name="gender"
@@ -112,7 +110,7 @@ class Admin extends Component {
                             </Col>
 
                             <Col lg={2} xs={6}>
-                                <Form.Label style={label}>Email</Form.Label>
+                                <Form.Label style={label}>Correo</Form.Label>
                                 <Form.Control 
                                     type="email" 
                                     name="email"
@@ -122,7 +120,7 @@ class Admin extends Component {
                             </Col>
 
                             <Col lg={2} xs={6}>
-                                <Form.Label style={label}>Phone Number</Form.Label>
+                                <Form.Label style={label}>Número de Teléfono</Form.Label>
                                 <Form.Control 
                                      type="text"
                                      name="phoneNumber"
@@ -138,7 +136,7 @@ class Admin extends Component {
                             variant="primary" 
                             onClick={this.searchPerson}
                         >
-                            Search
+                            Buscar
                         </Button>
 
                     </Form>
