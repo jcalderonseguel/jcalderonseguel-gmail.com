@@ -80,7 +80,7 @@ class Admin extends Component {
                             </Col>
 
                             <Col lg={2} xs={6}>
-                                <Form.Label style={label}>Typo Documento</Form.Label>
+                                <Form.Label style={label}>Tipo Documento</Form.Label>
                                 <Form.Control 
                                     type="text"
                                     name="idocType"
