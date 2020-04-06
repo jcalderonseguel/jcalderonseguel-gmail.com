@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {
-    setCloseOpenMenu
+    setCloseOpenMenu,
+    doLogin
 
 } from "../../Global/actions"
 
@@ -12,7 +13,8 @@ class TopHeader extends Component {
     toggleNavigation =() => {
        
        this.props.dispatch(setCloseOpenMenu(!this.props.isOpenLateral))
-       
+
+       this.props.dispatch(doLogin("hello@gmail.com", "test1"))
     }
    
     hideShowMenu = () => {
