@@ -14,11 +14,9 @@ const useStyles = makeStyles({
   root: {
     width: '100%',
     height: 550,
-    //maxHeight:550
-    //paddingBottom: 10
+    
   },
   container: {
-    //height: 400,
     maxHeight:400
   },
 });
@@ -83,6 +81,7 @@ export default function StickyHeadTable(props) {
         page={page}
         onChangePage={handleChangePage}
         onChangeRowsPerPage={handleChangeRowsPerPage}
+        labelRowsPerPage="Registros por Página"
       />
     </Paper>
   );
