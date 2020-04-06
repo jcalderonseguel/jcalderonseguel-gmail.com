@@ -70,12 +70,7 @@ class Personalinfo extends React.Component{
   
 
   render(){
-
-    const  {personId} = this.props.personId;
-    const data = this.props.personInfo;
-    
-    
-
+  const data = this.props.personInfo;
     return (
     <div className='contact-box Personal-Info-Box text-center'>
       <div>
