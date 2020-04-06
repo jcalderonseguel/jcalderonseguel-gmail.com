@@ -1,6 +1,7 @@
 import Dashboard from "../components/Modules/Dashboard";
 import FormNewPerson from "../components/Modules/NewPerson/view";
 import ApiCountries from "../components/Modules/Maintainers/Countries/view";
+import CreateUser from "../components/Access/CreateUser/view";
 
 export const paths = {
   any: "*",
