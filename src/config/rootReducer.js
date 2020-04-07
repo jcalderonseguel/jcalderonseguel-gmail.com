@@ -1,10 +1,10 @@
+import { combineReducers } from "redux";
+import { connectRouter } from "connected-react-router";
 
-import { combineReducers } from 'redux';
-import { connectRouter } from 'connected-react-router';
-
-import global from '../components/Global/reducer';
-import countriesReducer from "../components/Modules/Maintainers/Countries/reducer"
-import personReducer from "../components/Modules/Admin/reducer";
+import global from "../components/Global/reducer";
+import menuActionReducer from "../components/Modules/NewPerson/reducer";
+import countriesReducer from "../components/Modules/Maintainers/Countries/reducer";
+import personReducer from "../components/Modules/NewPerson/reducer";
 import personalinfo from "../redux/reducer/personalinfo";
 
 const rootReducer = history =>
@@ -12,9 +12,9 @@ const rootReducer = history =>
     router: connectRouter(history),
     global,
     countriesReducer,
-    personReducer,
+    menuActionReducer,
+    personReducer,   
     personalinfo,
   });
 
 export default rootReducer;
-

@@ -1,10 +1,9 @@
 const hostname = window && window.location && window.location.hostname;
 let apiUri = "https://localhost:5001/";
-let apiPerson ="";
+let apiPerson = "";
 
 switch (true) {
   case hostname.includes("dev-"): {
-    
     break;
   }
 
@@ -12,9 +11,8 @@ switch (true) {
     break;
   }
   case hostname.includes("localhost"): {
-
-    apiUri = "https://localhost:5001";   
-    apiPerson = `${apiUri}/v1`; 
+    apiUri = "https://localhost:5001";
+    apiPerson = `${apiUri}/v1`;
     break;
   }
   default: {
@@ -25,8 +23,6 @@ switch (true) {
 const config = {
   apiUri,
   apiPerson,
- 
 };
 
 export default config;
-
