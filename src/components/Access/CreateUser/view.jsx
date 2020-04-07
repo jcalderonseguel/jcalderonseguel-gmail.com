@@ -10,9 +10,11 @@ import { REGISTER_USER_MSG ,
 
 import ids from './indentifiers';
 
+import { createUser } from './actions';
+
 import {NAME_LBL, PASSWORD_LBL, EMAIL_LBL, BTN_REGISTER, CHECKBOX_LBL  } from './label';         
 
-//import {  connect } from "react-redux"
+import {  connect } from "react-redux"
 
 class CreateUser extends Component {
 
@@ -26,6 +28,8 @@ class CreateUser extends Component {
     ...this.formDefaults
   };
 
+ 
+
   onChange = (e) => {
     const state = {
       ...this.state,
@@ -38,13 +42,18 @@ class CreateUser extends Component {
     this.setState(state);
   }
 
+ 
+
   onSubmit = (e) => {
     e.preventDefault();
     // reset states before the validation procedure is run.
     this.resetValidationStates();
     // run the validation, and if it's good move on.
     if (this.formIsValid()) {
-      // form processing here....
+      const { name, 
+        email, 
+        password} = this.state;
+      this.props.dispatch(createUser(name, email, password));
     }
   }
     formIsValid = () => {
@@ -87,16 +96,10 @@ class CreateUser extends Component {
       return isGood;
     }
     resetValidationStates = () => {
-      // make a copy of everything in state
+     
       const state = JSON.parse(JSON.stringify(this.state));
 
-      /*
-      loop through each item in state and if it's safe to assume that only
-      form values have an 'isValid' property, we can use that to reset their
-      validation states and keep their existing value property. This process
-      makes it easy to set all validation states on form inputs in case the number
-      of fields on our form grows in the future.
-      */
+     
       Object.keys(state).map(key => {
         if (state[key].hasOwnProperty('isValid')) {
           state[key].isValid = true;
@@ -193,6 +196,12 @@ class CreateUser extends Component {
     }
 }
 
+const mapStateToProps = state => ({});
 
+const mapDispatchToProps = dispatch => ({
+  dispatch: action => {
+    dispatch(action);
+  }
+});
 
-export default (CreateUser);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateUser);
