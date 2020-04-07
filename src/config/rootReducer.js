@@ -5,6 +5,7 @@ import global from "../components/Global/reducer";
 import menuActionReducer from "../components/Modules/NewPerson/reducer";
 import countriesReducer from "../components/Modules/Maintainers/Countries/reducer";
 import personReducer from "../components/Modules/NewPerson/reducer";
+import personalinfo from "../redux/reducer/personalinfo";
 
 const rootReducer = history =>
   combineReducers({
@@ -12,7 +13,8 @@ const rootReducer = history =>
     global,
     countriesReducer,
     menuActionReducer,
-    personReducer
+    personReducer,   
+    personalinfo,
   });
 
 export default rootReducer;

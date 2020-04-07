@@ -63,12 +63,9 @@ class Navigation extends Component {
             {/* menu */}
 
             <MenuItem path={paths.root} icon="home" label="Home" />
-            <MenuItem
-              path={paths.person}
-              icon="person"
-              label="Create a Person"
-            />
-            <MenuItem path={paths.apiCountries} icon="files-o" label="Sample" />
+            <MenuItem path={paths.person} icon="person"  label="Create a Person" />
+            <MenuItem path={paths.apiCountries} icon="files-o" label="Sample" /> 
+            <MenuItem path="/admin" icon="home" label="Personas" />       
           </ul>
         </div>
       </nav>

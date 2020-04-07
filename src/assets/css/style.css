@@ -9557,3 +9557,6 @@ body.md-skin {
 .ibox-title .float-right {
   margin-right: -75px;
 }
+.MuiDrawer-paperAnchorRight {
+  height: 100% !important;
+}
