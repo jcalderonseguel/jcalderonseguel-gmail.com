@@ -40,7 +40,7 @@ class Navigation extends Component {
                         {/* menu */}
                         <MenuItem path= {paths.root} icon="home" label="Home" />
                         <MenuItem path= {paths.apiCountries} icon="files-o" label="Sample" />
-
+                        <MenuItem path="/admin" icon="home" label="Personas" />       
                       
                        
                     </ul>
